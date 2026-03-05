@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+    display: grid;
+    gap: 25px;
+    font-size: large;
+    
+}   
+
+#boton, #boton2 {
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+#boton:hover, #boton2:hover {
+    transform: scale(1.2);   
+}
+
+
