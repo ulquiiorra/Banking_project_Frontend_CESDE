@@ -29,16 +29,22 @@ export class CuentaAhorros extends Cuenta {
         console.log(`Retiro exitoso. Nuevo saldo: ${this.saldo}`);
     }
 
+    calcularTasaMensual() {
+       return 0.015;
+    }
+
     calcularIntereses() {
-        return this.saldo * this.#tasaInteres;
+         return this.saldo * this.calcularTasaMensual();
     }
 
     aplicarIntereses() {
         const interes = this.calcularIntereses();
-        this.saldo = this.saldo + interes;
-        console.log(`Intereses aplicados: ${interes}. Nuevo saldo: ${this.saldo}`);
-    }
+        this.saldo += interes;
 
+        console.log(`Interés aplicado: ${interes}`);
+        console.log(`Nuevo saldo: ${this.saldo}`);
+    }
+    
     transferir(destino, monto) {
         if (!this.validarDestino(destino)) {
             console.log("Cuenta destino no válida");
