@@ -34,8 +34,8 @@ export class CuentaCorriente extends Cuenta {
     }
 
     set limiteSobregiro(valor) {
-        if (valor < 0) {
-            console.log("El límite no puede ser negativo");
+        if (valor > 0.2) {
+            console.log(" El porcentaje no puede ser mayor al 20% ");
             return;
         }
         this.#limiteSobregiro = valor;
