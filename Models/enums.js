@@ -12,5 +12,12 @@ export const EstadoCuenta = Object.freeze({
     INACTIVA: 'INACTIVA',
     BLOQUEADA: 'BLOQUEADA',
     CERRADA: 'BLOQUEADA',
-})
+});
+
+
+
+
+
+
+
 

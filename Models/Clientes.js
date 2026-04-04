@@ -141,7 +141,7 @@
                 this.#intentosFallidos++;
                 if (this.#intentosFallidos >= 3){
                     this.#bloqueado = true;
-                    throw new Error ("la cuenta ha sido bloqueado por demaciados inyestos fallidos")
+                    throw new Error ("la cuenta ha sido bloqueado por demasiados intentos fallidos");
                 }
             }
 
@@ -163,16 +163,5 @@
                 this.#cuentas.push(nuevaCuenta);
 
             }
-
-
-
-
-
-       
-
-
-
-
-
 
     }

@@ -53,6 +53,7 @@ export class Cuenta {
         this.#estado = nuevoEstado;
     }
 
+    
     set moviemientos(nuevosMovimientos){
         if (!Array.isArray(nuevosMovimientos)){
             console.log(" los movimientos deben ser un arreglo");
