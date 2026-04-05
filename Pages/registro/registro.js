@@ -17,8 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const usuario = document.getElementById('username').value;
             const contrasena = document.getElementById('password').value;
             
-            const selectedRadio = document.querySelector('input[name="product"]:checked');
-            let productValue = selectedRadio ? selectedRadio.value : 'ahorros';
+            const checkboxesSeleccionados = document.querySelectorAll('input[name="product"]:checked');
+            const productosSeleccionados = Array.from(checkboxesSeleccionados).map(cb => cb.value);
+            
+            if (productosSeleccionados.length === 0) {
+                mostrarError("⚠️ Debes seleccionar al menos un producto financiero para continuar.");
+                return;
+            }
+
 
             // 2. VALIDACIÓN DE UNICIDAD (El filtro de seguridad)
             if (!esUsuarioUnico(documento, usuario)) {
@@ -30,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 3. Si pasa la validación, creamos el objeto
             const nuevoId = Date.now(); 
             const nuevoCliente = new Clientes(
-                nuevoId, nombre, correo, documento, celular, usuario, contrasena, productValue
+                nuevoId, nombre, correo, documento, celular, usuario, contrasena, productosSeleccionados
             );
 
             // 4. Guardar datos
