@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Hapibank Digital Vault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body class="login-page">
+    <div class="cyber-grid"></div>
+    <div class="glow-sphere top-left"></div>
+    <div class="glow-sphere bottom-right"></div>
+    <div class="floating-geometry geo-1"></div>
+    <div class="floating-geometry geo-2"></div>
+
+    <main class="login-container">
+        <div class="login-card glass-panel aura-glow">
+            <div class="accent-line"></div>
+            
+            <header class="login-header">
+                <div class="logo-wrapper">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA10Xs9RWMDzwPoPAMy0ojaMiPkxIdAlqWmOF7Anu2km1PZTdd_maPssOvovnE5qvySxs1D5lTtI7bcdWvBoERy-wJcv_Y76EOWtTIW-EO9NT93KlHBVgUP8U_N6nSBQ7FUjfcuF15l9myeSo-4_XAiE0ipi7jGcF6O28GQwsy5BXORctKrYJqlfiZFX6SF8jIw4ZDZjKKA9-5jlhc0NZVRZwR9srqOgKWJj6qsgnJR2NcV8izfYdv8Fr2JUhlMwtuvVgiX-OB-JsYr" alt="Hapibank Logo" class="main-logo">
+                </div>
+                <h1 class="headline-md">Hapibank</h1>
+                <p class="label-xs">Digital Alchemy Vault</p>
+            </header>
+
+            <form id="login-form" class="auth-form">
+                <div class="field-group">
+                    <label for="email" class="field-label">Correo Electrónico</label>
+                    <div class="input-container">
+                        <span class="material-symbols-outlined input-icon">alternate_email</span>
+                        <input type="email" id="email" placeholder="nombre@ejemplo.com" required>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="password" class="field-label">Contraseña</label>
+                    <div class="input-container">
+                        <span class="material-symbols-outlined input-icon">lock</span>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" id="pass-toggle">
+                            <span class="material-symbols-outlined">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <a href="#" class="forgot-link">Olvidé mi contraseña</a>
+                </div>
+
+                <button type="submit" class="btn-login-gradient">
+                    <span>Iniciar Sesión</span>
+                </button>
+            </form>
+
+            <footer class="login-footer">
+                <p>¿No tienes una cuenta? <a href="registro.html" class="link-highlight">Crear cuenta</a></p>
+            </footer>
+        </div>
+
+        <aside class="meta-info">
+            <span>Encrypted 256-bit</span>
+            <span class="dot"></span>
+            <span>Global Access</span>
+            <span class="dot"></span>
+            <span>V.2.0.4</span>
+        </aside>
+    </main>
+
+    <script src="login.js" defer></script>
+</body>
+</html>

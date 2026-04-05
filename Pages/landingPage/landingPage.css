@@ -2,8 +2,8 @@
 :root {
     --primary: #e8ffbe;
     --primary-container: #b3fe00;
-    --on-primary: #466700;
-    --on-primary-container: #405e00;
+    --on-primary: #000000;
+    --on-primary-container: #1a1a1a;
     --secondary: #00e3fd;
     --secondary-container: #006875;
     --background: #0e0e0e;
@@ -21,6 +21,8 @@
     --radius-xl: 0.75rem;
     --radius-full: 9999px;
     --radius-card: 2rem;
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* --- RESET --- */
@@ -44,9 +46,7 @@ body {
     padding: 0 1.5rem;
 }
 
-/* --- COMPONENTS --- */
-
-/* Header */
+/* --- HEADER & NAV --- */
 .top-app-bar {
     position: fixed;
     top: 0;
@@ -96,56 +96,99 @@ body {
     text-decoration: none;
     color: var(--on-surface-variant);
     font-size: 0.875rem;
-    transition: color 0.3s;
+    transition: var(--transition-smooth);
 }
 
-.nav-links a.active {
+.nav-links a.active, .nav-links a:hover {
     color: var(--primary-container);
-    border-bottom: 2px solid var(--primary-container);
-    padding-bottom: 0.25rem;
 }
 
-/* Buttons */
+/* Contenedor de botones en el Header con GAP */
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* --- BOTONES --- */
+
+/* Base para botones tipo Link/Button */
+.btn-primary-small, .btn-primary-lg, .btn-primary-xl, .btn-outline-lg, .btn-outline-xl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: var(--font-body);
+}
+
+/* Botón Nav (Login/Open Account) */
 .btn-primary-small {
     background: var(--primary-container);
     color: var(--on-primary-container);
-    border: none;
     padding: 0.6rem 1.25rem;
     border-radius: var(--radius-full);
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s;
+    font-weight: 700;
+    border: none;
+    font-size: 0.9rem;
 }
 
+.btn-primary-small:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(179, 255, 0, 0.4);
+}
+
+/* Botón Hero Principal */
 .btn-primary-lg {
     background: linear-gradient(90deg, var(--primary-container), #a8ef00);
     color: var(--on-primary);
-    border: none;
     padding: 1rem 2rem;
     border-radius: var(--radius-full);
     font-weight: 800;
-    display: flex;
-    align-items: center;
     gap: 0.5rem;
-    cursor: pointer;
-    transition: 0.3s;
+    border: none;
 }
 
 .btn-primary-lg:hover {
+    transform: scale(1.05);
     box-shadow: 0 0 30px rgba(179, 255, 0, 0.4);
 }
 
-.btn-outline-lg {
-    background: transparent;
-    border: 1px solid var(--outline-variant);
-    color: var(--on-surface);
-    padding: 1rem 2rem;
+/* Botones de la sección CTA (Imagen 2) */
+.btn-primary-xl {
+    background-color: var(--primary-container);
+    color: #000;
+    padding: 1.2rem 2.5rem;
     border-radius: var(--radius-full);
-    font-weight: 800;
-    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
 }
 
-/* Hero Section */
+.btn-primary-xl:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(179, 255, 0, 0.5);
+}
+
+.btn-outline-xl {
+    background: transparent;
+    color: var(--on-surface);
+    border: 1px solid var(--outline-variant);
+    padding: 1.2rem 2.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.btn-outline-xl:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--on-surface);
+}
+
+/* --- SECCIONES --- */
+
+/* Hero */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -163,6 +206,7 @@ body {
     background: rgba(179, 255, 0, 0.1);
     filter: blur(120px);
     border-radius: 50%;
+    z-index: 0;
 }
 
 .hero-grid {
@@ -181,7 +225,7 @@ body {
 .headline-xl {
     font-family: var(--font-headline);
     font-size: clamp(3rem, 8vw, 5rem);
-    line-height: 1;
+    line-height: 1.1;
     font-weight: 800;
     margin-bottom: 2rem;
 }
@@ -192,18 +236,25 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* Bento Cards */
+.body-lg {
+    font-size: 1.25rem;
+    color: var(--on-surface-variant);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+/* Bento Grid */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-top: 3rem;
+    padding: 4rem 0;
 }
 
 .card-bento {
     background: var(--surface);
     border-radius: var(--radius-card);
-    padding: 2rem;
+    padding: 2.5rem;
     border: 1px solid rgba(255,255,255,0.05);
     position: relative;
     overflow: hidden;
@@ -213,49 +264,10 @@ body {
     .span-2 { grid-column: span 2; }
 }
 
-.bg-icon-watermark {
-    position: absolute;
-    right: -20px;
-    bottom: -20px;
-    font-size: 150px !important;
-    opacity: 0.05;
-}
-
-/* Glass Card */
-.glass-panel, .glass-card {
-    background: rgba(14, 14, 14, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(179, 255, 0, 0.2);
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-}
-
-.phone-mockup {
-    position: relative;
-    background: var(--surface-high);
-    border-radius: 2.5rem;
-    padding: 1rem;
-    transform: rotate(3deg);
-}
-
-.phone-mockup img {
-    width: 100%;
-    border-radius: 2rem;
-}
-
-.glass-card {
-    position: absolute;
-    bottom: -20px;
-    left: -40px;
-    width: 240px;
-}
-
-/* --- CTA SECTION --- */
+/* CTA Section (Imagen 2) */
 .cta-section {
-    padding: 8rem 0; /* Espaciado generoso arriba y abajo */
+    padding: 10rem 0;
     text-align: center;
-    background-color: var(--background);
 }
 
 .cta-container {
@@ -264,101 +276,58 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
 }
 
 .cta-actions {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
+    margin-top: 3rem;
     justify-content: center;
-    flex-wrap: wrap; /* Para que en móviles se pongan uno sobre otro si no caben */
+    flex-wrap: wrap;
 }
 
-/* Botón XL Primario (El verde neón) */
-.btn-primary-xl {
-    background-color: var(--primary-container);
-    color: #000; /* Texto negro para contraste */
-    border: none;
-    padding: 1.2rem 2.5rem;
-    border-radius: var(--radius-full);
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(179, 255, 0, 0.2); /* Brillo suave */
-}
-
-.btn-primary-xl:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(179, 255, 0, 0.5);
-}
-
-/* Botón XL Outline (El de borde gris/blanco) */
-.btn-outline-xl {
-    background: transparent;
-    color: var(--on-surface);
-    border: 1px solid var(--outline-variant);
-    padding: 1.2rem 2.5rem;
-    border-radius: var(--radius-full);
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-outline-xl:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--on-surface);
-}
-
-/* Animations */
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.4; }
-    100% { opacity: 1; }
-}
-
-.pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--primary-container);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-/* Footer */
+/* --- FOOTER --- */
 .main-footer {
-    padding: 2rem 0;
-    background-color: var(--background);
+    padding: 4rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 2rem;
     align-items: center;
-    font-size: 0.8rem;
-    color: var(--on-surface-variant);
+    text-align: center;
 }
 
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.footer-brand .logo {
+    margin-bottom: 0.5rem;
 }
 
 .footer-links {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .footer-links a {
     color: var(--on-surface-variant);
     text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+}
+
+.footer-links a:hover {
+    color: var(--primary-container);
 }
 
 .footer-social {
@@ -366,6 +335,18 @@ body {
     gap: 1rem;
 }
 
-@media (min-width: 768px) {
-    .footer-content { flex-direction: row; justify-content: space-between; }
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--surface-high);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.social-icon:hover {
+    background: var(--primary-container);
+    color: #000;
 }
