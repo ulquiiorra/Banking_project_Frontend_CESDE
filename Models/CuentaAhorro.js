@@ -1,68 +1,58 @@
+import { Cuenta } from './Cuenta.js'; // Ajusta la ruta si es necesario
+
 export class CuentaAhorros extends Cuenta {
+    // Definimos el nuevo atributo exclusivo de esta clase
     #tasaInteres;
 
-    constructor(numeroCuenta, fechaApertura, estado, tasaInteres, movimientos = [], saldo = 0) {
-        super(numeroCuenta, fechaApertura, estado, movimientos, saldo);
+    constructor(numeroCuenta, fechaApertura, estado, saldo = 0, tasaInteres = 0.015) {
+        // 'super' llama al constructor del padre (Cuenta) para inicializar sus datos
+        super(numeroCuenta, fechaApertura, estado, saldo);
         this.#tasaInteres = tasaInteres;
     }
 
-    get tasaInteres() {
-        return this.#tasaInteres;
-    }
+    // Getter para la tasa de interés
+    get tasaInteres() { return this.#tasaInteres; }
 
-    set tasaInteres(nuevaTasa) {
-        if (nuevaTasa < 0) {
-            console.log("La tasa de interés no puede ser negativa");
-            return;
-        }
-        this.#tasaInteres = nuevaTasa;
-    }
+    // --- SOBREESCRITURA DE MÉTODOS (Polimorfismo) ---
 
+    // Sobreescribimos el método del padre para agregar tu regla del 1.5%
+    withdraw(amount, transactionType = 'WITHDRAWAL') {
+        // 1. Calculamos la comisión del 1.5%
+        const fee = amount * this.#tasaInteres;
+        const totalToDeduct = amount + fee;
 
-    retirar(monto) {
-        if (monto > this.saldo) {
-            console.log("Fondos insuficientes");
-            return;
+        // 2. Validamos usando el getter del padre (this.saldo)
+        if (totalToDeduct > this.saldo) {
+            throw new Error("❌ Insufficient funds to cover the withdrawal and the 1.5% fee.");
         }
 
-        this.saldo = this.saldo - monto;
-        console.log(`Retiro exitoso. Nuevo saldo: ${this.saldo}`);
+        console.log(`⚠️ Applying a 1.5% fee: $${fee}`);
+        
+        // 3. Dejamos que el padre haga el descuento y el registro en el historial
+        return super.withdraw(totalToDeduct, transactionType);
     }
 
-    calcularTasaMensual() {
-       return 0.015;
-    }
+    // --- NUEVA FUNCIONALIDAD ---
 
-    calcularIntereses() {
-         return this.saldo * this.calcularTasaMensual();
-    }
-
-    aplicarIntereses() {
-        const interes = this.calcularIntereses();
-        this.saldo += interes;
-
-        console.log(`Interés aplicado: ${interes}`);
-        console.log(`Nuevo saldo: ${this.saldo}`);
-    }
-    
-    transferir(destino, monto) {
-        if (!this.validarDestino(destino)) {
-            console.log("Cuenta destino no válida");
-            return;
+    transfer(amount, targetAccount) {
+        // Regla 1: No permitir transferencias al mismo producto
+        // Comparamos el número de esta cuenta con el de la cuenta destino
+        if (this.numeroCuenta === targetAccount.numeroCuenta) {
+            throw new Error("❌ You cannot transfer money to the same account.");
         }
 
-        if (monto > this.saldo) {
-            console.log("Fondos insuficientes");
-            return;
-        }
+        console.log(`🔄 Starting transfer of $${amount} to account ${targetAccount.numeroCuenta}...`);
 
-        this.saldo -= monto;
-        destino.saldo += monto;
+        // Regla 2: Retiramos de esta cuenta
+        // Al llamar a this.withdraw(), automáticamente se le aplicará el 1.5% de interés 
+        // y se registrará con el tipo personalizado 'TRANSFER_OUT'
+        this.withdraw(amount, 'TRANSFER_OUT');
 
-        console.log("Transferencia exitosa");
-    }
+        // Regla 3: Consignamos en la cuenta destino
+        // targetAccount es una instancia de Cuenta (o sus hijas), así que podemos llamar a deposit
+        targetAccount.deposit(amount, 'TRANSFER_IN');
 
-    validarDestino(cuenta) {
-        return cuenta instanceof Cuenta;
+        console.log("✅ Transfer completed successfully.");
+        return true;
     }
 }
