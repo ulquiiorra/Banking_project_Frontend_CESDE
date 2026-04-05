@@ -1,0 +1,330 @@
+/* --- VARIABLES DE ALQUIMIA DIGITAL --- */
+:root {
+    --primary: #b3fe00;
+    --primary-dim: #a8ef00;
+    --secondary: #00e3fd;
+    --background: #0e0e0e;
+    --surface: #1a1a1a;
+    --surface-high: #20201f;
+    --surface-lowest: #000000;
+    --on-surface: #ffffff;
+    --on-surface-variant: #adaaaa;
+    --outline-variant: rgba(72, 72, 71, 0.3);
+    
+    --font-headline: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+}
+
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--on-surface);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.bg-noise {
+    position: fixed;
+    inset: 0;
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7oZ3kJ7TQxamO8STxpx8NwOieKH7-TefVX3Men8mXrc0WahG49BSSTjad98YQmnphGxmJenUhIt-d02ot6vnMwtXglfncHLXGD4Q2iMkuzExDfLqWhh6IOa3OJsjzT_1bPNKsy1awpm58xQCZtuUh7oSWVzEmn5_C4_NSx8zqd075S-uXLSsYJb9mAdye62bUy5jU9mTEV5ndP3A66Dk9mWztCr8aHlVgswr2siL5JtdY1yEUgnXLMt8g7Vq-CPd4VYzZ8-pKstH8');
+    opacity: 0.03;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- ABSTRACT BG --- */
+.glow-top-left, .glow-bottom-right {
+    position: absolute;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.glow-top-left {
+    top: -6rem;
+    left: -6rem;
+    background: rgba(179, 254, 0, 0.1);
+}
+
+.glow-bottom-right {
+    bottom: -6rem;
+    right: -6rem;
+    background: rgba(0, 227, 253, 0.05);
+}
+
+/* --- LAYOUT --- */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+/* --- PROGRESS INDICATOR --- */
+.progress-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+.track {
+    height: 6px;
+    border-radius: 99px;
+    background: rgba(72, 72, 71, 0.3);
+}
+
+.track:nth-child(1) { width: 2rem; }
+.track.active {
+    width: 3rem;
+    background: var(--primary);
+    box-shadow: 0 0 10px rgba(179, 254, 0, 0.5);
+}
+
+.step-text {
+    margin-left: 1rem;
+    font-size: 10px;
+    font-family: var(--font-headline);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--on-surface-variant);
+}
+
+/* --- SUCCESS ICON --- */
+.icon-section {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.icon-halo {
+    position: absolute;
+    inset: 0;
+    background: rgba(179, 254, 0, 0.2);
+    filter: blur(40px);
+    border-radius: 50%;
+    transform: scale(1.5);
+}
+
+.icon-container {
+    position: relative;
+    width: 7rem;
+    height: 7rem;
+    background: #262626;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(179, 254, 0, 0.3);
+    box-shadow: 0 0 50px 10px rgba(179, 254, 0, 0.15);
+}
+
+.icon-container .material-symbols-outlined {
+    font-size: 4rem;
+    color: var(--primary);
+}
+
+.filled { font-variation-settings: 'FILL' 1; }
+
+/* --- MESSAGE --- */
+.main-message {
+    text-align: center;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+}
+
+.headline-xl {
+    font-family: var(--font-headline);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+.highlight { color: var(--primary); }
+
+.body-md {
+    color: var(--on-surface-variant);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* --- SUMMARY CARD --- */
+.summary-card {
+    width: 100%;
+    max-width: 448px;
+    background: var(--surface-high);
+    padding: 4px;
+    border-radius: 2rem;
+    border: 1px solid rgba(72, 72, 71, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 3rem;
+}
+
+.inner-card {
+    background: var(--surface-lowest);
+    border-radius: 1.4rem;
+    padding: 2rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.label-xs {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--on-surface-variant);
+    margin-bottom: 0.25rem;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+.pulse { animation: pulseAnim 2s infinite; }
+
+@keyframes pulseAnim {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.status-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.bank-symbol { width: 2.5rem; opacity: 0.8; }
+
+.info-rows { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row-label { color: var(--on-surface-variant); font-size: 0.875rem; }
+
+.row-value { font-family: var(--font-headline); font-weight: 700; font-size: 1.125rem; }
+
+.row-value-group { display: flex; align-items: center; gap: 0.5rem; }
+
+.small-icon { color: var(--secondary); font-size: 1.25rem; }
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(72, 72, 71, 0.2), transparent);
+}
+
+.ref-tag {
+    font-family: monospace;
+    font-size: 0.75rem;
+    background: #262626;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid rgba(72, 72, 71, 0.3);
+    color: var(--primary-dim);
+}
+
+/* --- ACTIONS --- */
+.action-footer {
+    width: 100%;
+    max-width: 448px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.btn-primary-gradient {
+    display: inline-flex; /* Crucial para que se comporte como un botón */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    position: relative;
+    background: var(--primary);
+    color: var(--on-surface-lowest);
+    border: none;
+    padding: 1.25rem;
+    border-radius: 99px;
+    font-family: var(--font-headline);
+    font-weight: 900;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary-gradient:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(179, 254, 0, 0.3);
+}
+
+.btn-primary-gradient .material-symbols-outlined {
+    transition: transform 0.3s;
+}
+
+.btn-primary-gradient:hover .material-symbols-outlined {
+    transform: translateX(5px);
+}
+
+.btn-text-icon {
+    background: transparent;
+    border: none;
+    color: var(--on-surface-variant);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-text-icon:hover { color: var(--primary); }
+
+.footer-decoration {
+    margin-top: 4rem;
+    opacity: 0.2;
+}
+
+.footer-decoration img {
+    width: 16rem;
+    filter: grayscale(1) invert(1) brightness(2);
+}
