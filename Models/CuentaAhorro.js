@@ -55,4 +55,14 @@ export class CuentaAhorros extends Cuenta {
         console.log("✅ Transfer completed successfully.");
         return true;
     }
+
+    deserializarParaJSON() {
+        const datosBase = super.deserializarParaJSON();
+
+        return {
+            ...datosBase,
+            tasaInteres: this.#tasaInteres,
+            tipoProducto: 'ahorros'
+        }
+    }
 }
