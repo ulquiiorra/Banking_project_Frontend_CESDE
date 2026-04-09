@@ -63,4 +63,15 @@ export class Cuenta {
         };
         this.#movimientos.push(transaccion);
     }
+
+    //metodo para deserializar y poder convertir en JSON
+    deserializarParaJSON() {
+        return {
+            numeroCuenta: this.#numeroCuenta,
+            saldo: this.#saldo,
+            fechaApertura: this.#fechaApertura,
+            estado: this.#estado,
+            movimientos: this.#movimientos
+        };
+    }
 }

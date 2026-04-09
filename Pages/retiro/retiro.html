@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hapibank | Cash Extraction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="retiro.css">
+</head>
+<body class="dark-theme">
+    <div class="accent-glow accent-top"></div>
+    <div class="accent-glow accent-bottom"></div>
+
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="header-left">
+                <button class="icon-btn" onclick="history.back()">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 class="header-title">Retiro sin Tarjeta</h1>
+            </div>
+            <div class="brand-logo">HAPIBANK</div>
+            <button class="icon-btn">
+                <span class="material-symbols-outlined">help_outline</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="mode-switcher">
+            <button class="switch-btn active" data-mode="retiro">Retiro</button>
+            <button class="switch-btn" data-mode="adelanto">Adelanto</button>
+        </div>
+
+        <section class="display-section">
+            <span class="label-caps">Monto a retirar</span>
+            <div class="amount-container">
+                <span class="currency">$</span>
+                <span id="amount-value" class="value">0.00</span>
+            </div>
+            <div class="pagination-indicator">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+
+        <section class="bento-grid">
+            <button class="bento-item" onclick="setQuickAmount(20)">$20</button>
+            <button class="bento-item" onclick="setQuickAmount(50)">$50</button>
+            <button class="bento-item" onclick="setQuickAmount(100)">$100</button>
+            <button class="bento-item highlight" onclick="setQuickAmount(200)">$200</button>
+        </section>
+
+        <section class="keypad">
+            <button class="key" onclick="appendDigit('1')">1</button>
+            <button class="key" onclick="appendDigit('2')">2</button>
+            <button class="key" onclick="appendDigit('3')">3</button>
+            <button class="key" onclick="appendDigit('4')">4</button>
+            <button class="key" onclick="appendDigit('5')">5</button>
+            <button class="key" onclick="appendDigit('6')">6</button>
+            <button class="key" onclick="appendDigit('7')">7</button>
+            <button class="key" onclick="appendDigit('8')">8</button>
+            <button class="key" onclick="appendDigit('9')">9</button>
+            <button class="key icon" onclick="clearAmount()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <button class="key" onclick="appendDigit('0')">0</button>
+            <button class="key icon accent-text" onclick="deleteDigit()">
+                <span class="material-symbols-outlined">backspace</span>
+            </button>
+        </section>
+
+        <section class="info-card">
+            <div class="info-icon">
+                <span class="material-symbols-outlined">info</span>
+            </div>
+            <div class="info-content">
+                <h4 class="info-title">Confirmación de Retiro</h4>
+                <p class="info-text">Se generará un código de 8 dígitos válido por 30 minutos.</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="sticky-footer">
+        <button id="generate-btn" class="btn-main" disabled>Generar Retiro</button>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-link">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-link active-link">
+            <span class="material-symbols-outlined">swap_horiz</span>
+            <span>Payments</span>
+        </a>
+        <a href="#" class="nav-link">
+            <span class="material-symbols-outlined">credit_card</span>
+            <span>Cards</span>
+        </a>
+        <a href="#" class="nav-link">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Settings</span>
+        </a>
+    </nav>
+
+    <script src="retiro.js" defer></script>
+</body>
+</html>

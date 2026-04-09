@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hapibank | Simulador de Cuotas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="simulador.css">
+</head>
+<body class="dark-theme">
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="header-left">
+                <button class="back-btn-circle" onclick="history.back()">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 class="header-title">Nueva Compra</h1>
+            </div>
+            <span class="material-symbols-outlined help-icon">help_outline</span>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="hero-simulator">
+            <div class="hero-content">
+                <p class="tagline">Simulador Hapi</p>
+                <h2 class="hero-title">Divide y Conquista.</h2>
+            </div>
+            <div class="hero-icon-bg">
+                <span class="material-symbols-outlined">calculate</span>
+            </div>
+            <div class="hero-glow"></div>
+        </section>
+
+        <div class="simulator-form">
+            <div class="input-group">
+                <label class="label-tiny">Comercio / Concepto</label>
+                <div class="input-wrapper">
+                    <input type="text" id="concept-input" placeholder="Ej: Amazon, Apple Store..." class="input-field">
+                    <span class="material-symbols-outlined field-icon">storefront</span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="label-tiny">Monto de la compra</label>
+                <div class="input-wrapper amount-main">
+                    <span class="amount-symbol">$</span>
+                    <input type="number" id="amount-input" placeholder="0.00" class="input-field-amount">
+                </div>
+            </div>
+
+            <div class="installments-section">
+                <div class="section-header">
+                    <label class="label-tiny">Diferir pago a</label>
+                    <div class="counter">
+                        <span id="installment-count" class="count-number">12</span>
+                        <span class="count-label">cuotas</span>
+                    </div>
+                </div>
+
+                <div class="range-container">
+                    <input type="range" id="installment-range" min="1" max="36" value="12" class="custom-slider">
+                    <div class="range-labels">
+                        <span>1 Cuota</span>
+                        <span>12</span>
+                        <span>24</span>
+                        <span>36 Cuotas</span>
+                    </div>
+                </div>
+
+                <div class="quick-chips">
+                    <button class="chip" data-val="3">3</button>
+                    <button class="chip" data-val="6">6</button>
+                    <button class="chip active" data-val="12">12</button>
+                    <button class="chip" data-val="24">24</button>
+                </div>
+            </div>
+
+            <section class="summary-card">
+                <span class="material-symbols-outlined card-watermark">receipt_long</span>
+                <div class="summary-rows">
+                    <div class="summary-row">
+                        <span class="row-label">Tasa de Interés Mensual:</span>
+                        <span class="row-value">0.0%</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="row-label">Total a Financiar:</span>
+                        <span id="total-finance" class="row-value">$0.00</span>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="monthly-result">
+                    <span class="label-tiny">Cuota Mensual Estimada</span>
+                    <div class="result-group">
+                        <span id="monthly-payment" class="result-value">$0.00</span>
+                        <span class="result-period">/ mes</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="action-container">
+            <button class="btn-confirm">
+                Confirmar Compra
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+            <p class="terms-text">Sujeto a términos y condiciones de HapiBank</p>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="nav-label">Simulador</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-symbols-outlined">credit_card</span>
+            <span class="nav-label">Tarjetas</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-symbols-outlined">receipt_long</span>
+            <span class="nav-label">Movimientos</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-symbols-outlined">person</span>
+            <span class="nav-label">Perfil</span>
+        </div>
+    </nav>
+
+    <script src="simulador.js" defer></script>
+</body>
+</html>

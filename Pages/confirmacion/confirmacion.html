@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hapibank | Operación Exitosa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="confirmacion.css">
+</head>
+<body class="dark-theme">
+    <div class="noise-overlay"></div>
+    
+    <main class="success-canvas">
+        <div class="bg-glow"></div>
+
+        <header class="success-header">
+            <div class="checkmark-orbit">
+                <div class="checkmark-circle">
+                    <span class="material-symbols-outlined icon-check">check</span>
+                </div>
+                <div class="spark"></div>
+            </div>
+            <h1 class="success-title">¡Listo!</h1>
+            <p class="success-subtitle">Operación Exitosa</p>
+        </header>
+
+        <div class="summary-card">
+            <div class="card-texture">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M0 100 C 20 0, 80 0, 100 100" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+                </svg>
+            </div>
+
+            <div class="amount-display">
+                <span class="label-tiny">Monto Enviado</span>
+                <div class="amount-group">
+                    <span class="currency-symbol">$</span>
+                    <span class="main-value">1,200.00</span>
+                </div>
+            </div>
+
+            <div class="details-list">
+                <div class="detail-row main-detail">
+                    <div class="detail-info">
+                        <span class="label-tiny">Concepto</span>
+                        <span class="value-text">Transferencia a Juan</span>
+                    </div>
+                    <div class="icon-container">
+                        <span class="material-symbols-outlined">payments</span>
+                    </div>
+                </div>
+
+                <div id="withdrawal-section" class="withdrawal-box">
+                    <span class="code-label">Código de Retiro</span>
+                    <div class="code-value">
+                        4588 <span class="code-divider">—</span> 9921
+                    </div>
+                </div>
+
+                <div class="meta-info">
+                    <div class="meta-row">
+                        <span class="meta-label">Fecha</span>
+                        <span class="meta-value">24 Oct 2023, 14:20</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Referencia</span>
+                        <span class="meta-value">#HPI-8829-001X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="action-footer">
+            <button class="btn-primary" onclick="handleShare()">
+                <span class="material-symbols-outlined">share</span>
+                Compartir Comprobante
+            </button>
+            <button class="btn-text" onclick="goHome()">Ir al Inicio</button>
+        </footer>
+
+        <div class="demo-switcher">
+            <button class="active" onclick="toggleMode('transfer')">Transfer</button>
+            <button onclick="toggleMode('withdrawal')">Withdrawal</button>
+        </div>
+    </main>
+
+    <div class="bottom-accent"></div>
+    <script src="confirmacion.js" defer></script>
+</body>
+</html>
