@@ -56,17 +56,20 @@ body {
     width: 100%;
     z-index: 50;
     background: rgba(14, 14, 14, 0.8);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border-bottom: 1px solid rgba(179, 254, 0, 0.1);
 }
 
 .nav-container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin:  auto;
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  
+    
+
 }
 
 .brand {
@@ -184,6 +187,29 @@ body {
     padding: 0.75rem 1rem 2rem;
     border-top: 1px solid var(--outline);
     border-radius: 2rem 2rem 0 0;
+}
+
+.btn-outline-glow{
+    width:10%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 1rem;
+    border-radius: 100px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    cursor: pointer;
+    transition: .10s;
+    
+
+    /* ✅ Fixes para etiqueta <a> */
+    display: block;         /* Para que ocupe el 100% de ancho */
+    text-decoration: none;  /* Quita el subrayado */
+    color:black;         
+    text-align: center;     /* Centra el texto */
+    box-sizing: border-box;
+
 }
 
 .nav-item {

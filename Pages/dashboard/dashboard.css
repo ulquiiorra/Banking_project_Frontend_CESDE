@@ -198,8 +198,36 @@ body {
     letter-spacing: 0.1em;
     cursor: pointer;
     transition: 0.3s;
+
+    /* ✅ Fixes para etiqueta <a> */
+    display: block;         /* Para que ocupe el 100% de ancho */
+    text-decoration: none;  /* Quita el subrayado */
+    color:black;         
+    text-align: center;     /* Centra el texto */
+    box-sizing: border-box; /* Evita que el padding rompa el ancho */
 }
 
+.btn-outline-glow{
+    width:30%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 1rem;
+    border-radius: 99px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    cursor: pointer;
+    transition: .10s;
+
+    /* ✅ Fixes para etiqueta <a> */
+    display: block;         /* Para que ocupe el 100% de ancho */
+    text-decoration: none;  /* Quita el subrayado */
+    color:black;         
+    text-align: center;     /* Centra el texto */
+    box-sizing: border-box;
+
+}
 /* --- DETAILS SECTION --- */
 .details-layout {
     display: grid;
