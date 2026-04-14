@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro - Digital Alchemist Bank</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="registro.css" />
+  </head>
+  <body class="registration-flow">
+    <div class="bg-noise"></div>
+
+    <header class="app-bar">
+      <div class="header-content">
+        <div class="brand">Hapibank</div>
+        <div class="header-actions">
+          <button class="icon-btn" aria-label="Ayuda">
+            <span class="material-symbols-outlined">help_outline</span>
+          </button>
+          <button class="icon-btn" id="theme-toggle" aria-label="Cambiar tema">
+            <span class="material-symbols-outlined">dark_mode</span>
+          </button>
+        </div>
+      </div>
+      <div class="header-divider"></div>
+    </header>
+
+    <main class="form-container">
+      <header class="step-header">
+        <h1 class="headline-lg">Información de Cuenta y Producto</h1>
+        <p class="step-label">Paso 1 de 2: Configura tu identidad digital</p>
+      </header>
+
+      <form id="registration-form">
+        <section class="form-grid">
+          <div class="input-group">
+            <label>Nombre Completo</label>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                placeholder="John Doe"
+                id="fullName"
+                required
+              />
+              <span class="material-symbols-outlined">person</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Correo Electrónico</label>
+            <div class="input-wrapper">
+              <input
+                type="email"
+                placeholder="example@alchemy.com"
+                id="email"
+                required
+              />
+              <span class="material-symbols-outlined">mail</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Número de Documento</label>
+            <div class="input-wrapper">
+              <input type="text" placeholder="123456789" id="dni" required />
+              <span class="material-symbols-outlined">badge</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Celular</label>
+            <div class="input-wrapper">
+              <input
+                type="tel"
+                placeholder="+57 300 000 0000"
+                id="phone"
+                required
+              />
+              <span class="material-symbols-outlined">smartphone</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Nombre de Usuario</label>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="username"
+                placeholder="@alchemist_dev"
+                required
+              />
+              <span class="material-symbols-outlined">alternate_email</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Contraseña</label>
+            <div class="input-wrapper">
+              <input
+                type="password"
+                placeholder="••••••••••••"
+                id="password"
+                required
+              />
+              <span class="material-symbols-outlined">lock</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="selection-section">
+          <h2 class="headline-md">Selecciona tu Producto</h2>
+          <div class="product-options">
+            <label class="product-card">
+              <input type="checkbox" name="product" value="corriente" />
+              <div class="card-content">
+                <div class="product-info">
+                  <div class="icon-box color-secondary">
+                    <span class="material-symbols-outlined"
+                      >account_balance</span
+                    >
+                  </div>
+                  <div>
+                    <h3 class="product-title">Cuenta Corriente</h3>
+                    <p class="product-desc">
+                      Sin límites, para un flujo constante.
+                    </p>
+                  </div>
+                </div>
+                <div class="custom-radio"></div>
+              </div>
+            </label>
+
+            <label class="product-card">
+              <input type="checkbox" name="product" value="ahorros" checked />
+              <div class="card-content">
+                <div class="product-info">
+                  <div class="icon-box color-primary">
+                    <span class="material-symbols-outlined">savings</span>
+                  </div>
+                  <div>
+                    <h3 class="product-title">Cuenta de Ahorros</h3>
+                    <p class="product-desc">
+                      Rendimientos diarios con tecnología IA.
+                    </p>
+                  </div>
+                </div>
+                <div class="custom-radio"></div>
+              </div>
+            </label>
+
+            <label class="product-card">
+              <input type="checkbox" name="product" value="credito" />
+              <div class="card-content">
+                <div class="product-info">
+                  <div class="icon-box color-tertiary">
+                    <span class="material-symbols-outlined">credit_card</span>
+                  </div>
+                  <div>
+                    <h3 class="product-title">Tarjeta de Crédito</h3>
+                    <p class="product-desc">
+                      0% interés en tus primeros 6 meses.
+                    </p>
+                  </div>
+                </div>
+                <div class="custom-radio"></div>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <div id="error-message" class="error-container" style="display: none">
+          <span class="material-symbols-outlined">error</span>
+          <p id="error-text"></p>
+        </div>
+
+        <footer class="form-footer">
+          <button type="submit" class="btn-submit">Finalizar Registro</button>
+          <p class="disclaimer">
+            Al finalizar el registro, aceptas nuestros términos de alquimia
+            digital y políticas de privacidad.
+          </p>
+        </footer>
+      </form>
+    </main>
+
+    <script src="registro.js" type="module" defer></script>
+  </body>
+</html>

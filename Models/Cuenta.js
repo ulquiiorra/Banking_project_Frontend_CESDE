@@ -5,59 +5,73 @@ export class Cuenta {
     #estado;
     #movimientos;
 
-    constructor (numeroCuenta,fechaApertura,estado,moviemientos,saldo = 0){
+    constructor(numeroCuenta, fechaApertura, estado, saldo = 0) {
+        // 1. Simulación estricta de Clase Abstracta
+        if (new.target === Cuenta) {
+            throw new Error("❌ No se puede instanciar la clase abstracta 'Cuenta' directamente.");
+        }
+
         this.#numeroCuenta = numeroCuenta;
         this.#saldo = saldo;
         this.#fechaApertura = fechaApertura;
         this.#estado = estado;
-        this.#movimientos = [];
+        this.#movimientos = []; // Corregido: Inicializamos vacío por defecto
     }
 
-    get numeroCuenta (){
-        return this.#numeroCuenta;
-    }
+    // --- GETTERS (Lectura Segura) ---
+    get numeroCuenta() { return this.#numeroCuenta; }
+    get saldo() { return this.#saldo; }
+    get fechaApertura() { return this.#fechaApertura; }
+    get estado() { return this.#estado; }
+    
+    // Corregido el typo "moviemientos" a "movimientos". 
+    // Devolvemos una copia [...] para evitar que modifiquen el array original desde afuera.
+    get movimientos() { return [...this.#movimientos]; } 
 
-    get saldo (){
-        return this.#saldo;
-    }
+    // --- MÉTODOS DE NEGOCIO EN INGLÉS (Lógica de Dinero) ---
 
-    get fechaApertura(){
-        return this.#fechaApertura
-    }
-
-    get estado(){
-        return this.#estado
-    }
-
-    get moviemientos(){
-        return this.#movimientos
-    }
-
-    set numeroCuenta(nuevoNumero){
-        this.#numeroCuenta =nuevoNumero;
-    }
-
-    set saldo (nuevoSaldo){
-        if (nuevoSaldo < 0){
-            console.log(" el saldo no puedo ser negativo");
-            return;
+    deposit(amount, transactionType = 'DEPOSIT') {
+        if (amount <= 0) {
+            throw new Error("El monto a depositar debe ser mayor a cero.");
         }
-        this.#saldo = nuevoSaldo;
+        this.#saldo += amount;
+        this.#recordTransaction(transactionType, amount);
+        console.log(`✅ Depósito exitoso. Nuevo saldo: $${this.#saldo}`);
+        return true;
     }
 
-    set fechaApertura(nuevaFecha){
-        this.#fechaApertura = nuevaFecha;
-    }
-
-    set estado(nuevoEstado){
-        this.#estado = nuevoEstado;
-    }
-
-    set moviemientos(nuevosMovimientos){
-        if (!Array.isArray(nuevosMovimientos)){
-            console.log(" los movimientos deben ser un arreglo");
-            return;
+    withdraw(amount, transactionType = 'WITHDRAWAL') {
+        if (amount <= 0) {
+            throw new Error("El monto a retirar debe ser mayor a cero.");
         }
-        this.#movimientos = nuevosMovimientos;
+        if (amount > this.#saldo) {
+            throw new Error("Fondos insuficientes para realizar este retiro.");
+        }
+        this.#saldo -= amount;
+        this.#recordTransaction(transactionType, amount);
+        console.log(`✅ Retiro exitoso. Nuevo saldo: $${this.#saldo}`);
+        return true;
+    }
+
+    // Método auxiliar privado para registrar el historial automáticamente
+    #recordTransaction(type, amount) {
+        const transaccion = {
+            id: crypto.randomUUID(), // Genera un ID único para la transacción
+            type: type,
+            amount: amount,
+            date: new Date().toISOString()
+        };
+        this.#movimientos.push(transaccion);
+    }
+
+    //metodo para deserializar y poder convertir en JSON
+    deserializarParaJSON() {
+        return {
+            numeroCuenta: this.#numeroCuenta,
+            saldo: this.#saldo,
+            fechaApertura: this.#fechaApertura,
+            estado: this.#estado,
+            movimientos: this.#movimientos
+        };
     }
 }

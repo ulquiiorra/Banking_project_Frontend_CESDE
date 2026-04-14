@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hapibank | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="detalleProducto.css">
+</head>
+<body class="dark-theme">
+    <div class="grainy-bg"></div>
+
+   
+
+    <header class="main-header">
+        <nav class="nav-container">
+            <a href="../dashboard/dashboard.html" class="btn-outline-glow">volver
+          </a>
+            
+            <div class="nav-center brand">Hapibank</div>
+            <div class="nav-right">
+                <button class="icon-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <!-- <div class="user-avatar">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx-tgyDbDQPvyyGG57u9P5m4F3Y8rNzlcrdfCVynr9_-cmZoh5IE833YMHH7IgPFMtakT2-jDDhUB_IdAfB-paWeTIMhUkv3Zp-alET5H3aJCiwxk-tUh3jtiU9xJ_iJ6GRD_EViAjQbc1q95ZUA-qin_g7AAoj7SIMoG-um1JZ3SAmmbQ-utEz-1u7Zgm1qGhILyDGoaF5AmVMY6_rjMJt69ZlhFrF0IL4qMCWrxd8CGovYM_Qs8YEmRKcgC1EGPwpNwRrhYDxuny" alt="User">
+                </div> -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="card-hero-section">
+            <div class="card-glow"></div>
+            <div class="bank-card">
+                <div class="card-header">
+                    <div class="card-info">
+                        <h1 id="account-type-label" class="card-type">Tarjeta de Crédito</h1>
+                        <p id="account-number" class="card-number">**** 5678</p>
+                    </div>
+                    <span class="material-symbols-outlined card-symbol">contactless</span>
+                </div>
+                
+                <div class="card-body">
+                    <label id="balance-label" class="balance-label">Saldo Actual</label>
+                    <div class="balance-amount">
+                        <span id="account-balance" class="amount-value">$2,400.00</span>
+                    </div>
+                </div>
+
+                <div id="credit-details" class="card-footer-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Fecha de Corte</span>
+                        <span id="cutoff-date" class="detail-value">15 de cada mes</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Pago Mínimo</span>
+                        <span id="min-payment" class="detail-value accent-color">$120.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-actions scroll-hide">
+            <button class="action-btn primary" onclick="handleAction('transfer')">
+                <span class="material-symbols-outlined">send</span>
+                Transferir
+            </button>
+            <button id="central-action-btn" class="action-btn secondary">
+                <span id="central-action-icon" class="material-symbols-outlined">payments</span>
+                <span id="central-action-text">Pagar</span>
+            </button>
+            <button id="adelanto-btn" class="action-btn secondary hidden">
+                <span class="material-symbols-outlined accent">payments</span>
+                <span>Adelanto</span>
+            </button>
+            <button class="action-btn secondary">
+                <span class="material-symbols-outlined">settings</span>
+                Configuración
+            </button>
+        </section>
+
+        <section class="transactions-section">
+            <div class="section-header">
+                <h2>Historial de Transacciones</h2>
+               <!--  <button class="text-btn">Ver Todo</button> -->
+                <a href="" class="btn-outline-glow">Ver Todo</a>
+            </div>
+            <div class="transaction-list">
+                <div class="transaction-item">
+                    <div class="item-info">
+                        <div class="icon-box">
+                            <span class="material-symbols-outlined">shopping_cart</span>
+                        </div>
+                        <div class="item-text">
+                            <p class="item-title">Amazon Tech Store</p>
+                            <p class="item-date">24 Oct</p>
+                        </div>
+                    </div>
+                    <p class="item-amount negative">-$1,240.00</p>
+                </div>
+                </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <span class="material-symbols-outlined fill">account_balance_wallet</span>
+            <span class="nav-label">Vault</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-symbols-outlined">query_stats</span>
+            <span class="nav-label">Wealth</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-symbols-outlined">credit_card</span>
+            <span class="nav-label">Cards</span>
+        </div>
+        <div class="nav-item">
+            <span class="material-symbols-outlined">person</span>
+            <span class="nav-label">Profile</span>
+        </div>
+    </nav>
+
+    <script src="detalleProducto.js" defer></script>
+</body>
+</html>

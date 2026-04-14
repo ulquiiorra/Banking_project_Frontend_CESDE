@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hapibank | Transfers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="transferencia.css">
+</head>
+<body class="dark-theme">
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="nav-left">
+                <button class="icon-btn back-btn">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 class="brand-title">Transfers</h1>
+            </div>
+            <button class="icon-btn">
+                <span class="material-symbols-outlined">help_outline</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="selection-section">
+            <div class="section-header">
+                <h2>Origin Account</h2>
+                <span class="badge">Select Source</span>
+            </div>
+            <div id="origin-accounts" class="horizontal-scroll no-scrollbar">
+                </div>
+        </section>
+
+        <section class="selection-section">
+            <div class="tab-container">
+                <button class="tab active">Mis Cuentas</button>
+                <button class="tab">A Terceros</button>
+            </div>
+            
+            <div id="destination-list" class="vertical-list">
+                </div>
+
+            <div id="error-container" class="error-box hidden">
+                <span class="material-symbols-outlined">error</span>
+                <p id="error-message">No puedes transferir a la misma cuenta de origen.</p>
+            </div>
+        </section>
+
+        <section class="amount-section">
+            <label class="label-tiny">Amount to send</label>
+            <div class="input-amount-wrapper">
+                <span class="currency-symbol">$</span>
+                <input type="number" id="transfer-amount" placeholder="0.00" class="input-huge">
+            </div>
+            <div class="input-concept-wrapper">
+                <input type="text" placeholder="Add a concept (Optional)" class="input-standard">
+            </div>
+        </section>
+
+        <div class="footer-action">
+            <button id="confirm-btn" class="btn-primary" disabled>
+                Confirmar Transferencia
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <span class="material-symbols-outlined">swap_horiz</span>
+            <span class="nav-label">Transfers</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">credit_card</span>
+            <span class="nav-label">Cards</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="nav-label">Settings</span>
+        </a>
+    </nav>
+
+    <script src="transferencia.js" defer></script>
+</body>
+</html>
