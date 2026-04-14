@@ -82,8 +82,13 @@ function handleAction(action) {
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
-    // Set default state
-    updateAccountState('TARJETA_CREDITO');
+    const params = new URLSearchParams(window.location.search);
+    const state = params.get('state');
+
+    // Usar el estado recibido o AHORROS por defecto
+    updateAccountState(state || 'AHORROS');
+    
+    
     
     // Add simple click feedback to transaction items
     document.querySelectorAll('.transaction-item').forEach(item => {
