@@ -171,19 +171,35 @@ body {
     box-shadow: 0 0 30px rgba(179, 255, 0, 0.5);
 }
 
-.btn-outline-xl {
+/* Estilo compartido para todos los botones Outline */
+.btn-outline-lg, .btn-outline-xl {
     background: transparent;
     color: var(--on-surface);
     border: 1px solid var(--outline-variant);
-    padding: 1.2rem 2.5rem;
     border-radius: var(--radius-full);
     font-weight: 700;
+}
+
+/* Solo cambias el tamaño en cada uno */
+.btn-outline-lg {
+    padding: 0.8rem 1.75rem;
+    font-size: 1rem;
+}
+
+.btn-outline-xl {
+    padding: 1.2rem 2.5rem;
     font-size: 1.1rem;
 }
 
 .btn-outline-xl:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--on-surface);
+}
+
+.btn-outline-lg:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--on-surface);
+    transform: scale(1.02);
 }
 
 /* --- SECCIONES --- */
@@ -349,4 +365,390 @@ body {
 .social-icon:hover {
     background: var(--primary-container);
     color: #000;
+}
+
+/* --- HERO BANNERS & BADGES --- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-container);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--primary-container);
+}
+
+.badge-text {
+    font-size: 0.75rem;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/* --- CTA GROUP --- */
+.cta-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+/* --- SOCIAL PROOF & AVATARS --- */
+.social-proof {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar-stack {
+    display: flex;
+}
+
+.avatar-stack img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--background); /* Crea la separación entre fotos */
+    margin-left: -12px; /* Hace que se superpongan */
+    object-fit: cover;
+}
+
+/* El primer avatar no debe tener margen negativo */
+.avatar-stack img:first-child {
+    margin-left: 0;
+}
+
+.proof-text {
+    font-size: 0.9rem;
+    color: var(--on-surface-variant);
+}
+
+.proof-text .highlight {
+    color: var(--primary-container);
+    font-weight: 700;
+}
+/* --- HERO VISUAL & GLASS CARD --- */
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.phone-mockup {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.phone-mockup img {
+    width: 100%;
+    display: block;
+    border-radius: var(--radius-card);
+}
+
+/* Estilos Glassmorphism */
+.glass-card {
+    position: absolute;
+    bottom: -1rem; /* Ajusta según lo necesites */
+    left: -2rem; /* Lo desplaza un poco hacia la izquierda */
+    background: rgba(20, 20, 20, 0.6); /* Fondo oscuro translúcido */
+    backdrop-filter: blur(16px); /* El efecto de cristal */
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    width: 260px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.icon-box {
+    background: rgba(179, 255, 0, 0.1); /* Fondo verde sutil */
+    color: var(--primary-container);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag-new {
+    background: rgba(179, 255, 0, 0.15);
+    color: var(--primary-container);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+}
+
+.card-label {
+    color: var(--on-surface-variant);
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+}
+
+.card-value {
+    font-family: var(--font-headline);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--on-surface);
+    letter-spacing: -1px;
+}
+/* --- FEATURES SECTION HEADER --- */
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.headline-lg {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-family: var(--font-headline);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.body-md {
+    font-size: 1.1rem;
+    color: var(--on-surface-variant);
+    max-width: 600px;
+}
+
+/* Ajuste del Grid para pantallas grandes */
+@media (min-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Estilos internos base de las tarjetas */
+.card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.headline-md {
+    font-size: 1.5rem;
+    font-family: var(--font-headline);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.body-sm {
+    font-size: 0.95rem;
+    color: var(--on-surface-variant);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* --- ÍCONOS GLOBALES DEL BENTO --- */
+.icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.bg-primary-alpha { background: rgba(179, 255, 0, 0.1); }
+.primary-color { color: var(--primary-container); }
+.bg-secondary-alpha { background: rgba(0, 227, 253, 0.1); }
+.secondary-color { color: var(--secondary); }
+
+/* --- TARJETA 1: TRANSFERENCIAS --- */
+.stats-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto; /* Empuja las stats al fondo de la tarjeta */
+}
+
+.stat-item {
+    background: var(--surface-low);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-lg);
+    flex: 1;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-headline);
+}
+
+.bg-icon-watermark {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    font-size: 180px;
+    color: rgba(179, 255, 0, 0.05); /* Ícono gigante translúcido */
+    z-index: 1;
+}
+/* --- TARJETA 2: SEGURIDAD --- */
+.card-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    margin-top: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* --- TARJETA 3: ACCESO 24/7 --- */
+.center-text {
+    text-align: center;
+    align-items: center;
+}
+
+.icon-wrapper-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(179, 255, 0, 0.05);
+    border: 1px solid rgba(179, 255, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--surface-high);
+    border-radius: 2px;
+    margin-top: auto;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+    width: 85%;
+    height: 100%;
+    background: var(--primary-container);
+}
+
+.status-text {
+    font-size: 0.75rem;
+    color: var(--primary-container);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+/* --- TARJETA 4: METAS (HORIZONTAL) --- */
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* En móviles, la tarjeta horizontal se vuelve vertical */
+@media (max-width: 768px) {
+    .horizontal { flex-direction: column; text-align: center; }
+}
+
+.vortex-container {
+    flex-shrink: 0;
+}
+
+/* Creamos el gráfico con bordes de colores */
+.vortex-ring {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 8px solid var(--surface-high); /* Fondo del anillo */
+    border-top-color: var(--primary-container); /* Verde */
+    border-right-color: var(--secondary); /* Azul */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-45deg); /* Rotamos para acomodar los colores */
+}
+
+/* Contrarrestamos la rotación para el texto interno */
+.vortex-data {
+    transform: rotate(45deg);
+    text-align: center;
+}
+
+.vortex-data .label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vortex-data .value {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: var(--font-headline);
+    color: var(--primary-container);
+}
+
+.btn-secondary-sm {
+    background: transparent;
+    border: 1px solid var(--outline-variant);
+    color: var(--on-surface);
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-weight: 600;
+    margin-top: 1rem;
+    font-family: var(--font-body);
+}
+
+.btn-secondary-sm:hover {
+    border-color: var(--on-surface);
+    background: rgba(255, 255, 255, 0.05);
+}
+/* --- ANIMACIÓN HOVER PARA BENTO CARDS --- */
+
+/* 1. Primero, asegúrate de que la tarjeta base tenga una transición suave */
+.card-bento {
+    /* (Tus estilos anteriores se mantienen aquí) */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease;
+}
+
+/* 2. El efecto al pasar el mouse */
+.card-bento:hover {
+    transform: translateY(-8px); /* Eleva la tarjeta 8 píxeles hacia arriba */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); /* Sombra más profunda para dar profundidad */
+    border-color: rgba(179, 255, 0, 0.2); /* Un destello sutil del color verde neón en el borde */
+}
+
+/* Efecto extra: Hacer que el ícono principal también reaccione un poco al hover de la tarjeta */
+.card-bento:hover .icon-wrapper {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
 }

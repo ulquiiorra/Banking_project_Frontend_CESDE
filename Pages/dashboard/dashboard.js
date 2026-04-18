@@ -1,98 +1,103 @@
 /**
  * Hapibank Dashboard - Senior Implementation
- * Conexión de datos y animaciones UI
+ * Data connection and UI animations
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initDashboard();
+});
+
+// Función centralizadora para inicializar el dashboard
+function initDashboard() {
     syncUserData();
     initChartAnimation();
     initInteractiveElements();
-});
+    initProfileMenu();
+}
 
 /**
- * 1. Sincronización de Datos (El Puente)
- * Recupera el nombre y el producto del localStorage
- */
-/**
- * 1. Sincronización de Datos (El Puente)
- * Recupera el nombre y el producto del localStorage
+ * 1. Data Synchronization
  */
 function syncUserData() {
-    const savedData = localStorage.getItem('alchemist_user');
+    const savedData = localStorage.getItem('usuarioLogueado');
     
-    if (savedData) {
-        try {
-            const user = JSON.parse(savedData);
-            
-            // Sincronizar nombre de bienvenida
-            const nameDisplay = document.getElementById('user-display-name');
-            
-            if (nameDisplay) {
-                // Lógica de prioridad: Nombre Completo > Nombre Usuario > Invitado
-                // Usamos 'nombreCompleto' porque así lo definimos en la clase Clientes
-                let displayName = user.nombreCompleto || user.nombreUsuario || "Alquimista";
-                
-                // Extraemos solo el primer nombre si es el nombre completo
-                nameDisplay.textContent = displayName.split(' ')[0]; 
-            }
+    // Guard Clause: Si no hay datos, salimos temprano
+    if (!savedData) return;
 
-            // Sincronizar tarjeta dinámica de producto
-            // Usamos 'productoInicial' que es la propiedad de nuestra clase
-            const userProduct = user.productoInicial || user.product; 
-
-            if (userProduct) {
-                const productBadge = document.getElementById('dynamic-badge');
-                const productName = document.getElementById('dynamic-product-name');
-                const productIcon = document.getElementById('dynamic-icon');
-                const productBalance = document.getElementById('dynamic-balance');
-
-                // Verificamos que los elementos existan antes de asignar
-                if (productBadge) productBadge.textContent = obtenerNombreVisual(userProduct);
-                if (productName) productName.textContent = `Tu ${obtenerNombreVisual(userProduct)}`;
-                
-                // Lógica de iconos y balances ficticios según producto
-                if (productIcon && productBalance) {
-                    const normalizedProduct = userProduct.toLowerCase();
-                    
-                    if (normalizedProduct.includes('credito') || normalizedProduct.includes('crédito')) {
-                        productIcon.textContent = 'credit_card';
-                        productBalance.textContent = '$2,500.00';
-                    } else if (normalizedProduct.includes('corriente')) {
-                        productIcon.textContent = 'account_balance';
-                        productBalance.textContent = '$8,920.44';
-                    } else {
-                        // Por defecto: Ahorros
-                        productIcon.textContent = 'savings';
-                        productBalance.textContent = '$12,450.00';
-                    }
-                }
-            }
-        } catch (e) {
-            console.error("Error al sincronizar datos del usuario:", e);
-        }
+    try {
+        const user = JSON.parse(savedData);
+        
+        updateWelcomeMessages(user);
+        updateDynamicProductCard(user.productoInicial || user.product);
+        
+    } catch (error) {
+        console.error("Error parsing user data:", error);
     }
 }
 
-// Función auxiliar para que los nombres se vean bonitos
-function obtenerNombreVisual(value) {
-    const nombres = {
+function updateWelcomeMessages(user) {
+    // Lógica de prioridad: Nombre Completo > Nombre Usuario > Invitado
+    const displayName = user.nombreCompleto || user.nombreUsuario || "Alquimista";
+    const firstName = displayName.split(' ')[0]; 
+
+    const nameDisplay = document.getElementById('user-display-name');
+    const dropdownName = document.getElementById('dropdown-user-name');
+
+    if (nameDisplay) nameDisplay.textContent = firstName;
+    if (dropdownName) dropdownName.textContent = firstName;
+}
+
+function updateDynamicProductCard(userProduct) {
+    if (!userProduct) return;
+
+    const productBadge = document.getElementById('dynamic-badge');
+    const productName = document.getElementById('dynamic-product-name');
+    const productIcon = document.getElementById('dynamic-icon');
+    const productBalance = document.getElementById('dynamic-balance');
+
+    const visualName = getVisualName(userProduct);
+
+    if (productBadge) productBadge.textContent = visualName;
+    if (productName) productName.textContent = `Tu ${visualName}`;
+    
+    if (productIcon && productBalance) {
+        setProductDetails(userProduct.toLowerCase(), productIcon, productBalance);
+    }
+}
+
+function setProductDetails(normalizedProduct, iconElement, balanceElement) {
+    if (normalizedProduct.includes('credito') || normalizedProduct.includes('crédito')) {
+        iconElement.textContent = 'credit_card';
+        balanceElement.textContent = '$2,500.00';
+    } else if (normalizedProduct.includes('corriente')) {
+        iconElement.textContent = 'account_balance';
+        balanceElement.textContent = '$8,920.44';
+    } else {
+        // Por defecto: Ahorros
+        iconElement.textContent = 'savings';
+        balanceElement.textContent = '$12,450.00';
+    }
+}
+
+// Helper function para nombres de presentación
+function getVisualName(value) {
+    const names = {
         'ahorros': 'Cuenta de Ahorros',
         'corriente': 'Cuenta Corriente',
         'credito': 'Tarjeta de Crédito'
     };
-    return nombres[value] || value; // Si no está en el mapa, usa el valor original
+    return names[value] || value;
 }
 
 /**
- * 2. Animación del Vortex Chart
+ * 2. Animations (Vortex Chart)
  */
 function initChartAnimation() {
     const ring = document.querySelector('.vortex-ring');
     if (!ring) return;
 
-    // Animamos el valor de 0 a 302 grados (84%)
     let currentDeg = 0;
-    const targetDeg = 302;
+    const targetDeg = 302; // 84%
     
     const animate = () => {
         if (currentDeg < targetDeg) {
@@ -106,7 +111,7 @@ function initChartAnimation() {
 }
 
 /**
- * 3. Feedback Táctil y Efectos UI
+ * 3. Tactile Feedback & UI Effects
  */
 function initInteractiveElements() {
     // Hover dinámico en tarjetas
@@ -132,4 +137,42 @@ function initInteractiveElements() {
             item.classList.add('active');
         });
     });
+}
+
+/**
+ * 4. Profile Menu & Session Management
+ */
+function initProfileMenu() {
+    const profileBtn = document.getElementById('profile-btn');
+    const dropdown = document.getElementById('profile-dropdown');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    // Alternar la visibilidad del menú
+    if (profileBtn && dropdown) {
+        profileBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            dropdown.classList.toggle('show');
+        });
+
+        // Cerrar el menú si se hace click fuera
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target) && !profileBtn.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+    }
+
+    // Lógica de Cierre de Sesión
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('usuarioLogueado');
+            
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                window.location.href = '../landingPage/landingPage.html'; 
+            }, 500);
+        });
+    }
 }

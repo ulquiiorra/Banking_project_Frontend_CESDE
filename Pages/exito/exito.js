@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const savedData = localStorage.getItem('alchemist_user');
+    const savedData = localStorage.getItem('usuarioLogueado');
 
     if (savedData) {
         try {

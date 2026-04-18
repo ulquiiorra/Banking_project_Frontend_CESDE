@@ -159,7 +159,7 @@ export class Clientes {
             contrasena: this.#contrasena, // Privado por seguridad
             intentosFallidos: this.intentosFallidos,
             bloqueado: this.bloqueado,
-            initialProducts: this.#productosInicial, // Exportamos el arreglo
+            productosInicial: this.#productosInicial, // Exportamos el arreglo con el nombre correcto
             cuentas: this.#cuentas 
         };
     }

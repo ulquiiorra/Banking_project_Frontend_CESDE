@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 4. Guardar datos
             const datosParaGuardar = nuevoCliente.deserializarParaJSON();
-            localStorage.setItem('alchemist_user', JSON.stringify(datosParaGuardar));
+            localStorage.setItem('usuarioLogueado', JSON.stringify(datosParaGuardar));
             actualizarListaGlobalUsuarios(datosParaGuardar);
 
             console.log("✨ Alquimia exitosa:", nuevoCliente.nombreUsuario);
