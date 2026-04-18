@@ -53,7 +53,14 @@ body {
     align-items: center;
 }
 
+<<<<<<< HEAD
 .nav-left { display: flex; align-items: center; gap: 3rem; }
+=======
+.nav-left { display: flex; align-items: center; gap: 1rem;
+
+}
+.brand-title { font-family: var(--font-headline); color: var(--primary); font-size: 1.25rem; }
+>>>>>>> 5cf176153e31e4af6fe2ca67f0914518f76f1f0b
 
 .brand-title {
     font-family: var(--font-headline);
@@ -317,3 +324,30 @@ body {
 .nav-label { font-size: 10px; font-weight: 600; text-transform: uppercase; }
 
 .hidden { display: none !important; }
+
+
+a {
+  text-decoration: none; /* elimina el subrayado */
+  color: inherit;        /* hereda el color del padre */
+}
+
+.icon-btn {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-low);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: var(--on-surface);
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background: var(--surface-highest);
+  color: var(--primary);
+}
+
+
+
+
