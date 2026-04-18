@@ -1,7 +1,6 @@
 import { Clientes } from '../Models/Clientes.js';
 
 export function guardarClientes(listaClientes) {
-    
     const dataParaGuardar = listaClientes.map(cliente => cliente.deserializarParaJSON());
     
     try {
@@ -19,10 +18,10 @@ export function obtenerClientes() {
     try {
         const objetosSimples = JSON.parse(data);
         return objetosSimples.map(obj => {
-            // 1. Instanciamos respetando el NUEVO orden y nombres
+            // 1. Instanciamos respetando el orden y nombres
             const cliente = new Clientes(
                 obj.id, 
-                obj.nombreCompleto,       // Coincide con deserializarParaJSON
+                obj.nombreCompleto,       
                 obj.correoElectronico,    
                 obj.numeroDocumento,      
                 obj.celular, 
@@ -31,8 +30,11 @@ export function obtenerClientes() {
                 obj.productoInicial       
             );
 
-            // 2. Restauramos el estado de seguridad
-            cliente.restaurarEstadoSeguridad(obj.intentosFallidos, obj.bloqueado);
+            // 2. FIX: Validación de seguridad. 
+            // Solo intentamos restaurar si el método realmente existe en tu modelo actual.
+            if (typeof cliente.restaurarEstadoSeguridad === 'function') {
+                cliente.restaurarEstadoSeguridad(obj.intentosFallidos, obj.bloqueado);
+            }
 
             return cliente;
         });
@@ -42,7 +44,6 @@ export function obtenerClientes() {
     }
 }
 
-// 3. Datos de prueba
 // 3. Datos de prueba
 function inicializarDatosSemilla() {
     console.log("Generando datos de prueba...");

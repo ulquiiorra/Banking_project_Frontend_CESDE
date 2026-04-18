@@ -10,3 +10,15 @@ export function guardarCuentasAhorros(listaCuentasAhorros) {
     }
 }
 
+export function ObtenerCuentaAhorros() {
+    const data = localStorage.getItem('cuenta_ahorros');
+    if (!data) return inicializarDatosSemilla();
+}
+
+function inicializarDatosSemilla() {
+    const cuentaAhorros1 = new CuentaAhorros(
+      1234,
+      
+    ) 
+}
+

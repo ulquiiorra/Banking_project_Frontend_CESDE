@@ -15,8 +15,9 @@
 
     <header class="main-header">
         <nav class="nav-container">
-            <a href="../dashboard/dashboard.html" class="btn-outline-glow">volver
-          </a>
+            <a class="icon-btn back-btn" href="../dashboard/dashboard.html">
+                     <span class="material-symbols-outlined">arrow_back</span>
+               </a> >
             
             <div class="nav-center brand">Hapibank</div>
             <div class="nav-right">
@@ -63,10 +64,14 @@
         </section>
 
         <section class="quick-actions scroll-hide">
-            <button class="action-btn primary" onclick="handleAction('transfer')">
-                <span class="material-symbols-outlined">send</span>
-                Transferir
-            </button>
+            
+                <a class="action-btn primary" href="../transferencia/transferencia.html">
+                     <span class="material-symbols-outlined">send</span>
+                      Transferir
+
+                </a>
+               
+            
             <button id="central-action-btn" class="action-btn secondary">
                 <span id="central-action-icon" class="material-symbols-outlined">payments</span>
                 <span id="central-action-text">Pagar</span>
@@ -106,16 +111,29 @@
 
     <nav class="bottom-nav">
         <div class="nav-item active">
-            <span class="material-symbols-outlined fill">account_balance_wallet</span>
-            <span class="nav-label">Vault</span>
+            <a class="action-btn primary" href="../transferencia/transferencia.html">
+                     <span class="material-symbols-outlined">send</span>
+                      Transferir
+
+                </a>
         </div>
-        <div class="nav-item">
-            <span class="material-symbols-outlined">query_stats</span>
-            <span class="nav-label">Wealth</span>
+        <div class="nav-item active">
+            
+           <a
+             
+            href="../detalleProducto/detalleProducto.html?state=CORRIENTE"
+            class="action-btn primary"
+            > <span class="material-symbols-outlined">query_stats</span>Gestionar
+            
+            </a>
         </div>
-        <div class="nav-item">
-            <span class="material-symbols-outlined">credit_card</span>
-            <span class="nav-label">Cards</span>
+        <div class="nav-item active">
+           
+            <a
+            href="../detalleProducto/detalleProducto.html?state=TARJETA_CREDITO"
+            class="action-btn primary"
+            >  <span class="material-symbols-outlined">credit_card</span>Tarjeta de Crédito</a
+          >
         </div>
         <div class="nav-item">
             <span class="material-symbols-outlined">person</span>

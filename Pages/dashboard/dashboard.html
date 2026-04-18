@@ -1,183 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hapibank Dashboard | Cyber Nile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dashboard.css">
-</head>
-<body class="dashboard-theme">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body class="dashboard-theme">
     <div class="noise-overlay"></div>
 
     <header class="app-bar">
-        <div class="header-container">
-            <div class="brand-group">
-                <div class="logo">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3OCJ-3liBb5xdpcrKyw7iBgz59mhok1KuInZK70KK6NG393ikNltmCDwFmTRkesKxeJ5WKuIDaFLP0m7ysJJeIpaqNH3r5HToox24-O9C4doGgEo9j01qGr88DuIE0ZFrADIdzQ37dBQCuKGjTqy56SXOE03SiA_ERr2SVQ2IYIsHGnNLxwBJzKRorNy0ztWizgxs6Z4lATYlOA6iDTQIaZSQlmkfd5O9a8f1suCaTCdk8H0e82OoWZNaIdXY7-NEhluoe9bqXEfS" alt="Logo">
-                    <span class="logo-text">Hapibank</span>
-                </div>
-                <nav class="desktop-nav">
-                    <a href="#" class="nav-link active">Resumen</a>
-                    <a href="#" class="nav-link">Pagos</a>
-                    <a href="#" class="nav-link">Soporte</a>
-                </nav>
-            </div>
-            <div class="actions-group">
-                <button class="icon-btn"><span class="material-symbols-outlined">notifications</span></button>
-                <button class="icon-btn"><span class="material-symbols-outlined">settings</span></button>
-                <div class="user-profile-circle">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL59BxXEhOR9ZhvN1icVQ6Y82Gbztfm1RuBL4OxPXG12z9kCmCl0eJogvrw2vknOxV7DXx_PigOGTE6Y2lhTOHGLTokQICzT0QG1v0uUvGBPdIHR-LRNu_jr-TqiOMdKMF4Qv2DunhIvdsP76PNtphX17Rmy1gL3lnooGhqiMPMOef6J5Y2u7Qi-UvHNJ5fKaI4dF80GMNN2uaItD_cFKrqiYEdxamcAzeVgkoFw33GZQ3KgaXjfN4X6u9S0Ma9NKt6JbjwlBhetER" alt="Avatar">
-                </div>
-            </div>
+      <div class="header-container">
+        <div class="brand-group">
+          <div class="logo">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3OCJ-3liBb5xdpcrKyw7iBgz59mhok1KuInZK70KK6NG393ikNltmCDwFmTRkesKxeJ5WKuIDaFLP0m7ysJJeIpaqNH3r5HToox24-O9C4doGgEo9j01qGr88DuIE0ZFrADIdzQ37dBQCuKGjTqy56SXOE03SiA_ERr2SVQ2IYIsHGnNLxwBJzKRorNy0ztWizgxs6Z4lATYlOA6iDTQIaZSQlmkfd5O9a8f1suCaTCdk8H0e82OoWZNaIdXY7-NEhluoe9bqXEfS"
+              alt="Logo"
+            />
+            <span class="logo-text">Hapibank</span>
+          </div>
+          <nav class="desktop-nav">
+            <a href="#" class="nav-link active">Resumen</a>
+            <a href="#" class="nav-link">Pagos</a>
+            <a href="#" class="nav-link">Soporte</a>
+          </nav>
         </div>
+        <div class="actions-group">
+          <button class="icon-btn">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <button class="icon-btn">
+            <span class="material-symbols-outlined">settings</span>
+          </button>
+          <div class="profile-menu-wrapper">
+            <button
+              class="user-profile-circle"
+              id="profile-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL59BxXEhOR9ZhvN1icVQ6Y82Gbztfm1RuBL4OxPXG12z9kCmCl0eJogvrw2vknOxV7DXx_PigOGTE6Y2lhTOHGLTokQICzT0QG1v0uUvGBPdIHR-LRNu_jr-TqiOMdKMF4Qv2DunhIvdsP76PNtphX17Rmy1gL3lnooGhqiMPMOef6J5Y2u7Qi-UvHNJ5fKaI4dF80GMNN2uaItD_cFKrqiYEdxamcAzeVgkoFw33GZQ3KgaXjfN4X6u9S0Ma9NKt6JbjwlBhetER"
+                alt="Avatar"
+              />
+            </button>
+
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="dropdown-header">
+                <div class="dropdown-avatar-wrapper">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL59BxXEhOR9ZhvN1icVQ6Y82Gbztfm1RuBL4OxPXG12z9kCmCl0eJogvrw2vknOxV7DXx_PigOGTE6Y2lhTOHGLTokQICzT0QG1v0uUvGBPdIHR-LRNu_jr-TqiOMdKMF4Qv2DunhIvdsP76PNtphX17Rmy1gL3lnooGhqiMPMOef6J5Y2u7Qi-UvHNJ5fKaI4dF80GMNN2uaItD_cFKrqiYEdxamcAzeVgkoFw33GZQ3KgaXjfN4X6u9S0Ma9NKt6JbjwlBhetER"
+                    alt="Avatar"
+                    class="dropdown-avatar"
+                  />
+                </div>
+                <div class="dropdown-user-info">
+                  <span class="dropdown-name" id="dropdown-user-name"
+                    >Alejandro</span
+                  >
+                  <span class="dropdown-tier">ELITE CYBER NILE</span>
+                </div>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <a href="#" class="dropdown-item">
+                <span class="material-symbols-outlined">settings</span>
+                Mi Perfil
+                <span class="material-symbols-outlined chevron"
+                  >chevron_right</span
+                >
+              </a>
+              <a href="#" class="dropdown-item">
+                <span class="material-symbols-outlined">grid_view</span>
+                Ver Productos
+                <span class="material-symbols-outlined chevron"
+                  >chevron_right</span
+                >
+              </a>
+
+              <div class="dropdown-divider"></div>
+
+              <button class="dropdown-item logout-btn" id="logout-btn">
+                <span class="material-symbols-outlined">logout</span>
+                Cerrar Sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main class="dashboard-main">
-        <section class="welcome-hero">
-            <div class="welcome-text">
-                <span class="tag">Dashboard Overview</span>
-                <h1 class="headline-xl">Hola, <span class="gradient-text" id="user-display-name">Alejandro</span></h1>
-            </div>
-            <div class="user-tier-card aura-glow">
-                <div class="tier-icon">
-                    <span class="material-symbols-outlined filled">bolt</span>
-                </div>
-                <div class="tier-info">
-                    <p class="label-xs">Nivel de Usuario</p>
-                    <p class="tier-name">Elite Cyber Nile</p>
-                </div>
-            </div>
-        </section>
+      <section class="welcome-hero">
+        <div class="welcome-text">
+          <span class="tag">Dashboard Overview</span>
+          <h1 class="headline-xl">
+            Hola,
+            <span class="gradient-text" id="user-display-name">Alejandro</span>
+          </h1>
+        </div>
+        <div class="user-tier-card aura-glow">
+          <div class="tier-icon">
+            <span class="material-symbols-outlined filled">bolt</span>
+          </div>
+          <div class="tier-info">
+            <p class="label-xs">Nivel de Usuario</p>
+            <p class="tier-name">Elite Cyber Nile</p>
+          </div>
+        </div>
+      </section>
 
-        <section class="accounts-grid">
-            <div class="vibrant-card primary">
-                <div class="vortex-orb"></div>
-                <div class="card-header">
-                    <div class="card-icon-wrapper">
-                        <span class="material-symbols-outlined">account_balance_wallet</span>
-                    </div>
-                    <span class="badge">Corriente</span>
-                </div>
-                <div class="card-content">
-                    <h2 class="label-sm">Cuenta Corriente</h2>
-                    <p class="balance-display">$12,450.00</p>
-                </div>
-                <a href="../detalleProducto/detalleProducto.html?state=CORRIENTE" class="btn-card-action">Gestionar</a>
+      <section class="accounts-grid">
+        <div class="vibrant-card primary">
+          <div class="vortex-orb"></div>
+          <div class="card-header">
+            <div class="card-icon-wrapper">
+              <span class="material-symbols-outlined"
+                >account_balance_wallet</span
+              >
             </div>
+            <span class="badge">Corriente</span>
+          </div>
+          <div class="card-content">
+            <h2 class="label-sm">Cuenta Corriente</h2>
+            <p class="balance-display">$12,450.00</p>
+          </div>
+          <a
+            href="../detalleProducto/detalleProducto.html?state=CORRIENTE"
+            class="btn-card-action"
+            >Gestionar
+          </a>
+        </div>
 
-            <div class="vibrant-card secondary" id="dynamic-product-card">
-                <div class="vortex-orb bottom-left"></div>
-                <div class="card-header">
-                    <div class="card-icon-wrapper">
-                        <span class="material-symbols-outlined" id="dynamic-icon">savings</span>
-                    </div>
-                    <span class="badge" id="dynamic-badge">Ahorros</span>
-                </div>
-                <div class="card-content">
-                    <h2 class="label-sm" id="dynamic-product-name">Cuenta de Ahorros</h2>
-                    <p class="balance-display secondary-gradient" id="dynamic-balance">$5,300.20</p>
-                </div>
-                
-                <a href="../detalleProducto/detalleProducto.html?state=AHORROS" class="btn-card-action">Gestionar</a>
+        <div class="vibrant-card secondary" id="dynamic-product-card">
+          <div class="vortex-orb bottom-left"></div>
+          <div class="card-header">
+            <div class="card-icon-wrapper">
+              <span class="material-symbols-outlined" id="dynamic-icon"
+                >savings</span
+              >
             </div>
+            <span class="badge" id="dynamic-badge">Ahorros</span>
+          </div>
+          <div class="card-content">
+            <h2 class="label-sm" id="dynamic-product-name">
+              Cuenta de Ahorros
+            </h2>
+            <p class="balance-display secondary-gradient" id="dynamic-balance">
+              $5,300.20
+            </p>
+          </div>
 
-            <div class="vibrant-card dark-card">
-                <div class="card-header">
-                    <div class="card-icon-wrapper outline">
-                        <span class="material-symbols-outlined">credit_card</span>
-                    </div>
-                    <span class="badge">Cyber Card</span>
-                </div>
-                <div class="card-content">
-                    <h2 class="label-sm">Tarjeta de Crédito</h2>
-                    <div class="credit-details">
-                        <div class="detail-row">
-                            <span>Disponible</span>
-                            <span class="val-sec">$2,400.00</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="fill" style="width: 24%"></div>
-                        </div>
-                        <div class="detail-row">
-                            <span>Límite</span>
-                            <span>$10,000.00</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="../detalleProducto/detalleProducto.html?state=TARJETA_CREDITO" class="btn-card-action">Gestionar</a>
-            </div>
-        </section>
+          <a
+            href="../detalleProducto/detalleProducto.html?state=AHORROS"
+            class="btn-card-action"
+            >Gestionar</a
+          >
+        </div>
 
-        <section class="details-layout">
-            <div class="obsidian-panel activity">
-                <div class="panel-header">
-                    <h3>Actividad Reciente</h3>
-                    <!-- <button class="btn-outline-glow">Ver Todo</button> -->
-                    <a href="" class="btn-outline-glow">Ver Todo</a>
-                </div>
-                <div class="transaction-list">
-                    <div class="tx-item">
-                        <div class="tx-info">
-                            <div class="tx-icon-box"><span class="material-symbols-outlined">shopping_cart</span></div>
-                            <div>
-                                <p class="tx-title">Amazon Tech Store</p>
-                                <p class="tx-date">Ayer, 14:20 • Tech Purchase</p>
-                            </div>
-                        </div>
-                        <span class="tx-amount negative">-$1,240.00</span>
-                    </div>
-                    <div class="tx-item">
-                        <div class="tx-info">
-                            <div class="tx-icon-box"><span class="material-symbols-outlined">payments</span></div>
-                            <div>
-                                <p class="tx-title">Depósito de Nómina</p>
-                                <p class="tx-date">22 Oct, 09:00 • Salario</p>
-                            </div>
-                        </div>
-                        <span class="tx-amount positive">+$4,500.00</span>
-                    </div>
-                </div>
+        <div class="vibrant-card dark-card">
+          <div class="card-header">
+            <div class="card-icon-wrapper outline">
+              <span class="material-symbols-outlined">credit_card</span>
             </div>
+            <span class="badge">Cyber Card</span>
+          </div>
+          <div class="card-content">
+            <h2 class="label-sm">Tarjeta de Crédito</h2>
+            <div class="credit-details">
+              <div class="detail-row">
+                <span>Disponible</span>
+                <span class="val-sec">$2,400.00</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 24%"></div>
+              </div>
+              <div class="detail-row">
+                <span>Límite</span>
+                <span>$10,000.00</span>
+              </div>
+            </div>
+          </div>
 
-            <div class="obsidian-panel savings">
-                <div class="vortex-chart">
-                    <div class="vortex-ring">
-                        <div class="vortex-inner">
-                            <span class="pct">84%</span>
-                            <span class="lbl">Objetivo</span>
-                        </div>
-                    </div>
+          <a
+            href="../detalleProducto/detalleProducto.html?state=TARJETA_CREDITO"
+            class="btn-card-action"
+            >Gestionar</a
+          >
+        </div>
+      </section>
+
+      <section class="details-layout">
+        <div class="obsidian-panel activity">
+          <div class="panel-header">
+            <h3>Actividad Reciente</h3>
+            <!-- <button class="btn-outline-glow">Ver Todo</button> -->
+            <a href="" class="btn-outline-glow">Ver Todo</a>
+          </div>
+          <div class="transaction-list">
+            <div class="tx-item">
+              <div class="tx-info">
+                <div class="tx-icon-box">
+                  <span class="material-symbols-outlined">shopping_cart</span>
                 </div>
-                <h3>Meta: Neo-Tokyo Trip</h3>
-                <p>Faltan $1,200 para completar tu aventura.</p>
-                <!-- <button class="btn-outline-glow">AHORAR AHORA </button> -->
-                <a href="" class="btn-outline-glow">AHORAR AHORA </a>
+                <div>
+                  <p class="tx-title">Amazon Tech Store</p>
+                  <p class="tx-date">Ayer, 14:20 • Tech Purchase</p>
+                </div>
+              </div>
+              <span class="tx-amount negative">-$1,240.00</span>
             </div>
-        </section>
+            <div class="tx-item">
+              <div class="tx-info">
+                <div class="tx-icon-box">
+                  <span class="material-symbols-outlined">payments</span>
+                </div>
+                <div>
+                  <p class="tx-title">Depósito de Nómina</p>
+                  <p class="tx-date">22 Oct, 09:00 • Salario</p>
+                </div>
+              </div>
+              <span class="tx-amount positive">+$4,500.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="obsidian-panel savings">
+          <div class="vortex-chart">
+            <div class="vortex-ring">
+              <div class="vortex-inner">
+                <span class="pct">84%</span>
+                <span class="lbl">Objetivo</span>
+              </div>
+            </div>
+          </div>
+          <h3>Meta: Neo-Tokyo Trip</h3>
+          <p>Faltan $1,200 para completar tu aventura.</p>
+          <!-- <button class="btn-outline-glow">AHORAR AHORA </button> -->
+          <a href="" class="btn-outline-glow">AHORAR AHORA </a>
+        </div>
+      </section>
     </main>
 
     <nav class="mobile-nav">
-        <div class="m-nav-item active">
-            <span class="material-symbols-outlined filled">account_balance_wallet</span>
-            <span>Vault</span>
-        </div>
-        <div class="m-nav-item">
-            <span class="material-symbols-outlined">query_stats</span>
-            <span>Wealth</span>
-        </div>
-        <div class="m-nav-item">
-            <span class="material-symbols-outlined">credit_card</span>
-            <span>Cards</span>
-        </div>
-        <div class="m-nav-item">
-            <span class="material-symbols-outlined">person</span>
-            <span>Profile</span>
-        </div>
+      <div class="m-nav-item active">
+        <span class="material-symbols-outlined filled"
+          >account_balance_wallet</span
+        >
+        <span>Vault</span>
+      </div>
+      <div class="m-nav-item">
+        <span class="material-symbols-outlined">query_stats</span>
+        <span>Wealth</span>
+      </div>
+      <div class="m-nav-item">
+        <span class="material-symbols-outlined">credit_card</span>
+        <span>Cards</span>
+      </div>
+      <div class="m-nav-item">
+        <span class="material-symbols-outlined">person</span>
+        <span>Profile</span>
+      </div>
     </nav>
 
     <script src="dashboard.js" defer></script>
-</body>
+  </body>
 </html>
