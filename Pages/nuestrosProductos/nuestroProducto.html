@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hapibank | Catálogo de Productos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="nuestroProducto.css">
+</head>
+<body class="grainy">
+    <header class="navbar">
+        <div class="container navbar-content">
+            <div class="brand">Hapibank</div>
+            <nav class="nav-links">
+                <a href="../landingPage/landingPage.html">Home</a>
+                <a href="#" class="active">Catalog</a>
+                <a href="#">Settings</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn-icon"><span class="material-symbols-outlined">notifications</span></button>
+                <button class="btn-icon"><span class="material-symbols-outlined">account_circle</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Nuestros <span>Productos</span></h1>
+            <p>Elige la herramienta perfecta para tu futuro financiero. Diseñadas para la era digital con seguridad absoluta.</p>
+        </section>
+
+        <div class="product-grid">
+            <article class="glass-card">
+                <div class="card-header">
+                    <div class="icon-box primary">
+                        <span class="material-symbols-outlined">savings</span>
+                    </div>
+                    <h2>Cuenta de Ahorros</h2>
+                    <p class="subtitle primary">Ahorro seguro con rendimientos.</p>
+                </div>
+                <div class="card-body">
+                    <div class="info-group">
+                        <label>Propósito</label>
+                        <p>Guardar dinero a mediano y largo plazo.</p>
+                    </div>
+                    <div class="grid-2">
+                        <div class="info-group">
+                            <label>Operaciones</label>
+                            <p>Consignación y retiro</p>
+                        </div>
+                        <div class="info-group">
+                            <label class="primary">Highlights</label>
+                            <p>1.5% Interés mensual</p>
+                        </div>
+                    </div>
+                    <div class="alert-box">
+                        <span class="material-symbols-outlined">info</span>
+                        <p>Retiro limitado al saldo disponible.</p>
+                    </div>
+                </div>
+                <a class="btn-primary enlace-estilo-boton" href="../registro/registro.html">Solicitar Ahora</a>
+            </article>
+
+            <article class="glass-card">
+                <div class="card-header">
+                    <div class="icon-box secondary">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                    </div>
+                    <h2>Cuenta Corriente</h2>
+                    <p class="subtitle secondary">Gestión diaria con flexibilidad total.</p>
+                </div>
+                <div class="card-body">
+                    <div class="info-group">
+                        <label>Propósito</label>
+                        <p>Nómina, facturas y transferencias globales.</p>
+                    </div>
+                    <div class="promo-box">
+                        <span class="material-symbols-outlined">bolt</span>
+                        <div>
+                            <p class="bold">Sobregiro Permitido</p>
+                            <p class="highlight">20% del cupo</p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <label>Detalle Financiero</label>
+                        <p class="muted">Esta cuenta no genera intereses sobre el saldo diario.</p>
+                    </div>
+                </div>
+                <a class="btn-primary enlace-estilo-boton" href="../registro/registro.html">Solicitar Ahora</a>
+            </article>
+
+            <article class="glass-card featured">
+                <div class="card-header">
+                    <div class="icon-box tertiary">
+                        <span class="material-symbols-outlined">credit_card</span>
+                    </div>
+                    <h2>Tarjeta de Crédito</h2>
+                    <p class="subtitle tertiary">Financia tus compras con libertad.</p>
+                </div>
+                <div class="card-body">
+                    <div class="rates-list">
+                        <label>Tasas Preferenciales</label>
+                        <div class="rate-item"><span>≤ 2 cuotas</span><span class="primary">0% Interés</span></div>
+                        <div class="rate-item"><span>3 - 6 cuotas</span><span>1.9% mensual</span></div>
+                        <div class="rate-item"><span>≥ 7 cuotas</span><span>2.3% mensual</span></div>
+                    </div>
+                    <div class="formula-box">
+                        <label>Fórmula de Cuota</label>
+                        <p class="tertiary">CUOTA = (SALDO / N) + INT</p>
+                    </div>
+                </div>
+                <a class="btn-primary enlace-estilo-boton" href="../registro/registro.html">Solicitar Ahora</a>
+            </article>
+        </div>
+
+        <section class="banner">
+            <div class="banner-content">
+                <h3>Seguridad Grado Militar</h3>
+                <p>Cada producto en Hapibank está protegido por encriptación cuántica y validación biométrica de tres pasos.</p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="mobile-nav">
+        <button class="nav-item"><span class="material-symbols-outlined">grid_view</span><span>Home</span></button>
+        <button class="nav-item active"><span class="material-symbols-outlined">account_balance</span><span>Catalog</span></button>
+        <button class="nav-item"><span class="material-symbols-outlined">vape_free</span><span>Vault</span></button>
+        <button class="nav-item"><span class="material-symbols-outlined">settings</span><span>Settings</span></button>
+    </nav>
+
+    <script src="nuestroProducto.js" defer></script>
+</body>
+</html>
