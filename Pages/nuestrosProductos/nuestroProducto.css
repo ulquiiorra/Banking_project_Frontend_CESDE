@@ -1,0 +1,323 @@
+/* --- TOKENS & VARIABLES --- */
+:root {
+    --primary: #e8ffbe;
+    --primary-container: #b3fe00;
+    --on-primary-fixed: #314a00;
+    --secondary: #00e3fd;
+    --tertiary: #acffa4;
+    --background: #0e0e0e;
+    --surface: #1a1a1a;
+    --surface-variant: #262626;
+    --on-surface: #ffffff;
+    --on-surface-variant: #adaaaa;
+    --outline-variant: rgba(72, 72, 71, 0.3);
+    
+    --font-headline: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-3xl: 1.5rem;
+    --radius-full: 9999px;
+    
+    --transition: all 0.3s ease;
+}
+
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    background-image: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #0e0e0e 70%);
+    color: var(--on-surface);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+}
+
+/* Clase CSS para transformar un enlace (<a>) en el botón de la imagen */
+.enlace-estilo-boton {
+  /* 1. Comportamiento y Posicionamiento */
+  display: inline-flex;  /* Permite centrar contenido fácilmente */
+  justify-content: center; /* Centra el texto horizontalmente */
+  align-items: center;     /* Centra el texto verticalmente */
+  text-decoration: none;  /* ¡Crucial! Elimina el subrayado por defecto */
+  box-sizing: border-box; /* Asegura que padding y borde no alteren el tamaño */
+
+  /* 2. Colores y Apariencia Principal (Extraídos de la imagen) */
+  background-color: #bef100; /* El color verde lima exacto */
+  color: #000000;           /* El color del texto, negro o muy oscuro */
+
+  /* 3. Forma y Dimensiones (Ajusta según tu necesidad, estos son proporcionales) */
+  width: auto;             /* Ajuste automático, o define un ancho como 200px */
+  padding: 10px 40px;      /* Padding vertical y horizontal para dar cuerpo */
+  border-radius: 50px;     /* Bordes completamente redondeados (píldora) */
+  border: none;            /* Sin borde visible, igual que en la imagen */
+
+  /* 4. Tipografía */
+  font-family: sans-serif;  /* Una fuente sans-serif limpia y geométrica */
+  font-size: 14px;          /* Ajusta el tamaño según tu diseño */
+  font-weight: bold;        /* Negrita */
+  text-transform: uppercase;/* Todo en mayúsculas, como en la imagen */
+  letter-spacing: 0.5px;    /* Un ligero espacio entre letras */
+  cursor: pointer;         /* Cambia el cursor para indicar que es clicable */
+
+  /* 5. El Efecto de Resplandor (La "sombra de neón") */
+  /* Esta sombra debe ser del mismo color que el fondo para crear el 'glow' */
+  box-shadow: 0 0 20px 5px rgba(190, 241, 0, 0.6);
+
+  /* 6. Transición suave para interactividad */
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+/* Efecto al pasar el ratón (opcional, para que siga pareciendo un botón interactivo) */
+.enlace-estilo-boton:hover {
+  /* Intensificamos un poco el resplandor */
+  box-shadow: 0 0 25px 8px rgba(190, 241, 0, 0.8);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --- LAYOUT COMPONENTS --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(9, 9, 11, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--outline-variant);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5rem;
+}
+
+.brand {
+    font-family: var(--font-headline);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-container);
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: none;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .nav-links { display: flex; }
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--on-surface-variant);
+    font-family: var(--font-headline);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a.active, .nav-links a:hover {
+    color: var(--secondary);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: var(--on-surface-variant);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-icon:hover { color: var(--secondary); }
+
+/* --- HERO --- */
+.hero {
+    margin: 8rem 0 4rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: var(--font-headline);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+}
+
+.hero h1 span {
+    color: var(--primary-container);
+    text-shadow: 0 0 15px rgba(179, 255, 0, 0.4);
+}
+
+.hero p {
+    color: var(--on-surface-variant);
+    font-size: 1.25rem;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+/* --- CARDS --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.glass-card {
+    background: rgba(38, 38, 38, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(179, 254, 0, 0.1);
+    border-radius: var(--radius-3xl);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card:hover {
+    border: 1px solid rgba(179, 254, 0, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(179, 254, 0, 0.1);
+}
+
+.icon-box {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-box.primary { background: rgba(179, 254, 0, 0.1); color: var(--primary-container); }
+.icon-box.secondary { background: rgba(0, 227, 253, 0.1); color: var(--secondary); }
+.icon-box.tertiary { background: rgba(172, 255, 164, 0.1); color: var(--tertiary); }
+
+.icon-box .material-symbols-outlined { font-size: 2.5rem; font-variation-settings: 'FILL' 1; }
+
+.glass-card h2 { font-family: var(--font-headline); font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+.subtitle { font-weight: 500; margin-bottom: 2rem; }
+.subtitle.primary { color: var(--primary-container); }
+.subtitle.secondary { color: var(--secondary); }
+.subtitle.tertiary { color: var(--tertiary); }
+
+.card-body { flex-grow: 1; }
+
+.info-group { margin-bottom: 1.5rem; }
+.info-group label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--on-surface-variant);
+    margin-bottom: 0.25rem;
+}
+
+.info-group label.primary { color: var(--primary-container); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.alert-box, .promo-box, .formula-box {
+    padding: 1rem;
+    border-radius: var(--radius-xl);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--outline-variant);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.alert-box p { font-size: 0.75rem; color: var(--on-surface-variant); font-style: italic; }
+.promo-box .highlight { font-size: 1.2rem; font-weight: 700; color: var(--secondary); font-family: var(--font-headline); }
+
+.btn-primary {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: var(--radius-full);
+    background: var(--primary-container);
+    color: var(--on-primary-fixed);
+    border: none;
+    font-family: var(--font-headline);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 25px rgba(179, 255, 0, 0.5);
+    transform: scale(1.02);
+}
+
+/* --- BANNER --- */
+.banner {
+    height: 350px;
+    border-radius: 2rem;
+    background: linear-gradient(to top, var(--background), transparent), 
+                url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 3rem;
+    margin-bottom: 4rem;
+}
+
+.banner-content h3 { font-family: var(--font-headline); font-size: 2rem; margin-bottom: 0.5rem; }
+.banner-content p { color: var(--on-surface-variant); max-width: 30rem; }
+
+/* --- MOBILE NAV --- */
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    background: rgba(9, 9, 11, 0.8);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--outline-variant);
+}
+
+@media (min-width: 768px) { .mobile-nav { display: none; } }
+
+.nav-item {
+    background: none;
+    border: none;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.6rem;
+    font-family: var(--font-headline);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav-item.active { color: var(--primary-container); filter: drop-shadow(0 0 8px var(--primary-container)); }

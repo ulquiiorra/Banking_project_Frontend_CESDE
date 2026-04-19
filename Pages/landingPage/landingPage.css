@@ -752,3 +752,8 @@ body {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
+
+#logo_hapiBank {
+    width: 150px;
+    height: 80px;
+}

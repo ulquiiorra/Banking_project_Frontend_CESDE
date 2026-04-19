@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hapibank | Perfil de Usuario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="editarPerfil.css">
+</head>
+<body class="selection-theme">
+    <header class="app-bar">
+        <div class="app-bar-content">
+            <div class="left-actions">
+                <a class="icon-btn" aria-label="Volver" href="../dashboard/dashboard.html">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <h1 class="page-title">Mi Perfil</h1>
+            </div>
+            <button class="icon-btn" aria-label="Más opciones">
+                <span class="material-symbols-outlined">more_vert</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <section class="profile-header">
+            <div class="glow-bg"></div>
+            <div class="avatar-wrapper">
+                <span class="material-symbols-outlined">account_circle</span>
+            </div>
+            <h2 class="user-name">CARGANDO...</h2>
+            <p class="user-level">Nivel Vanguardia</p>
+        </section>
+
+        <nav class="tabs">
+            <button class="tab-item active" id="btnTabPersonal">DATOS PERSONALES</button>
+            <button class="tab-item" id="btnTabSecurity">SEGURIDAD</button>
+        </nav>
+
+        <form class="profile-form" id="profileForm">
+            <div id="sectionPersonal">
+                <div class="input-group">
+                    <label>Nombre Completo</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="nombreCompleto" placeholder="Ingresa tu nombre" required>
+                        <span class="material-symbols-outlined">person</span>
+                    </div>
+                </div>
+
+                <div class="input-group disabled">
+                    <label>Número de Documento</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="numeroDocumento" disabled>
+                        <span class="material-symbols-outlined">badge</span>
+                    </div>
+                    <small class="helper-text">Este dato no puede ser modificado por seguridad.</small>
+                </div>
+
+                <div class="input-group">
+                    <label>Correo Electrónico (Usuario)</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="correoElectronico" placeholder="nombre@ejemplo.com" required>
+                        <span class="material-symbols-outlined">email</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Celular</label>
+                    <div class="input-wrapper">
+                        <input type="tel" id="celular" placeholder="+XX XXX XXX XXX" required>
+                        <span class="material-symbols-outlined">phone</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sectionSecurity" style="display: none;">
+                <div class="input-group">
+                    <label>Contraseña Actual</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="passActual" placeholder="Ingresa tu contraseña actual">
+                        <span class="material-symbols-outlined">lock</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Nueva Contraseña</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="passNueva" placeholder="Crea una nueva contraseña">
+                        <span class="material-symbols-outlined">key</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirmar Nueva Contraseña</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="passConfirmar" placeholder="Repite la nueva contraseña">
+                        <span class="material-symbols-outlined">password</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="footer-action">
+        <button class="btn-save aura-glow" form="profileForm" id="btnSave">
+            <span id="btnSaveText">GUARDAR CAMBIOS</span>
+            <span class="material-symbols-outlined" id="btnSaveIcon">bolt</span>
+        </button>
+    </footer>
+
+    <nav class="bottom-nav">
+        <button class="nav-btn">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span>Inicio</span>
+        </button>
+        <button class="nav-btn">
+            <span class="material-symbols-outlined">credit_card</span>
+            <span>Tarjetas</span>
+        </button>
+        <button class="nav-btn">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span>Pagos</span>
+        </button>
+        <button class="nav-btn active">
+            <span class="material-symbols-outlined">person</span>
+            <span>Perfil</span>
+        </button>
+    </nav>
+
+    <script type="module" src="editarPerfil.js" defer></script>
+</body>
+</html>
