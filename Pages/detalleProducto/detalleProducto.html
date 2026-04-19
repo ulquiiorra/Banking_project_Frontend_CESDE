@@ -64,18 +64,17 @@
         </section>
 
         <section class="quick-actions scroll-hide">
-            
-                <a class="action-btn primary" href="../transferencia/transferencia.html">
-                     <span class="material-symbols-outlined">send</span>
-                      Transferir
-
-                </a>
-               
-            
-            <button id="central-action-btn" class="action-btn secondary">
-                <span id="central-action-icon" class="material-symbols-outlined">payments</span>
-                <span id="central-action-text">Pagar</span>
+            <button class="action-btn primary" onclick="handleAction('transfer')">
+                <span class="material-symbols-outlined">send</span>
+                Transferir
             </button>
+          <a id="central-action-btn" class="action-btn secondary" href="../retiro/retiro.html">
+    <span id="central-action-icon" class="material-symbols-outlined">payments</span>
+    <span id="central-action-text">Pagar</span>
+</a>
+
+
+
             <button id="adelanto-btn" class="action-btn secondary hidden">
                 <span class="material-symbols-outlined accent">payments</span>
                 <span>Adelanto</span>
