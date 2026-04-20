@@ -321,3 +321,9 @@ body {
 }
 
 .nav-item.active { color: var(--primary-container); filter: drop-shadow(0 0 8px var(--primary-container)); }
+
+
+img{
+    width: 125px;
+    height: 80px;
+}

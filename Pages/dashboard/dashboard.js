@@ -19,13 +19,19 @@ function initDashboard() {
  * 1. Data Synchronization
  */
 function syncUserData() {
-    const savedData = localStorage.getItem('usuarioLogueado');
+    const savedData = {  
+        usuarioId:localStorage.getItem('usuarioLogueado'),
+        userName:localStorage.getItem("Usuario1"),
+       
+
+    
+    };
     
     // Guard Clause: Si no hay datos, salimos temprano
     if (!savedData) return;
 
     try {
-        const user = JSON.parse(savedData);
+        const user = savedData;
         
         updateWelcomeMessages(user);
         updateDynamicProductCard(user.productoInicial || user.product);
@@ -37,7 +43,7 @@ function syncUserData() {
 
 function updateWelcomeMessages(user) {
     // Lógica de prioridad: Nombre Completo > Nombre Usuario > Invitado
-    const displayName = user.nombreCompleto || user.nombreUsuario || "Alquimista";
+    const displayName =  user. userName || "Alquimista";
     const firstName = displayName.split(' ')[0]; 
 
     const nameDisplay = document.getElementById('user-display-name');
