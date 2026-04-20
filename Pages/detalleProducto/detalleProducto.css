@@ -272,6 +272,13 @@ a {
 }
 
 .icon-btn {
+width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: var( white); color: var(--primary);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+
+}
+
+.icon-btn {
   display: inline-flex; 
   align-items: center;
   justify-content: center;
@@ -281,11 +288,9 @@ a {
   height: 40px;
   color: var(--on-surface);
   transition: 0.3s;
-
 }
 
 .icon-btn:hover {
   background: var(--surface-highest);
   color: var(--primary);
-  
 }
