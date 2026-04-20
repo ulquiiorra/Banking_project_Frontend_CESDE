@@ -37,6 +37,7 @@ function renderOrigins() {
     originContainer.innerHTML = state.originAccounts.map(acc => `
         <button class="card-origin ${state.selectedOrigin === acc.id ? 'active' : ''}" 
                 onclick="selectOrigin('${acc.id}')">
+            <div class="vortex-orb"></div>
             <p class="type">${acc.type}</p>
             <p class="balance">$${acc.balance.toLocaleString()}</p>
         </button>
@@ -51,6 +52,7 @@ function renderDestinations() {
         return `
             <div class="dest-item ${isActive ? 'active' : ''} ${isSame ? 'error' : ''}" 
                  onclick="selectDestination('${dest.id}')">
+                <div class="vortex-orb"></div>
                 <div class="item-main">
                     <div class="icon-circle">
                         <span class="material-symbols-outlined">${dest.icon}</span>
