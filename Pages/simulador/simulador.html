@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="simulador.css">
 </head>
 <body class="dark-theme">
-    <header class="main-header">
-        <nav class="nav-container">
-            <div class="header-left">
-                <button class="back-btn-circle" onclick="history.back()">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                </button>
-                <h1 class="header-title">Nueva Compra</h1>
-            </div>
-            <span class="material-symbols-outlined help-icon">help_outline</span>
-        </nav>
-    </header>
+   <header class="main-header">
+  <nav class="nav-container">
+    <div class="header-left">
+      <a class="back-btn-circle" href="../detalleProducto/detalleProducto.html?state=TARJETA_CREDITO">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      
+    </div>
+    <span class="material-symbols-outlined" style="color: var(--on-surface-variant); cursor: pointer;">help_outline</span>
+  </nav>
+</header>
 
     <main class="content-wrapper">
         <section class="hero-simulator">
@@ -110,13 +110,17 @@
     </main>
 
     <nav class="bottom-nav">
-        <div class="nav-item active">
-            <span class="material-symbols-outlined">calculate</span>
-            <span class="nav-label">Simulador</span>
+        <div class="nav-item ">
+           <a href="">
+             <span class="material-symbols-outlined">calculate</span>
+             <span class="nav-label">Simulador</span>
+           </a>
         </div>
         <div class="nav-item">
-            <span class="material-symbols-outlined">credit_card</span>
+           <a href="../detalleProducto/detalleProducto.html?state=TARJETA_CREDITO">
+             <span  class="material-symbols-outlined">credit_card</span>
             <span class="nav-label">Tarjetas</span>
+           </a>
         </div>
         <div class="nav-item">
             <span class="material-symbols-outlined">receipt_long</span>

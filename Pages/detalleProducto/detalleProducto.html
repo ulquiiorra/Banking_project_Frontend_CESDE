@@ -66,25 +66,31 @@
         </section>
 
         <section class="quick-actions scroll-hide">
-            <button class="action-btn primary" onclick="handleAction('transfer')">
+            <a class="action-btn primary"  href="../transferencia/transferencia.html">
                 <span class="material-symbols-outlined">send</span>
                 Transferir
-            </button>
-          <a id="central-action-btn" class="action-btn secondary" href="../retiro/retiro.html">
-    <span id="central-action-icon" class="material-symbols-outlined">payments</span>
-    <span id="central-action-text">Pagar</span>
-</a>
-
-
-
-            <button id="adelanto-btn" class="action-btn secondary hidden">
-                <span class="material-symbols-outlined accent">payments</span>
-                <span>Adelanto</span>
             </a>
-            <button class="action-btn secondary">
-                <span class="material-symbols-outlined">settings</span>
+
+           
+          <a id="central-action-btn" class="action-btn secondary" href="../retiro/retiro.html">
+             <span id="central-action-icon" class="material-symbols-outlined">payments</span>
+               <span id="central-action-text">Pagar</span>
+           </a>
+
+            <a  class="action-btn secondary" href="../editarPerfil/editarPerfil.html" >
+                <span  class="material-symbols-outlined"  >settings</span>
                 Configuración
-            </button>
+            </a>
+
+
+
+            <a  id="adelanto-btn" class="action-btn secondary hidden" href="../simulador/simulador.html">
+                
+                <span class="material-symbols-outlined accent">payments</span>
+                <span>simulacion</span>
+            
+            </a>
+            
         </section>
 
         <section class="transactions-section">
@@ -136,10 +142,7 @@
             >  <span class="material-symbols-outlined">credit_card</span>Tarjeta de Crédito</a
           >
         </div>
-        <div class="nav-item">
-            <span class="material-symbols-outlined">person</span>
-            <span class="nav-label">Profile</span>
-        </div>
+       
     </nav>
 
     <script src="detalleProducto.js" defer></script>
