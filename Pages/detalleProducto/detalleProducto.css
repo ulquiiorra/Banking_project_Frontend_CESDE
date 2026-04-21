@@ -268,7 +268,10 @@ body {
 
 a {
   text-decoration: none; /* elimina el subrayado */
-  color: inherit;        /* hereda el color del padre */
+  color: inherit; 
+  display: flex;
+    align-items: center;
+    justify-content: center;       /* hereda el color del padre */
 }
 
 .icon-btn {
@@ -293,4 +296,12 @@ width: 40px; height: 40px; border-radius: 50%; border: none;
 .icon-btn:hover {
   background: var(--surface-highest);
   color: var(--primary);
+}
+
+
+a.back-btn-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }

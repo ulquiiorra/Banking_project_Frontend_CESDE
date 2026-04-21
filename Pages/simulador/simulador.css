@@ -22,20 +22,24 @@ body {
 .main-header {
     position: fixed; top: 0; width: 100%; z-index: 100;
     background: rgba(14, 14, 14, 0.8); backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(179, 254, 0, 0.1);
+    border-bottom:none;
+    
 }
 
 .nav-container {
     max-width: 800px; margin: 0 auto;
     display: flex; justify-content: space-between; align-items: center;
     padding: 1rem 1.5rem;
+   
+    
 }
 
 .header-left { display: flex; align-items: center; gap: 1rem; }
 .back-btn-circle {
     width: 40px; height: 40px; border-radius: 50%; border: none;
     background: var(--surface-highest); color: var(--primary);
-    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    display: flex; align-items: center;  cursor: pointer;
+  
 }
 
 .header-title { font-family: var(--font-head); font-size: 1rem; color: var(--primary); }
@@ -165,3 +169,21 @@ body {
 .nav-item { display: flex; flex-direction: column; align-items: center; color: #555; gap: 4px; }
 .nav-item.active { color: var(--primary); }
 .nav-label { font-size: 9px; font-weight: 700; text-transform: uppercase; }
+
+
+.nav-item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: inherit;       /* Hereda el color del nav-item */
+  text-decoration: none;
+  gap: 4px;
+}
+
+
+a.back-btn-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
