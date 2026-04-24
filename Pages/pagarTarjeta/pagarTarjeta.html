@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar Tarjeta de Crédito - AETHER BANK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="pagarTarjeta.css">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="../dashboard/dashboard.html" class="btn-icon" aria-label="Volver">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <h1>Pagar Tarjeta de Crédito</h1>
+            </div>
+            <div class="header-right">
+                <button class="btn-icon circle-border">
+                    <span class="material-symbols-outlined fill-icon">help</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="info-grid">
+            <div class="card card-bento aura-glow">
+                <div class="card-header">
+                    <div class="icon-box primary">
+                        <span class="material-symbols-outlined">credit_card</span>
+                    </div>
+                    <span class="label-text">VISA PLATINUM</span>
+                </div>
+                <div class="card-body">
+                    <p class="label-sm">Número de Tarjeta</p>
+                    <h3 class="card-number">**** 5678</h3>
+                </div>
+            </div>
+
+            <div class="card card-bento aura-glow highlight-border">
+                <div class="card-body-flex">
+                    <div>
+                        <p class="label-sm">Deuda Total</p>
+                        <h2 class="total-amount">$2,400.00</h2>
+                    </div>
+                    <div class="status-badge">
+                        <span class="dot-pulse"></span>
+                        <span class="status-text">Vence en 4 días</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment-options">
+            <h4 class="section-title">Selecciona el monto</h4>
+            <div class="options-list">
+                <label class="option-item" data-amount="120.00">
+                    <input type="radio" name="payment-type" value="minimum">
+                    <div class="option-content">
+                        <div class="radio-custom"></div>
+                        <div class="option-text">
+                            <span class="option-title">Pago Mínimo</span>
+                            <span class="option-subtitle">Intereses pueden aplicar</span>
+                        </div>
+                        <span class="option-value">$120.00</span>
+                    </div>
+                </label>
+
+                <label class="option-item selected" data-amount="2400.00">
+                    <input type="radio" name="payment-type" value="total" checked>
+                    <div class="option-content">
+                        <div class="radio-custom"></div>
+                        <div class="option-text">
+                            <span class="option-title">Pago Total</span>
+                            <span class="option-subtitle">Liquidación total de deuda</span>
+                        </div>
+                        <span class="option-value">$2,400.00</span>
+                    </div>
+                </label>
+
+                <div class="option-item custom-input-wrapper">
+                    <div class="option-header-row">
+                        <div class="radio-custom"></div>
+                        <span class="option-title">Otro Valor</span>
+                    </div>
+                    <div class="input-container">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" placeholder="0.00" class="custom-amount-input">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment-source">
+            <h4 class="section-title">Desde qué cuenta</h4>
+            <button class="source-selector">
+                <div class="source-info">
+                    <div class="icon-box secondary">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                    </div>
+                    <div class="source-details">
+                        <span class="source-name">Cuenta de Ahorros</span>
+                        <span class="source-balance">Disponible: $8,540.00</span>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </section>
+
+        <div class="decorative-banner">
+            <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1000&auto=format&fit=crop" alt="Aether Bank Visualization">
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <button class="btn-primary aura-glow">
+                Confirmar Pago
+                <span class="material-symbols-outlined">send</span>
+            </button>
+            <p class="security-text">Transacción segura protegida por Aether Bank Shield</p>
+        </div>
+    </footer>
+
+    <script type="Module" src="pagarTarjeta.js" defer></script>
+</body>
+</html>

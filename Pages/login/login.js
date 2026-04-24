@@ -73,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const esValido = clienteEncontrado.autenticar(clienteEncontrado.nombreUsuario, password);
 
             if (esValido) {
-                localStorage.setItem('usuarioLogueado', clienteEncontrado.id);
+                const datosUsuario = clienteEncontrado.deserializarParaJSON();
+                localStorage.setItem('usuarioLogueado', JSON.stringify(datosUsuario));
+                
                 window.location.href = '../dashboard/dashboard.html';
             } else {
                 mostrarError("⚠️ Contraseña incorrecta. Intenta de nuevo.");

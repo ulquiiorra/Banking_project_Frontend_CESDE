@@ -1,50 +1,50 @@
-  export class  Movimiento{
+// Movimiento.js
+
+export class Movimiento {
     #id;
-    #fechaHora;
-    #tipo;
-    #valor;
-    #saldoPosterior;
-    #descripcion;
+    #tipo; // Ej: 'DEPOSITO', 'RETIRO', 'TRANSFER_IN', 'TRANSFER_OUT'
+    #monto;
+    #fecha;
+    #concepto; // Breve descripción de la transacción
 
-    constructor(id, fechaHora, tipo, valor, saldoPosterior, descripcion){
-        this.#id = id;
-        this.#fechaHora = fechaHora instanceof Date ? fechaHora : new Date(fechaHora);
+    constructor(tipo, monto, concepto = "Transacción bancaria", fecha = null, id = null) {
+        // Generamos un ID único si no viene uno (caso de nuevo movimiento)
+        this.#id = id || crypto.randomUUID();
         this.#tipo = tipo;
-        this.#valor = valor;
-        this.#saldoPosterior = saldoPosterior;
-        this.#descripcion = descripcion;
+        this.#monto = monto;
+        this.#concepto = concepto;
+        // Si no nos pasan fecha (nuevo movimiento), tomamos la fecha y hora actual
+        this.#fecha = fecha || new Date().toISOString(); 
     }
 
-    getId(){
-        return this.#id;
+    // --- GETTERS (Para leer los datos de forma segura en el Dashboard) ---
+    get id() { return this.#id; }
+    get tipo() { return this.#tipo; }
+    get monto() { return this.#monto; }
+    get fecha() { return this.#fecha; }
+    get concepto() { return this.#concepto; }
+
+    // --- MÉTODOS AUXILIARES ---
+
+    // Formateador de fecha para la interfaz de usuario (UI)
+    obtenerFechaFormateada() {
+        const fechaObj = new Date(this.#fecha);
+        return fechaObj.toLocaleDateString('es-CO', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
     }
 
-    getFechaHora(){
-        return this.#fechaHora;
+    deserializarParaJSON() {
+        return {
+            id: this.#id,
+            tipo: this.#tipo,
+            monto: this.#monto,
+            fecha: this.#fecha,
+            concepto: this.#concepto
+        };
     }
-
-    getTipo(){
-        return this.#tipo;
-    }
-
-    getValor(){
-        return this.#valor;
-    }
-
-    getSaldoPosterior(){
-        return this.#saldoPosterior
-    }
-
-    getDescripcion(){
-        return this.#descripcion
-    }
-
-    toString(){
-          return `Movimiento [${this.#id}] - ${this.#tipo} de ${this.#valor} 
-    Fecha: ${this.#fechaHora.toLocaleString()} 
-    Saldo posterior: ${this.#saldoPosterior} 
-    Descripción: ${this.#descripcion}`;
-    }
-
-
 }
