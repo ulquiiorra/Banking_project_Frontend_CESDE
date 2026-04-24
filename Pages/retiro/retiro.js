@@ -28,7 +28,7 @@ function initializeWithdrawal() {
     // 1. Validar Sesión
     const session = AuthService.obtenerUsuarioActual();
     if (!session) {
-        window.location.href = '../landingPage/landingPage.html';
+        window.location.href = '../../index.html';
         return;
     }
 

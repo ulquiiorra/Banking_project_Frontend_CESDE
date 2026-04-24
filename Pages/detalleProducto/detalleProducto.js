@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. GUARDIÁN DE RUTAS
     const usuarioLogueado = AuthService.obtenerUsuarioActual();
     if (!usuarioLogueado) {
-        window.location.href = '../landingPage/landingPage.html';
+        window.location.href = '../../index.html';
         return;
     }
 

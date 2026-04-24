@@ -14,7 +14,7 @@ function initDashboard() {
 
   if (!usuarioLogueado) {
     console.warn("Acceso denegado. Redirigiendo al inicio... ");
-    window.location.href = "../landingPage/ladingPage.html";
+    window.location.href = "../../index.html";
     return;
   }
 
@@ -271,7 +271,7 @@ function initProfileMenu() {
       document.body.style.transition = "opacity 0.5s ease";
 
       setTimeout(() => {
-        window.location.href = "../landingPage/landingPage.html";
+        window.location.href = "../../index.html";
       }, 500);
     });
   }

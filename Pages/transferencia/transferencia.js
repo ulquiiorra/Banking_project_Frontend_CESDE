@@ -34,7 +34,7 @@ const conceptInput = document.querySelector('.input-concept-wrapper input');
 function init() {
     state.usuarioSession = AuthService.obtenerUsuarioActual();
     if (!state.usuarioSession) {
-        window.location.href = '../landingPage/landingPage.html';
+        window.location.href = '../../index.html';
         return;
     }
 

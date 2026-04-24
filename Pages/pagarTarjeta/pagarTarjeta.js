@@ -37,7 +37,7 @@ function init() {
     // 1. Guardián de Rutas
     const session = AuthService.obtenerUsuarioActual();
     if (!session) {
-        window.location.href = '../landingPage/landingPage.html';
+        window.location.href = '../../index.html';
         return;
     }
 
