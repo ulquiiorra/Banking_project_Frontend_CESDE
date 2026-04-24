@@ -144,23 +144,33 @@ export class Clientes {
         console.log(`💳 Nueva cuenta ${nuevaCuenta.tipo} agregada.`);
     } */
 
+        // Método para restaurar las cuentas con sus saldos y movimientos desde la DB
+    restaurarCuentas(cuentasGuardadas) {
+        this.#cuentas = cuentasGuardadas;
+    }
         
 
     // --- EL TRUCO PARA LOCALSTORAGE ---
     // Método para guardar los datos privados en un formato JSON amigo
     deserializarParaJSON() {
         return {
-            id: this.id, // Usando el getter
+            id: this.id, 
             nombreCompleto: this.nombreCompleto,
             correoElectronico: this.correoElectronico,
             numeroDocumento: this.numeroDocumento,
             celular: this.celular,
             nombreUsuario: this.nombreUsuario,
-            contrasena: this.#contrasena, // Privado por seguridad
+            contrasena: this.#contrasena, 
             intentosFallidos: this.intentosFallidos,
             bloqueado: this.bloqueado,
-            productosInicial: this.#productosInicial, // Exportamos el arreglo con el nombre correcto
-            cuentas: this.#cuentas 
+            productosInicial: this.#productosInicial, 
+            
+            // 🏗️ FIX: Revisamos si la cuenta es una Clase real (con el método) o un JSON crudo
+            cuentas: this.#cuentas.map(cuenta => 
+                typeof cuenta.deserializarParaJSON === 'function' 
+                    ? cuenta.deserializarParaJSON() 
+                    : cuenta 
+            )
         };
     }
 }

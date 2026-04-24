@@ -37,18 +37,27 @@
 
         <section class="selection-section">
             <div class="tab-container">
-                <button class="tab active">Mis Cuentas</button>
-                <button class="tab">A Terceros</button>
+                <button id="tab-propias" class="tab active" onclick="window.switchTab('propias')">Mis Cuentas</button>
+                <button id="tab-terceros" class="tab" onclick="window.switchTab('terceros')">A Terceros</button>
             </div>
             
             <div id="destination-list" class="vertical-list">
                 </div>
+
+            <div id="destination-input-container" class="hidden" style="margin-top: 1rem;">
+                <label class="label-tiny" style="margin-bottom: 0.5rem; display: block;">Número de cuenta destino</label>
+                <div class="input-amount-wrapper" style="padding-left: 1rem;">
+                    <span class="material-symbols-outlined" style="color: var(--primary-color, #b3fe00); margin-right: 10px;">account_balance</span>
+                    <input type="text" id="cuenta-destino-tercero" placeholder="Ej. 987654321" class="input-standard" style="width: 100%; border: none; background: transparent; color: white; outline: none;">
+                </div>
+            </div>
 
             <div id="error-container" class="error-box hidden">
                 <span class="material-symbols-outlined">error</span>
                 <p id="error-message">No puedes transferir a la misma cuenta de origen.</p>
             </div>
         </section>
+       
 
         <section class="amount-section">
             <label class="label-tiny">Amount to send</label>
@@ -88,6 +97,6 @@
         </a>
     </nav>
 
-    <script src="transferencia.js" defer></script>
+    <script type="module" src="transferencia.js" defer></script>
 </body>
 </html>

@@ -1,135 +1,60 @@
+import { Cuenta } from './Cuenta.js';
+
 export class TarjetaCredito extends Cuenta {
-    #cupo;
-    #deuda;
-    #numeroCuotas;
+    #tasaInteresMensual;
+    #cupoAprobado;
 
-    constructor(
-        numeroCuenta,
-        fechaApertura,
-        estado,
-        cupo,
-        deuda = 0,
-        numeroCuotas = 1,
-        movimientos = [],
-        saldo = 0
-    ) {
-        super(numeroCuenta, fechaApertura, estado, movimientos, saldo);
-        this.#cupo = cupo;
-        this.#deuda = deuda;
-        this.#numeroCuotas = numeroCuotas;
+    constructor(numeroCuenta, fechaApertura, estado, saldo = 0, cupoAprobado = 5000, tasaInteresMensual = 0.022) {
+        // En una tarjeta, el saldo suele representar la DEUDA actual (por eso inicia en 0)
+        super(numeroCuenta, fechaApertura, estado, saldo);
+        this.#cupoAprobado = cupoAprobado;
+        this.#tasaInteresMensual = tasaInteresMensual; // Ejemplo: 0.022 = 2.2%
     }
 
-    // GETTERS Y SETTERS
-    get cupo() {
-        return this.#cupo;
+    get cupoAprobado() { return this.#cupoAprobado; }
+    get cupoDisponible() { return this.#cupoAprobado - this.saldo; }
+
+    // Implementación matemática de la cuota
+    calcularCuotaMensual(capital, cuotas) {
+        if (cuotas <= 0) throw new Error("El número de cuotas debe ser mayor a cero.");
+        
+        // Si la compra es a 1 cuota, usualmente no se cobra interés
+        if (cuotas === 1) return capital;
+
+        const tasa = this.#tasaInteresMensual;
+        
+        // Fórmula: (Capital * tasa) / (1 - (1 + tasa)^-n)
+        const dividendo = capital * tasa;
+        const divisor = 1 - Math.pow(1 + tasa, -cuotas);
+        
+        return dividendo / divisor;
     }
 
-    set cupo(valor) {
-        if (valor < 0) {
-            console.log("El cupo no puede ser negativo");
-            return;
-        }
-        this.#cupo = valor;
-    }
-
-    get deuda() {
-        return this.#deuda;
-    }
-
-    set deuda(valor) {
-        if (valor < 0) {
-            console.log("La deuda no puede ser negativa");
-            return;
-        }
-        this.#deuda = valor;
-    }
-
-    get numeroCuotas() {
-        return this.#numeroCuotas;
-    }
-
-    set numeroCuotas(valor) {
-        if (valor < 1) {
-            console.log("Debe haber al menos 1 cuota");
-            return;
-        }
-        this.#numeroCuotas = valor;
-    }
-
-    // MÉTODOS
-
-    retirar(monto) {
-        if (monto > (this.#cupo - this.#deuda)) {
-            console.log("Cupo insuficiente");
-            return;
+    // Método exclusivo para compras con tarjeta
+    comprar(monto, cuotas, concepto = "Compra con Tarjeta") {
+        const montoLimpio = parseFloat(monto);
+        
+        if (montoLimpio > this.cupoDisponible) {
+            throw new Error(`❌ Cupo insuficiente. Disponible: $${this.cupoDisponible}`);
         }
 
-        this.#deuda += monto;
-        console.log(`Avance realizado. Deuda actual: ${this.#deuda}`);
+        const cuota = this.calcularCuotaMensual(montoLimpio, cuotas);
+        
+        // En tarjetas, aumentar el saldo significa aumentar la deuda
+        // Usamos un depósito inverso o llamamos directamente a los métodos del padre (con bypass)
+        super.withdraw(montoLimpio, 'COMPRA_CREDITO', true);
+        
+        console.log(`✅ Compra aprobada: $${montoLimpio} a ${cuotas} cuotas de $${cuota.toFixed(2)}/mes`);
+        return true;
     }
 
-    comprar(monto, cuotas = 1) {
-        if (monto > (this.#cupo - this.#deuda)) {
-            console.log("Cupo insuficiente");
-            return;
-        }
-
-        this.#deuda += monto;
-        this.#numeroCuotas = cuotas;
-
-        console.log(`Compra realizada a ${cuotas} cuotas. Deuda: ${this.#deuda}`);
-    }
-
-    pagar(monto) {
-        if (monto > this.#deuda) {
-            console.log("El pago excede la deuda");
-            return;
-        }
-
-        this.#deuda -= monto;
-        console.log(`Pago realizado. Deuda restante: ${this.#deuda}`);
-    }
-calcularTasa() {
-    if (this.#numeroCuotas <= 2) {
-        return 0; 
-    }
-
-    if (this.#numeroCuotas >= 3 && this.#numeroCuotas <= 6) {
-        return 0.019;
-    }
-
-    if (this.#numeroCuotas >= 7) {
-        return 0.023;
-    }
-}
-   
-
-
-
-    calcularCuotaMensual() {
-        const tasa = this.calcularTasa();
-        const cuota = (this.#deuda * (1 + tasa)) / this.#numeroCuotas;
-        return cuota;
-    }
-
-    transferir(destino, monto) {
-        if (!this.validarDestino(destino)) {
-            console.log("Cuenta destino no válida");
-            return;
-        }
-
-        if (monto > (this.#cupo - this.#deuda)) {
-            console.log("Cupo insuficiente");
-            return;
-        }
-
-        this.#deuda += monto;
-        destino.saldo += monto;
-
-        console.log("Transferencia desde tarjeta exitosa");
-    }
-
-    validarDestino(cuenta) {
-        return cuenta instanceof Cuenta;
+    deserializarParaJSON() {
+        const datosBase = super.deserializarParaJSON();
+        return {
+            ...datosBase,
+            tipoProducto: 'credito',
+            cupoAprobado: this.#cupoAprobado,
+            tasaInteresMensual: this.#tasaInteresMensual
+        };
     }
 }

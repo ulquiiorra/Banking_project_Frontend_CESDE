@@ -28,9 +28,9 @@
             <span class="logo-text">Hapibank</span>
           </div>
           <nav class="desktop-nav">
-            <a href="#" class="nav-link active">Resumen</a>
-            <a href="#" class="nav-link">Pagos</a>
-            <a href="#" class="nav-link">Soporte</a>
+            <a href="../detalleProducto/detalleProducto.html" class="nav-link active">Resumen</a>
+            <a href="../transferencia/transferencia.html" class="nav-link">Transferir</a>
+            <a href="../contacto/contacto.html" class="nav-link">Contactanos</a>
           </nav>
         </div>
         <div class="actions-group">
@@ -116,92 +116,14 @@
         </div>
       </section>
 
-      <section class="accounts-grid">
-        <div class="vibrant-card primary">
-          <div class="vortex-orb"></div>
-          <div class="card-header">
-            <div class="card-icon-wrapper">
-              <span class="material-symbols-outlined"
-                >account_balance_wallet</span
-              >
-            </div>
-            <span class="badge">Corriente</span>
-          </div>
-          <div class="card-content">
-            <h2 class="label-sm">Cuenta Corriente</h2>
-            <p class="balance-display">$12,450.00</p>
-          </div>
-          <a
-            href="../detalleProducto/detalleProducto.html?state=CORRIENTE"
-            class="btn-card-action"
-            >Gestionar
-          </a>
-        </div>
-
-        <div class="vibrant-card secondary" id="dynamic-product-card">
-          <div class="vortex-orb bottom-left"></div>
-          <div class="card-header">
-            <div class="card-icon-wrapper">
-              <span class="material-symbols-outlined" id="dynamic-icon"
-                >savings</span
-              >
-            </div>
-            <span class="badge" id="dynamic-badge">Ahorros</span>
-          </div>
-          <div class="card-content">
-            <h2 class="label-sm" id="dynamic-product-name">
-              Cuenta de Ahorros
-            </h2>
-            <p class="balance-display secondary-gradient" id="dynamic-balance">
-              $5,300.20
-            </p>
-          </div>
-
-          <a
-            href="../detalleProducto/detalleProducto.html?state=AHORROS"
-            class="btn-card-action"
-            >Gestionar</a
-          >
-        </div>
-
-        <div class="vibrant-card dark-card">
-          <div class="card-header">
-            <div class="card-icon-wrapper outline">
-              <span class="material-symbols-outlined">credit_card</span>
-            </div>
-            <span class="badge">Cyber Card</span>
-          </div>
-          <div class="card-content">
-            <h2 class="label-sm">Tarjeta de Crédito</h2>
-            <div class="credit-details">
-              <div class="detail-row">
-                <span>Disponible</span>
-                <span class="val-sec">$2,400.00</span>
-              </div>
-              <div class="progress-bar">
-                <div class="fill" style="width: 24%"></div>
-              </div>
-              <div class="detail-row">
-                <span>Límite</span>
-                <span>$10,000.00</span>
-              </div>
-            </div>
-          </div>
-
-          <a
-            href="../detalleProducto/detalleProducto.html?state=TARJETA_CREDITO"
-            class="btn-card-action"
-            >Gestionar</a
-          >
-        </div>
+      <section class="accounts-grid" id="accounts-grid-container">
+       
       </section>
 
       <section class="details-layout">
         <div class="obsidian-panel activity">
           <div class="panel-header">
             <h3>Actividad Reciente</h3>
-            <!-- <button class="btn-outline-glow">Ver Todo</button> -->
-            <a href="" class="btn-outline-glow">Ver Todo</a>
           </div>
           <div class="transaction-list">
             <div class="tx-item">
@@ -242,8 +164,6 @@
           </div>
           <h3>Meta: Neo-Tokyo Trip</h3>
           <p>Faltan $1,200 para completar tu aventura.</p>
-          <!-- <button class="btn-outline-glow">AHORAR AHORA </button> -->
-          <a href="" class="btn-outline-glow">AHORAR AHORA </a>
         </div>
       </section>
     </main>
@@ -269,6 +189,6 @@
       </div>
     </nav>
 
-    <script src="dashboard.js" defer></script>
+    <script type="module" src="dashboard.js" defer></script>
   </body>
 </html>

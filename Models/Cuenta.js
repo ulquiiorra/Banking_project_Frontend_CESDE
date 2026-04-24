@@ -1,3 +1,5 @@
+import { Movimiento } from './Movimiento.js';
+
 export class Cuenta {
     #numeroCuenta;
     #saldo;
@@ -6,16 +8,18 @@ export class Cuenta {
     #movimientos;
 
     constructor(numeroCuenta, fechaApertura, estado, saldo = 0) {
-        // 1. Simulación estricta de Clase Abstracta
         if (new.target === Cuenta) {
             throw new Error("❌ No se puede instanciar la clase abstracta 'Cuenta' directamente.");
         }
 
         this.#numeroCuenta = numeroCuenta;
-        this.#saldo = saldo;
+        
+        // 🏗️ FIX: Forzamos matemáticamente a que sea un número válido al nacer
+        this.#saldo = parseFloat(saldo) || 0; 
+        
         this.#fechaApertura = fechaApertura;
         this.#estado = estado;
-        this.#movimientos = []; // Corregido: Inicializamos vacío por defecto
+        this.#movimientos = [];
     }
 
     // --- GETTERS (Lectura Segura) ---
@@ -31,47 +35,73 @@ export class Cuenta {
     // --- MÉTODOS DE NEGOCIO EN INGLÉS (Lógica de Dinero) ---
 
     deposit(amount, transactionType = 'DEPOSIT') {
-        if (amount <= 0) {
-            throw new Error("El monto a depositar debe ser mayor a cero.");
+        // 🏗️ FIX: Limpiamos la cantidad entrante
+        const montoLimpio = parseFloat(amount);
+
+        if (isNaN(montoLimpio) || montoLimpio <= 0) {
+            throw new Error("El monto a depositar debe ser un número mayor a cero.");
         }
-        this.#saldo += amount;
-        this.#recordTransaction(transactionType, amount);
+        
+        this.#saldo += montoLimpio;
+        this.#recordTransaction(transactionType, montoLimpio); // Usamos el monto limpio
+        
         console.log(`✅ Depósito exitoso. Nuevo saldo: $${this.#saldo}`);
         return true;
     }
 
-    withdraw(amount, transactionType = 'WITHDRAWAL') {
-        if (amount <= 0) {
+    // En Cuenta.js
+    withdraw(amount, transactionType = 'WITHDRAWAL', bypassSaldoCheck = false) {
+        const montoLimpio = parseFloat(amount);
+        if (isNaN(montoLimpio) || montoLimpio <= 0) {
             throw new Error("El monto a retirar debe ser mayor a cero.");
         }
-        if (amount > this.#saldo) {
+
+        // Si NO estamos saltando el chequeo (bypass) y no hay fondos, bloqueamos
+        if (!bypassSaldoCheck && montoLimpio > this.#saldo) {
             throw new Error("Fondos insuficientes para realizar este retiro.");
         }
-        this.#saldo -= amount;
-        this.#recordTransaction(transactionType, amount);
+
+        this.#saldo -= montoLimpio; // Aquí el saldo podrá quedar en negativo
+        this.#recordTransaction(transactionType, montoLimpio);
+        
         console.log(`✅ Retiro exitoso. Nuevo saldo: $${this.#saldo}`);
         return true;
     }
 
     // Método auxiliar privado para registrar el historial automáticamente
-    #recordTransaction(type, amount) {
-        const transaccion = {
+    #recordTransaction(type, amount, concept = "Movimiento en cuenta") {
+        const nuevoMovimiento = new Movimiento(type, amount, concept);
+
+        /* const transaccion = {
             id: crypto.randomUUID(), // Genera un ID único para la transacción
             type: type,
             amount: amount,
             date: new Date().toISOString()
-        };
-        this.#movimientos.push(transaccion);
+        }; */
+        this.#movimientos.push(nuevoMovimiento);
+    }
+
+    restaurarMovimientos(historialGuardado){
+        if (historialGuardado && Array.isArray(historialGuardado)) {
+            this.#movimientos = historialGuardado.map(mov => 
+                new Movimiento(mov.tipo, mov.monto, mov.concepto, mov.fecha, mov.id)
+            );
+        }
     }
 
     //metodo para deserializar y poder convertir en JSON
     deserializarParaJSON() {
         return {
             numeroCuenta: this.#numeroCuenta,
-            saldo: this.#saldo,
             fechaApertura: this.#fechaApertura,
             estado: this.#estado,
-            movimientos: this.#movimientos
+            saldo: this.#saldo,
+            // 🏗️ FIX: Revisamos si los movimientos son clases reales para extraer sus datos privados
+            movimientos: this.#movimientos.map(mov => 
+                typeof mov.deserializarParaJSON === 'function' 
+                    ? mov.deserializarParaJSON() 
+                    : mov 
+            )
         };
     }
 }

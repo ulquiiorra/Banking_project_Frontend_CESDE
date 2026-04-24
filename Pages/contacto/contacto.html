@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contáctanos | Hapibank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="contacto.css">
+</head>
+<body class="dark-theme">
+    <header class="main-header">
+        <div class="header-content">
+            <div class="header-left">
+                <a class="icon-btn" aria-label="Volver" href="../landingPage/landingPage.html">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <span class="brand-logo">Hapibank</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-container">
+        <section class="hero-text">
+            <h1 class="glow-title">Contáctanos</h1>
+            <p class="hero-subtitle">
+                Conectando el futuro de tus finanzas. Nuestro equipo de soporte está listo para asistirte en el flujo digital.
+            </p>
+        </section>
+
+        <section class="glass-card">
+            <div class="decorative-blur"></div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="name">Nombre Completo</label>
+                        <div class="input-wrapper">
+                            <span class="material-symbols-outlined">person</span>
+                            <input type="text" id="name" placeholder="Ej: Amun Hapis" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Correo Electrónico</label>
+                        <div class="input-wrapper">
+                            <span class="material-symbols-outlined">mail</span>
+                            <input type="email" id="email" placeholder="hola@hapibank.com" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="type">Tipo de Petición</label>
+                    <div class="input-wrapper">
+                        <span class="material-symbols-outlined">category</span>
+                        <select id="type">
+                            <option value="peticion">Petición</option>
+                            <option value="queja">Queja</option>
+                            <option value="reclamo">Reclamo</option>
+                            <option value="felicitacion">Felicitación</option>
+                        </select>
+                        <span class="material-symbols-outlined select-arrow">expand_more</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="message">Mensaje</label>
+                    <div class="input-wrapper no-icon">
+                        <textarea id="message" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Enviar Mensaje</span>
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </form>
+        </section>
+
+        <section class="info-grid">
+            <div class="info-card">
+                <div class="info-icon support">
+                    <span class="material-symbols-outlined">support_agent</span>
+                </div>
+                <div class="info-body">
+                    <h3>Soporte 24/7</h3>
+                    <p>Nuestro equipo está siempre conectado.</p>
+                    <a href="mailto:support@hapibank.com">support@hapibank.com</a>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon hub">
+                    <span class="material-symbols-outlined">hub</span>
+                </div>
+                <div class="info-body">
+                    <h3>Redes Sociales</h3>
+                    <p>Únete a la comunidad del Nilo Digital.</p>
+                    <div class="social-links">
+                        <a href="#">X-Corp</a>
+                        <a href="#">Meta</a>
+                        <a href="#">Link-In</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="mobile-nav">
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span>Vault</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">swap_horiz</span>
+            <span>Flow</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <span class="material-symbols-outlined">support_agent</span>
+            <span>Support</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">face</span>
+            <span>Identity</span>
+        </a>
+    </nav>
+
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc2kBkTlbIbb8tq80VkDsDmJpdVsIsCm0vNWtTcQq-xpbqeHLhCXj5e463ltCDikjUgfC0lSLETWIZEws9MtBeznNupB83EeGQjxiBmyBhV60weGtFVS3CIWZ9BW36E6eX-iTTfwDIKXU5iyf8uSxwJIgFucyWVbvt6w44E8TtJsBQVvpMZTonTdZrQC66RKv16CQylLvuqNe3qbb-EfOTMsP-ZCTQyLyiLu9OsGQpLADeBcDstyGQNlSYnuJJdw0UqFfRGJj3drq4" alt="" class="bg-decor">
+
+    <script src="contacto.js" defer></script>
+</body>
+</html>

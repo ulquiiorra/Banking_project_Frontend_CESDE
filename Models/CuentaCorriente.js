@@ -1,83 +1,37 @@
+import { Cuenta } from './Cuenta.js';
+
 export class CuentaCorriente extends Cuenta {
-    #porcentajeSobregiro;
-    #limiteSobregiro;
-
-    constructor(
-        numeroCuenta,
-        fechaApertura,
-        estado,
-        porcentajeSobregiro,
-        limiteSobregiro,
-        movimientos = [],
-        saldo = 0
-    ) {
-        super(numeroCuenta, fechaApertura, estado, movimientos, saldo);
-        this.#porcentajeSobregiro = porcentajeSobregiro;
-        this.#limiteSobregiro = limiteSobregiro;
+    constructor(numeroCuenta, fechaApertura, estado, saldo = 0) {
+        super(numeroCuenta, fechaApertura, estado, saldo);
     }
 
-    // GETTERS Y SETTERS
-    get porcentajeSobregiro() {
-        return this.#porcentajeSobregiro;
-    }
+    // Sobreescribimos el retiro para aplicar la regla del 20%
+    withdraw(amount, transactionType = 'WITHDRAWAL') {
+        const montoLimpio = parseFloat(amount);
+        
+        // 1. Calculamos el límite (20% adicional sobre el saldo actual)
+        // Usamos Math.max para que, si el saldo ya es negativo o cero, no permita sobregiro infinito
+        const saldoBase = Math.max(0, this.saldo); 
+        const limiteSobregiro = saldoBase * 0.20;
+        const capacidadTotal = saldoBase + limiteSobregiro;
 
-    set porcentajeSobregiro(valor) {
-        if (valor < 0) {
-            console.log("El porcentaje no puede ser negativo");
-            return;
-        }
-        this.#porcentajeSobregiro = valor;
-    }
-
-    get limiteSobregiro() {
-        return this.#limiteSobregiro;
-    }
-
-    set limiteSobregiro(valor) {
-        if (valor > 0.2) {
-            console.log(" El porcentaje no puede ser mayor al 20% ");
-            return;
-        }
-        this.#limiteSobregiro = valor;
-    }
-
-    retirar(monto) {
-        const disponible = this.saldo + this.#limiteSobregiro;
-
-        if (monto > disponible) {
-            console.log("Excede el límite de sobregiro");
-            return;
+        // 2. Validamos la regla de negocio
+        if (montoLimpio > capacidadTotal) {
+            throw new Error(`❌ Excede el límite. Tu saldo es $${saldoBase} y tu sobregiro máximo es $${limiteSobregiro}.`);
         }
 
-        this.saldo = this.saldo - monto;
-        console.log(`Retiro exitoso. Nuevo saldo: ${this.saldo}`);
+        console.log(`⚠️ Usando cuenta corriente. Límite verificado.`);
+        
+        // 3. Ejecutamos el retiro en el padre, encendiendo el permiso de saldo negativo (true)
+        return super.withdraw(montoLimpio, transactionType, true);
     }
 
-    calcularLimiteSobregiro() {
-        this.#limiteSobregiro = this.saldo * this.#porcentajeSobregiro;
-        return this.#limiteSobregiro;
-    }
-
-    transferir(destino, monto) {
-        if (!this.validarDestino(destino)) {
-            console.log("Cuenta destino no válida");
-            return;
-        }
-
-        const disponible = this.saldo + this.#limiteSobregiro;
-
-        if (monto > disponible) {
-            console.log("Fondos insuficientes con sobregiro");
-            return;
-        }
-
-        this.saldo -= monto;
-        destino.saldo += monto;
-
-        console.log("Transferencia exitosa");
-    }
-
-    validarDestino(cuenta) {
-        return cuenta instanceof Cuenta;
+    deserializarParaJSON() {
+        const datosBase = super.deserializarParaJSON();
+        return {
+            ...datosBase,
+            tipoProducto: 'corriente'
+            // No agregamos tasaInteres porque no genera intereses
+        };
     }
 }

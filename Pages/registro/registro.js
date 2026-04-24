@@ -1,15 +1,18 @@
 import { Clientes } from '../../Models/Clientes.js';
+// 🏗️ NUEVO: Importamos el motor de base de datos y las fábricas de cuentas
+import { obtenerClientes, guardarClientes } from '../../DB/db_clientes.js';
+import { CuentaAhorros } from '../../Models/CuentaAhorro.js';
+import { CuentaCorriente } from '../../Models/CuentaCorriente.js';
+import { TarjetaCredito } from '../../Models/TarjetaCredito.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registration-form');
-
-    
 
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // 1. Captura de datos
+            // 1. Captura de datos básicos
             const nombre = document.getElementById('fullName').value;
             const correo = document.getElementById('email').value;
             const documento = document.getElementById('dni').value;
@@ -18,58 +21,62 @@ document.addEventListener('DOMContentLoaded', () => {
             const contrasena = document.getElementById('password').value;
             
             const checkboxesSeleccionados = document.querySelectorAll('input[name="product"]:checked');
-            const productosSeleccionados = Array.from(checkboxesSeleccionados).map(cb => cb.value);
             
-            if (productosSeleccionados.length === 0) {
+            if (checkboxesSeleccionados.length === 0) {
                 mostrarError("⚠️ Debes seleccionar al menos un producto financiero para continuar.");
                 return;
             }
 
+            // 2. Cargar Base de Datos Global
+            const todosLosClientes = obtenerClientes();
 
-            // 2. VALIDACIÓN DE UNICIDAD (El filtro de seguridad)
-            if (!esUsuarioUnico(documento, usuario)) {
-                // Usamos un alert por ahora, pero podrías usar un modal de tu diseño
-                mostrarError("🚫 Error: El número de documento o el nombre de usuario ya están registrados en nuestra red.");
-                return; // Detenemos la ejecución aquí
-            }
-
-            // 3. Si pasa la validación, creamos el objeto
-            const nuevoId = Date.now(); 
-            const nuevoCliente = new Clientes(
-                nuevoId, nombre, correo, documento, celular, usuario, contrasena, productosSeleccionados
+            // 3. VALIDACIÓN DE UNICIDAD
+            const existe = todosLosClientes.some(user => 
+                user.numeroDocumento === documento || user.nombreUsuario === usuario
             );
 
-            // 4. Guardar datos
-            const datosParaGuardar = nuevoCliente.deserializarParaJSON();
-            localStorage.setItem('usuarioLogueado', JSON.stringify(datosParaGuardar));
-            actualizarListaGlobalUsuarios(datosParaGuardar);
+            if (existe) {
+                mostrarError("🚫 Error: El número de documento o el nombre de usuario ya están registrados en nuestra red.");
+                return; 
+            }
+
+            // 4. 🏗️ FÁBRICA DE CUENTAS: Creamos los objetos reales
+            const cuentasNuevas = Array.from(checkboxesSeleccionados).map(cb => {
+                const tipo = cb.value;
+                // Generamos un número de cuenta aleatorio de 4 a 6 dígitos
+                const numeroCuenta = Math.floor(1000 + Math.random() * 90000).toString(); 
+                const fechaHoy = new Date().toISOString();
+
+                if (tipo === 'ahorros') {
+                    return new CuentaAhorros(numeroCuenta, fechaHoy, "ACTIVA", 0, 0.015);
+                } else if (tipo === 'corriente') {
+                    return new CuentaCorriente(numeroCuenta, fechaHoy, "ACTIVA", 0);
+                } else if (tipo === 'credito') {
+                    return new TarjetaCredito(numeroCuenta, fechaHoy, "ACTIVA", 0, 2000.00, 0.022); // Cupo inicial de 2000
+                }
+            });
+
+            // 5. Creamos el Cliente con sus cuentas reales
+            const nuevoId = Date.now(); 
+            const nuevoCliente = new Clientes(
+                nuevoId, nombre, correo, documento, celular, usuario, contrasena, [] // Inicia con arreglo vacío
+            );
+            
+            // Le inyectamos las cuentas creadas
+            nuevoCliente.restaurarCuentas(cuentasNuevas);
+
+            // 6. Guardar en la Base de Datos Global
+            todosLosClientes.push(nuevoCliente);
+            guardarClientes(todosLosClientes); // Usa el guardado oficial que empaqueta las clases
+
+            // Guardamos la sesión actual
+            localStorage.setItem('usuarioLogueado', JSON.stringify(nuevoCliente.deserializarParaJSON()));
 
             console.log("✨ Alquimia exitosa:", nuevoCliente.nombreUsuario);
             window.location.href = "../exito/exito.html"; 
         });
     }
 });
-
-/**
- * Revisa en el localStorage si el DNI o el Usuario ya existen
- */
-function esUsuarioUnico(dni, username) {
-    // Obtenemos la lista global de clientes
-    const usuariosRegistrados = JSON.parse(localStorage.getItem('banco_clientes')) || [];
-
-    // Buscamos si alguno coincide con los datos ingresados
-    const existe = usuariosRegistrados.some(user => 
-        user.numeroDocumento === dni || user.nombreUsuario === username
-    );
-
-    return !existe; // Si existe, devuelve false (no es único)
-}
-
-function actualizarListaGlobalUsuarios(nuevoUsuario) {
-    let usuarios = JSON.parse(localStorage.getItem('banco_clientes')) || [];
-    usuarios.push(nuevoUsuario);
-    localStorage.setItem('banco_clientes', JSON.stringify(usuarios));
-}
 
 // --- FUNCIÓN PARA MOSTRAR EL ERROR VISUAL ---
 function mostrarError(mensaje) {
@@ -78,9 +85,8 @@ function mostrarError(mensaje) {
 
     if (errorContainer && errorText) {
         errorText.textContent = mensaje;
-        errorContainer.style.display = 'flex'; // Lo hacemos visible
+        errorContainer.style.display = 'flex'; 
 
-        // Opcional: Feedback táctil visual (sacudida)
         errorContainer.classList.add('shake-animation');
         setTimeout(() => errorContainer.classList.remove('shake-animation'), 500);
     }
