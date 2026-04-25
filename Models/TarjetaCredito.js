@@ -48,6 +48,19 @@ export class TarjetaCredito extends Cuenta {
         return true;
     }
 
+    // 🏗️ NUEVO: Método exclusivo para los adelantos de efectivo desde la vista retiro.js
+    withdraw(amount, transactionType = 'ADELANTO_EFECTIVO') {
+        const montoLimpio = parseFloat(amount);
+        
+        // Validamos contra TU lógica original del cupo disponible
+        if (montoLimpio > this.cupoDisponible) {
+            throw new Error(`❌ Cupo insuficiente para el adelanto. Disponible: $${this.cupoDisponible}`);
+        }
+
+        // Llamamos al padre apagando la restricción de saldo positivo (bypass = true)
+        return super.withdraw(montoLimpio, transactionType, true);
+    }
+
     deserializarParaJSON() {
         const datosBase = super.deserializarParaJSON();
         return {
