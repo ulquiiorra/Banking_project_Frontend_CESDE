@@ -67,7 +67,28 @@ export class Cuenta {
         console.log(`✅ Retiro exitoso. Nuevo saldo: $${this.#saldo}`);
         return true;
     }
+    
+        transfer(amount, targetAccount) {
+        // Regla 1: No permitir transferencias al mismo producto
+        // Comparamos el número de esta cuenta con el de la cuenta destino
+        if (this.numeroCuenta === targetAccount.numeroCuenta) {
+            throw new Error("❌ You cannot transfer money to the same account.");
+        }
 
+        console.log(`🔄 Starting transfer of $${amount} to account ${targetAccount.numeroCuenta}...`);
+
+        // Regla 2: Retiramos de esta cuenta
+        // Al llamar a this.withdraw(), automáticamente se le aplicará el 1.5% de interés 
+        // y se registrará con el tipo personalizado 'TRANSFER_OUT'
+        this.withdraw(amount, 'TRANSFER_OUT');
+
+        // Regla 3: Consignamos en la cuenta destino
+        // targetAccount es una instancia de Cuenta (o sus hijas), así que podemos llamar a deposit
+        targetAccount.deposit(amount, 'TRANSFER_IN');
+
+        console.log("✅ Transfer completed successfully.");
+        return true;
+    }
     // Método auxiliar privado para registrar el historial automáticamente
     #recordTransaction(type, amount, concept = "Movimiento en cuenta") {
         const nuevoMovimiento = new Movimiento(type, amount, concept);

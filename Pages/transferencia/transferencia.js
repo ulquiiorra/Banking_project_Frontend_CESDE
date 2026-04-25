@@ -224,6 +224,9 @@ function procesarTransferenciaOficial() {
             const cuentaOrigen = clienteActual.cuentas.find(c => String(c.numeroCuenta) === state.selectedOrigin);
             if (!cuentaOrigen) throw new Error("Cuenta de origen inválida.");
             
+            console.log("cuenta origen: ", cuentaOrigen);
+            console.log("estado: ", state)
+            console.log("cuenta destino: ", cuentaDestino)
             cuentaOrigen.transfer(state.amount, cuentaDestino);
         }
 

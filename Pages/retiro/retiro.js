@@ -7,7 +7,7 @@ import { obtenerClientes, guardarClientes } from "../../DB/db_clientes.js";
 
 const state = {
     currentAmount: "0",
-    maxAmount: 10000,
+    maxAmount: 1000000000,
     minAmount: 10,
     mode: 'retiro',
     clientData: null,
