@@ -1,4 +1,4 @@
-import { Clientes } from '../../Models/Clientes.js';
+import { Cliente } from '../../Models/Cliente.js';
 // 🏗️ NUEVO: Importamos el motor de base de datos y las fábricas de cuentas
 import { obtenerClientes, guardarClientes } from '../../DB/db_clientes.js';
 import { CuentaAhorros } from '../../Models/CuentaAhorro.js';
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 5. Creamos el Cliente con sus cuentas reales
             const nuevoId = Date.now(); 
-            const nuevoCliente = new Clientes(
+            const nuevoCliente = new Cliente(
                 nuevoId, nombre, correo, documento, celular, usuario, contrasena, [] // Inicia con arreglo vacío
             );
             

@@ -1,4 +1,4 @@
-import { Clientes } from '../Models/Clientes.js';
+import { Cliente } from '../Models/Cliente.js';
 import { CuentaAhorros } from '../Models/CuentaAhorro.js';
 import { CuentaCorriente } from '../Models/CuentaCorriente.js';
 import { TarjetaCredito } from '../Models/TarjetaCredito.js';
@@ -25,7 +25,7 @@ export function obtenerClientes() {
         
         return objetosSimples.map(obj => {
             // 1. Instanciamos el cliente base (sin cuentas iniciales para evitar sobreescritura)
-            const cliente = new Clientes(
+            const cliente = new Cliente(
                 obj.id, 
                 obj.nombreCompleto,       
                 obj.correoElectronico,    
@@ -104,7 +104,7 @@ function inicializarDatosSemilla() {
     console.log("🌱 Generando datos de prueba (Semilla)...");
     
     // Creamos el cliente administrador
-    const cliente1 = new Clientes(
+    const cliente1 = new Cliente(
         1, 
         "Admin Alchemy", 
         "admin@cajero.com", 

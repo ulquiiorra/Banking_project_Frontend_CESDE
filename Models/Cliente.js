@@ -1,6 +1,6 @@
-// Clientes.js
+// Cliente.js
 
-export class Clientes {
+export class Cliente {
     // Definimos los campos privados que coinciden con el formulario
     #id; // Generado internamente
     #nombreCompleto;
