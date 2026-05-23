@@ -1,0 +1,62 @@
+/* Global Background Styles extracted from Login */
+
+/* The main grid background */
+.cyber-grid {
+    position: fixed;
+    inset: 0;
+    background-image: 
+        linear-gradient(to right, rgba(179, 254, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(179, 254, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* The blurred glowing spheres */
+.glow-sphere {
+    position: fixed;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: -2;
+}
+
+.top-left { 
+    top: -6rem; 
+    left: -6rem; 
+    background: rgba(179, 254, 0, 0.1); 
+}
+
+.bottom-right { 
+    bottom: -6rem; 
+    right: -6rem; 
+    background: rgba(0, 227, 253, 0.1); 
+}
+
+/* Floating geometry shapes */
+.floating-geometry {
+    position: fixed;
+    border: 1px solid rgba(179, 254, 0, 0.2);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.geo-1 { 
+    width: 6rem; 
+    height: 6rem; 
+    top: 25%; 
+    right: -3rem; 
+    transform: rotate(45deg); 
+    border-radius: 1rem; 
+}
+
+.geo-2 { 
+    width: 4rem; 
+    height: 4rem; 
+    bottom: 25%; 
+    left: -2rem; 
+    border-radius: 50%; 
+}
