@@ -13,15 +13,15 @@
     --on-surface: #ffffff;
     --on-surface-variant: #adaaaa;
     --outline-variant: #484847;
-    
+
     --font-headline: 'Space Grotesk', sans-serif;
     --font-body: 'Manrope', sans-serif;
-    
+
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-full: 9999px;
     --radius-card: 2rem;
-    
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -46,98 +46,6 @@ body {
     padding: 0 1.5rem;
 }
 
-/* --- HEADER & NAV --- */
-.top-app-bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(179, 255, 0, 0.1);
-}
-
-.nav-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.logo {
-    font-family: var(--font-headline);
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--primary-container);
-    text-transform: uppercase;
-    letter-spacing: -1px;
-}
-
-.nav-links {
-    display: none;
-}
-
-@media (min-width: 768px) {
-    .nav-links {
-        display: flex;
-        gap: 1.5rem;
-    }
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--on-surface-variant);
-    font-size: 0.875rem;
-    transition: var(--transition-smooth);
-}
-
-.nav-links a.active, .nav-links a:hover {
-    color: var(--primary-container);
-}
-
-/* Contenedor de botones en el Header con GAP */
-.nav-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-/* --- BOTONES --- */
-
-/* Base para botones tipo Link/Button */
-.btn-primary-small, .btn-primary-lg, .btn-primary-xl, .btn-outline-lg, .btn-outline-xl {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-    font-family: var(--font-body);
-}
-
-/* Botón Nav (Login/Open Account) */
-.btn-primary-small {
-    background: var(--primary-container);
-    color: var(--on-primary-container);
-    padding: 0.6rem 1.25rem;
-    border-radius: var(--radius-full);
-    font-weight: 700;
-    border: none;
-    font-size: 0.9rem;
-}
-
-.btn-primary-small:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(179, 255, 0, 0.4);
-}
 
 /* Botón Hero Principal */
 .btn-primary-lg {
@@ -172,7 +80,8 @@ body {
 }
 
 /* Estilo compartido para todos los botones Outline */
-.btn-outline-lg, .btn-outline-xl {
+.btn-outline-lg,
+.btn-outline-xl {
     background: transparent;
     color: var(--on-surface);
     border: 1px solid var(--outline-variant);
@@ -235,7 +144,9 @@ body {
 }
 
 @media (min-width: 1024px) {
-    .hero-grid { grid-template-columns: 1.2fr 0.8fr; }
+    .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
 }
 
 .headline-xl {
@@ -271,13 +182,15 @@ body {
     background: var(--surface);
     border-radius: var(--radius-card);
     padding: 2.5rem;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     overflow: hidden;
 }
 
 @media (min-width: 768px) {
-    .span-2 { grid-column: span 2; }
+    .span-2 {
+        grid-column: span 2;
+    }
 }
 
 /* CTA Section (Imagen 2) */
@@ -394,6 +307,7 @@ body {
     letter-spacing: 1px;
     font-weight: 600;
 }
+
 /* --- CTA GROUP --- */
 .cta-group {
     display: flex;
@@ -417,8 +331,10 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--background); /* Crea la separación entre fotos */
-    margin-left: -12px; /* Hace que se superpongan */
+    border: 2px solid var(--background);
+    /* Crea la separación entre fotos */
+    margin-left: -12px;
+    /* Hace que se superpongan */
     object-fit: cover;
 }
 
@@ -436,6 +352,7 @@ body {
     color: var(--primary-container);
     font-weight: 700;
 }
+
 /* --- HERO VISUAL & GLASS CARD --- */
 .hero-visual {
     position: relative;
@@ -458,10 +375,14 @@ body {
 /* Estilos Glassmorphism */
 .glass-card {
     position: absolute;
-    bottom: -1rem; /* Ajusta según lo necesites */
-    left: -2rem; /* Lo desplaza un poco hacia la izquierda */
-    background: rgba(20, 20, 20, 0.6); /* Fondo oscuro translúcido */
-    backdrop-filter: blur(16px); /* El efecto de cristal */
+    bottom: -1rem;
+    /* Ajusta según lo necesites */
+    left: -2rem;
+    /* Lo desplaza un poco hacia la izquierda */
+    background: rgba(20, 20, 20, 0.6);
+    /* Fondo oscuro translúcido */
+    backdrop-filter: blur(16px);
+    /* El efecto de cristal */
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-card);
@@ -478,7 +399,8 @@ body {
 }
 
 .icon-box {
-    background: rgba(179, 255, 0, 0.1); /* Fondo verde sutil */
+    background: rgba(179, 255, 0, 0.1);
+    /* Fondo verde sutil */
     color: var(--primary-container);
     width: 40px;
     height: 40px;
@@ -510,6 +432,7 @@ body {
     color: var(--on-surface);
     letter-spacing: -1px;
 }
+
 /* --- FEATURES SECTION HEADER --- */
 .section-header {
     margin-bottom: 3rem;
@@ -569,16 +492,28 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.bg-primary-alpha { background: rgba(179, 255, 0, 0.1); }
-.primary-color { color: var(--primary-container); }
-.bg-secondary-alpha { background: rgba(0, 227, 253, 0.1); }
-.secondary-color { color: var(--secondary); }
+.bg-primary-alpha {
+    background: rgba(179, 255, 0, 0.1);
+}
+
+.primary-color {
+    color: var(--primary-container);
+}
+
+.bg-secondary-alpha {
+    background: rgba(0, 227, 253, 0.1);
+}
+
+.secondary-color {
+    color: var(--secondary);
+}
 
 /* --- TARJETA 1: TRANSFERENCIAS --- */
 .stats-row {
     display: flex;
     gap: 1rem;
-    margin-top: auto; /* Empuja las stats al fondo de la tarjeta */
+    margin-top: auto;
+    /* Empuja las stats al fondo de la tarjeta */
 }
 
 .stat-item {
@@ -608,9 +543,11 @@ body {
     right: -20px;
     bottom: -20px;
     font-size: 180px;
-    color: rgba(179, 255, 0, 0.05); /* Ícono gigante translúcido */
+    color: rgba(179, 255, 0, 0.05);
+    /* Ícono gigante translúcido */
     z-index: 1;
 }
+
 /* --- TARJETA 2: SEGURIDAD --- */
 .card-img {
     width: 100%;
@@ -660,6 +597,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
 }
+
 /* --- TARJETA 4: METAS (HORIZONTAL) --- */
 .horizontal {
     display: flex;
@@ -670,7 +608,10 @@ body {
 
 /* En móviles, la tarjeta horizontal se vuelve vertical */
 @media (max-width: 768px) {
-    .horizontal { flex-direction: column; text-align: center; }
+    .horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 .vortex-container {
@@ -682,13 +623,17 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 8px solid var(--surface-high); /* Fondo del anillo */
-    border-top-color: var(--primary-container); /* Verde */
-    border-right-color: var(--secondary); /* Azul */
+    border: 8px solid var(--surface-high);
+    /* Fondo del anillo */
+    border-top-color: var(--primary-container);
+    /* Verde */
+    border-right-color: var(--secondary);
+    /* Azul */
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(-45deg); /* Rotamos para acomodar los colores */
+    transform: rotate(-45deg);
+    /* Rotamos para acomodar los colores */
 }
 
 /* Contrarrestamos la rotación para el texto interno */
@@ -730,21 +675,25 @@ body {
     border-color: var(--on-surface);
     background: rgba(255, 255, 255, 0.05);
 }
+
 /* --- ANIMACIÓN HOVER PARA BENTO CARDS --- */
 
 /* 1. Primero, asegúrate de que la tarjeta base tenga una transición suave */
 .card-bento {
     /* (Tus estilos anteriores se mantienen aquí) */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                box-shadow 0.4s ease, 
-                border-color 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
 }
 
 /* 2. El efecto al pasar el mouse */
 .card-bento:hover {
-    transform: translateY(-8px); /* Eleva la tarjeta 8 píxeles hacia arriba */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); /* Sombra más profunda para dar profundidad */
-    border-color: rgba(179, 255, 0, 0.2); /* Un destello sutil del color verde neón en el borde */
+    transform: translateY(-8px);
+    /* Eleva la tarjeta 8 píxeles hacia arriba */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    /* Sombra más profunda para dar profundidad */
+    border-color: rgba(179, 255, 0, 0.2);
+    /* Un destello sutil del color verde neón en el borde */
 }
 
 /* Efecto extra: Hacer que el ícono principal también reaccione un poco al hover de la tarjeta */

@@ -20,7 +20,6 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-color);
     color: var(--on-surface);
     font-family: var(--font-body);
     min-height: 100vh;
@@ -140,9 +139,5 @@ body {
 .nav-link { display: flex; flex-direction: column; align-items: center; color: var(--on-surface-variant); text-decoration: none; font-size: 10px; }
 .active-link.nav-link { color: var(--primary); }
 
-/* Visuals */
-.accent-glow { position: fixed; width: 300px; height: 300px; filter: blur(120px); pointer-events: none; opacity: 0.4; }
-.accent-top { top: -100px; left: -100px; background: var(--secondary); }
-.accent-bottom { bottom: 100px; right: -100px; background: var(--primary); }
 
 .icon-btn { background: none; border: none; color: var(--on-surface-variant); cursor: pointer; }

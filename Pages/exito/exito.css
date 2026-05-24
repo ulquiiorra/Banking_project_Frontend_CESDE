@@ -23,44 +23,12 @@
 }
 
 body {
-    background-color: var(--background);
     color: var(--on-surface);
     font-family: var(--font-body);
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-.bg-noise {
-    position: fixed;
-    inset: 0;
-    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7oZ3kJ7TQxamO8STxpx8NwOieKH7-TefVX3Men8mXrc0WahG49BSSTjad98YQmnphGxmJenUhIt-d02ot6vnMwtXglfncHLXGD4Q2iMkuzExDfLqWhh6IOa3OJsjzT_1bPNKsy1awpm58xQCZtuUh7oSWVzEmn5_C4_NSx8zqd075S-uXLSsYJb9mAdye62bUy5jU9mTEV5ndP3A66Dk9mWztCr8aHlVgswr2siL5JtdY1yEUgnXLMt8g7Vq-CPd4VYzZ8-pKstH8');
-    opacity: 0.03;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* --- ABSTRACT BG --- */
-.glow-top-left, .glow-bottom-right {
-    position: absolute;
-    width: 24rem;
-    height: 24rem;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.glow-top-left {
-    top: -6rem;
-    left: -6rem;
-    background: rgba(179, 254, 0, 0.1);
-}
-
-.glow-bottom-right {
-    bottom: -6rem;
-    right: -6rem;
-    background: rgba(0, 227, 253, 0.05);
-}
 
 /* --- LAYOUT --- */
 .content-wrapper {
@@ -319,12 +287,3 @@ body {
 
 .btn-text-icon:hover { color: var(--primary); }
 
-.footer-decoration {
-    margin-top: 4rem;
-    opacity: 0.2;
-}
-
-.footer-decoration img {
-    width: 16rem;
-    filter: grayscale(1) invert(1) brightness(2);
-}

@@ -30,20 +30,12 @@
 }
 
 body {
-    background-color: var(--background);
     color: var(--on-surface);
     font-family: var(--font-body);
     line-height: 1.5;
 }
 
-.bg-noise {
-    position: fixed;
-    inset: 0;
-    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8KTcPjGtWLxMnwFmX1IGHMVYdYQjeZm8uQDSimSHLxeYY9_aE5L1gSQlnfJm3I1CaB9IoJzW9ZpAVaPFyoXUlcNJFUO69r8pkMaMrqP6-M5OJxkilFEgYd9zvB_i-kwiSN-g8ZyCOoWpqDgYhOsMd_KnVA0SFdB5gR3KrffameE-n8ds3qrQ8ZSpuAzPCa1gh31Q_bUfupIIHhmor2b7vKHkIgfd9vOsTIAhnKjv8XT1ZWgRvIesjZY195JtyA5y8VBmj9OHpgqbZ');
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 0;
-}
+
 
 /* --- HEADER --- */
 .app-bar {

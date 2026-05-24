@@ -29,7 +29,6 @@
 }
 
 body {
-    background-color: var(--background);
     color: var(--on-surface);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
@@ -110,18 +109,7 @@ body {
     margin-bottom: 2.5rem;
 }
 
-.glow-bg {
-    position: absolute;
-    top: -2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12rem;
-    height: 12rem;
-    background: rgba(179, 254, 0, 0.1);
-    filter: blur(40px);
-    border-radius: 50%;
-    z-index: -1;
-}
+
 
 .avatar-wrapper {
     display: inline-flex;
