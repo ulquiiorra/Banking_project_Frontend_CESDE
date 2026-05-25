@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 const initScrollEffects = () => {
     const header = document.querySelector('.top-app-bar');
-    
+    if (!header) return; /* add this guard */
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.style.padding = '0.5rem 0';
@@ -26,7 +27,7 @@ const initScrollEffects = () => {
     });
 };
 
-/**
+/**0
  * Animación del Hapi-Vortex (Dashboard Savings)
  */
 const initVortexAnimation = () => {
@@ -36,7 +37,7 @@ const initVortexAnimation = () => {
     // Simulación de carga de datos
     let progress = 0;
     const target = 82;
-    
+
     const interval = setInterval(() => {
         if (progress >= target) {
             clearInterval(interval);
@@ -52,7 +53,7 @@ const initVortexAnimation = () => {
  */
 const initMobileMenu = () => {
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             navLinks.forEach(l => l.classList.remove('active'));
