@@ -11,15 +11,15 @@
     --on-surface: #ffffff;
     --on-surface-variant: #adaaaa;
     --outline-variant: rgba(72, 72, 71, 0.3);
-    
+
     --font-headline: 'Space Grotesk', sans-serif;
     --font-body: 'Manrope', sans-serif;
-    
+
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-3xl: 1.5rem;
     --radius-full: 9999px;
-    
+
     --transition: all 0.3s ease;
 }
 
@@ -37,48 +37,73 @@ body {
     font-family: var(--font-body);
     line-height: 1.5;
     min-height: 100vh;
-    padding-bottom: 5rem;
+    padding-bottom: 0;
+    /* remove the 5rem */
+    display: flex;
+    flex-direction: column;
+}
+
+main.container {
+    flex: 1;
+    /* pushes footer to bottom */
 }
 
 /* Clase CSS para transformar un enlace (<a>) en el botón de la imagen */
 .enlace-estilo-boton {
-  /* 1. Comportamiento y Posicionamiento */
-  display: inline-flex;  /* Permite centrar contenido fácilmente */
-  justify-content: center; /* Centra el texto horizontalmente */
-  align-items: center;     /* Centra el texto verticalmente */
-  text-decoration: none;  /* ¡Crucial! Elimina el subrayado por defecto */
-  box-sizing: border-box; /* Asegura que padding y borde no alteren el tamaño */
+    /* 1. Comportamiento y Posicionamiento */
+    display: inline-flex;
+    /* Permite centrar contenido fácilmente */
+    justify-content: center;
+    /* Centra el texto horizontalmente */
+    align-items: center;
+    /* Centra el texto verticalmente */
+    text-decoration: none;
+    /* ¡Crucial! Elimina el subrayado por defecto */
+    box-sizing: border-box;
+    /* Asegura que padding y borde no alteren el tamaño */
 
-  /* 2. Colores y Apariencia Principal (Extraídos de la imagen) */
-  background-color: #bef100; /* El color verde lima exacto */
-  color: #000000;           /* El color del texto, negro o muy oscuro */
+    /* 2. Colores y Apariencia Principal (Extraídos de la imagen) */
+    background-color: #bef100;
+    /* El color verde lima exacto */
+    color: #000000;
+    /* El color del texto, negro o muy oscuro */
 
-  /* 3. Forma y Dimensiones (Ajusta según tu necesidad, estos son proporcionales) */
-  width: auto;             /* Ajuste automático, o define un ancho como 200px */
-  padding: 10px 40px;      /* Padding vertical y horizontal para dar cuerpo */
-  border-radius: 50px;     /* Bordes completamente redondeados (píldora) */
-  border: none;            /* Sin borde visible, igual que en la imagen */
+    /* 3. Forma y Dimensiones (Ajusta según tu necesidad, estos son proporcionales) */
+    width: auto;
+    /* Ajuste automático, o define un ancho como 200px */
+    padding: 10px 40px;
+    /* Padding vertical y horizontal para dar cuerpo */
+    border-radius: 50px;
+    /* Bordes completamente redondeados (píldora) */
+    border: none;
+    /* Sin borde visible, igual que en la imagen */
 
-  /* 4. Tipografía */
-  font-family: sans-serif;  /* Una fuente sans-serif limpia y geométrica */
-  font-size: 14px;          /* Ajusta el tamaño según tu diseño */
-  font-weight: bold;        /* Negrita */
-  text-transform: uppercase;/* Todo en mayúsculas, como en la imagen */
-  letter-spacing: 0.5px;    /* Un ligero espacio entre letras */
-  cursor: pointer;         /* Cambia el cursor para indicar que es clicable */
+    /* 4. Tipografía */
+    font-family: sans-serif;
+    /* Una fuente sans-serif limpia y geométrica */
+    font-size: 14px;
+    /* Ajusta el tamaño según tu diseño */
+    font-weight: bold;
+    /* Negrita */
+    text-transform: uppercase;
+    /* Todo en mayúsculas, como en la imagen */
+    letter-spacing: 0.5px;
+    /* Un ligero espacio entre letras */
+    cursor: pointer;
+    /* Cambia el cursor para indicar que es clicable */
 
-  /* 5. El Efecto de Resplandor (La "sombra de neón") */
-  /* Esta sombra debe ser del mismo color que el fondo para crear el 'glow' */
-  box-shadow: 0 0 20px 5px rgba(190, 241, 0, 0.6);
+    /* 5. El Efecto de Resplandor (La "sombra de neón") */
+    /* Esta sombra debe ser del mismo color que el fondo para crear el 'glow' */
+    box-shadow: 0 0 20px 5px rgba(190, 241, 0, 0.6);
 
-  /* 6. Transición suave para interactividad */
-  transition: box-shadow 0.2s ease-in-out;
+    /* 6. Transición suave para interactividad */
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 /* Efecto al pasar el ratón (opcional, para que siga pareciendo un botón interactivo) */
 .enlace-estilo-boton:hover {
-  /* Intensificamos un poco el resplandor */
-  box-shadow: 0 0 25px 8px rgba(190, 241, 0, 0.8);
+    /* Intensificamos un poco el resplandor */
+    box-shadow: 0 0 25px 8px rgba(190, 241, 0, 0.8);
 }
 
 .container {
@@ -120,7 +145,9 @@ body {
 }
 
 @media (min-width: 768px) {
-    .nav-links { display: flex; }
+    .nav-links {
+        display: flex;
+    }
 }
 
 .nav-links a {
@@ -131,7 +158,8 @@ body {
     transition: var(--transition);
 }
 
-.nav-links a.active, .nav-links a:hover {
+.nav-links a.active,
+.nav-links a:hover {
     color: var(--secondary);
 }
 
@@ -143,7 +171,9 @@ body {
     transition: var(--transition);
 }
 
-.btn-icon:hover { color: var(--secondary); }
+.btn-icon:hover {
+    color: var(--secondary);
+}
 
 /* --- HERO --- */
 .hero {
@@ -174,9 +204,22 @@ body {
 /* --- CARDS --- */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    /* force 3 columns on desktop */
     gap: 2rem;
     margin-bottom: 5rem;
+}
+
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .glass-card {
@@ -208,22 +251,57 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.icon-box.primary { background: rgba(179, 254, 0, 0.1); color: var(--primary-container); }
-.icon-box.secondary { background: rgba(0, 227, 253, 0.1); color: var(--secondary); }
-.icon-box.tertiary { background: rgba(172, 255, 164, 0.1); color: var(--tertiary); }
+.icon-box.primary {
+    background: rgba(179, 254, 0, 0.1);
+    color: var(--primary-container);
+}
 
-.icon-box .material-symbols-outlined { font-size: 2.5rem; font-variation-settings: 'FILL' 1; }
+.icon-box.secondary {
+    background: rgba(0, 227, 253, 0.1);
+    color: var(--secondary);
+}
 
-.glass-card h2 { font-family: var(--font-headline); font-size: 1.8rem; margin-bottom: 0.5rem; }
+.icon-box.tertiary {
+    background: rgba(172, 255, 164, 0.1);
+    color: var(--tertiary);
+}
 
-.subtitle { font-weight: 500; margin-bottom: 2rem; }
-.subtitle.primary { color: var(--primary-container); }
-.subtitle.secondary { color: var(--secondary); }
-.subtitle.tertiary { color: var(--tertiary); }
+.icon-box .material-symbols-outlined {
+    font-size: 2.5rem;
+    font-variation-settings: 'FILL' 1;
+}
 
-.card-body { flex-grow: 1; }
+.glass-card h2 {
+    font-family: var(--font-headline);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
 
-.info-group { margin-bottom: 1.5rem; }
+.subtitle {
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.subtitle.primary {
+    color: var(--primary-container);
+}
+
+.subtitle.secondary {
+    color: var(--secondary);
+}
+
+.subtitle.tertiary {
+    color: var(--tertiary);
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.info-group {
+    margin-bottom: 1.5rem;
+}
+
 .info-group label {
     display: block;
     font-size: 0.65rem;
@@ -234,11 +312,19 @@ body {
     margin-bottom: 0.25rem;
 }
 
-.info-group label.primary { color: var(--primary-container); }
+.info-group label.primary {
+    color: var(--primary-container);
+}
 
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
 
-.alert-box, .promo-box, .formula-box {
+.alert-box,
+.promo-box,
+.formula-box {
     padding: 1rem;
     border-radius: var(--radius-xl);
     background: rgba(0, 0, 0, 0.2);
@@ -249,8 +335,18 @@ body {
     margin-top: 1rem;
 }
 
-.alert-box p { font-size: 0.75rem; color: var(--on-surface-variant); font-style: italic; }
-.promo-box .highlight { font-size: 1.2rem; font-weight: 700; color: var(--secondary); font-family: var(--font-headline); }
+.alert-box p {
+    font-size: 0.75rem;
+    color: var(--on-surface-variant);
+    font-style: italic;
+}
+
+.promo-box .highlight {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--secondary);
+    font-family: var(--font-headline);
+}
 
 .btn-primary {
     margin-top: 2rem;
@@ -277,8 +373,8 @@ body {
 .banner {
     height: 350px;
     border-radius: 2rem;
-    background: linear-gradient(to top, var(--background), transparent), 
-                url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2000');
+    background: linear-gradient(to top, var(--background), transparent),
+        url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2000');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -288,8 +384,16 @@ body {
     margin-bottom: 4rem;
 }
 
-.banner-content h3 { font-family: var(--font-headline); font-size: 2rem; margin-bottom: 0.5rem; }
-.banner-content p { color: var(--on-surface-variant); max-width: 30rem; }
+.banner-content h3 {
+    font-family: var(--font-headline);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.banner-content p {
+    color: var(--on-surface-variant);
+    max-width: 30rem;
+}
 
 /* --- MOBILE NAV --- */
 .mobile-nav {
@@ -305,7 +409,11 @@ body {
     border-top: 1px solid var(--outline-variant);
 }
 
-@media (min-width: 768px) { .mobile-nav { display: none; } }
+@media (min-width: 768px) {
+    .mobile-nav {
+        display: none;
+    }
+}
 
 .nav-item {
     background: none;
@@ -320,10 +428,13 @@ body {
     text-transform: uppercase;
 }
 
-.nav-item.active { color: var(--primary-container); filter: drop-shadow(0 0 8px var(--primary-container)); }
+.nav-item.active {
+    color: var(--primary-container);
+    filter: drop-shadow(0 0 8px var(--primary-container));
+}
 
 
-img{
+img {
     width: 125px;
     height: 80px;
 }

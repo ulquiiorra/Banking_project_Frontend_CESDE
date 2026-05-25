@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hapibank | Catálogo de Productos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-    <link rel="stylesheet" href="nuestroProducto.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../css/global-background.css">
+    <link rel="stylesheet" href="nuestroProducto.css">
+    <script src="nuestroProducto.js" defer></script>
+    <script src="../../components/navigation/navigation.js" defer></script>
+    <link rel="stylesheet" href="../../components/navigation/navigation.css" />
+    <script src="../../components/footer/footer.js" defer></script>
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
 </head>
+
 <body class="grainy">
     <!-- Global Background Elements -->
     <div class="cyber-grid"></div>
@@ -17,23 +28,14 @@
     <div class="floating-geometry geo-1"></div>
     <div class="floating-geometry geo-2"></div>
 
-    <header class="navbar">
-        <div class="container navbar-content">
-            <div class="brand">
-                <a href="../../index.html"><img src="../../img/logoD.png" alt="logo"></a>
-            </div>
-            <nav class="nav-links">
-                <a href="../../index.html">Home</a>
-                <a href="#" class="active">Catalog</a>
-               
-            </nav>
-        </div>
+    <header id="nav-placeholder">
     </header>
 
     <main class="container">
         <section class="hero">
             <h1>Nuestros <span>Productos</span></h1>
-            <p>Elige la herramienta perfecta para tu futuro financiero. Diseñadas para la era digital con seguridad absoluta.</p>
+            <p>Elige la herramienta perfecta para tu futuro financiero. Diseñadas para la era digital con seguridad
+                absoluta.</p>
         </section>
 
         <div class="product-grid">
@@ -123,18 +125,14 @@
         <section class="banner">
             <div class="banner-content">
                 <h3>Seguridad Grado Militar</h3>
-                <p>Cada producto en Hapibank está protegido por encriptación cuántica y validación biométrica de tres pasos.</p>
+                <p>Cada producto en Hapibank está protegido por encriptación cuántica y validación biométrica de tres
+                    pasos.</p>
             </div>
         </section>
     </main>
 
-    <nav class="mobile-nav">
-        <button class="nav-item"><span class="material-symbols-outlined">grid_view</span><span>Home</span></button>
-        <button class="nav-item active"><span class="material-symbols-outlined">account_balance</span><span>Catalog</span></button>
-        <button class="nav-item"><span class="material-symbols-outlined">vape_free</span><span>Vault</span></button>
-        <a class="nav-item" href="../editarPerfil/editarPerfil.html"><span class="material-symbols-outlined">settings</span><span>Settings</span></a>
-    </nav>
-
-    <script src="nuestroProducto.js" defer></script>
+    <footer id="footer-placeholder">
+    </footer>
 </body>
+
 </html>
