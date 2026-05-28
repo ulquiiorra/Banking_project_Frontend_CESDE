@@ -6,26 +6,35 @@
     <title>Login | Hapibank Digital Vault</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
+      <link rel="stylesheet" href="../../css/global-background.css" />
     <link rel="stylesheet" href="login.css" />
+    <script type="module" src="login.js" defer></script>
+    <link rel="stylesheet" href="../../components/navigation/navigation.css">
+    <script src="../../components/navigation/navigation.js" defer></script>
+    <link rel="stylesheet" href="../../components/footer/footer.css">
+    <script src="../../components/footer/footer.js" defer></script>
   </head>
-  <body class="login-page">
-    <div class="cyber-grid"></div>
-    <div class="glow-sphere top-left"></div>
-    <div class="glow-sphere bottom-right"></div>
-    <div class="floating-geometry geo-1"></div>
-    <div class="floating-geometry geo-2"></div>
+  <body class="dark-theme">
+  <!-- Global Background Elements -->
+  <div class="cyber-grid"></div>
+  <div class="glow-sphere top-left"></div>
+  <div class="glow-sphere bottom-right"></div>
+  <div class="floating-geometry geo-1"></div>
+  <div class="floating-geometry geo-2"></div>
+
+  <header id="nav-placeholder">
+
+  </header>
 
     <main class="login-container">
       <div class="login-card glass-panel aura-glow">
         <div class="accent-line"></div>
 
-        <header class="login-header">
+        <div class="login-header">
           <div class="logo-wrapper">
             <img
               src="../../img/logoD.png"
@@ -33,17 +42,15 @@
               class="main-logo"
             />
           </div>
-          <h1 class="headline-md">Hapibank</h1>
           <p class="label-xs">Digital Alchemy Vault</p>
-        </header>
+        </div>
 
         <form id="login-form" class="auth-form">
           <div class="field-group">
             <label for="email" class="field-label">Correo Electrónico</label>
             <div class="input-container">
               <span class="material-symbols-outlined input-icon"
-                >alternate_email</span
-              >
+                >alternate_email</span>
               <input
                 type="email"
                 id="email"
@@ -82,24 +89,9 @@
             <span>Iniciar Sesión</span>
           </button>
         </form>
-
-        <footer class="login-footer">
-          <p>
-            ¿No tienes una cuenta?
-            <a href="../registro/registro.html" class="link-highlight">Crear cuenta</a>
-          </p>
-        </footer>
       </div>
-
-      <aside class="meta-info">
-        <span>Encrypted 256-bit</span>
-        <span class="dot"></span>
-        <span>Global Access</span>
-        <span class="dot"></span>
-        <span>V.2.0.4</span>
-      </aside>
     </main>
 
-    <script type="module" src="login.js" defer></script>
+     <div id="footer-placeholder"></div>
   </body>
 </html>

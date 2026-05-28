@@ -36,7 +36,6 @@ html {
     overflow-x: hidden;
 }
 
-
 body {
     background-color: var(--background);
     color: var(--on-surface);
@@ -346,7 +345,8 @@ body {
 .body-sm {
     font-size: 0.95rem;
     color: var(--on-surface-variant);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    /* was 1.5rem */
     line-height: 1.6;
 }
 
@@ -365,6 +365,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     overflow: hidden;
+    display: flex;
+    /* add this */
+    flex-direction: column;
+    /* add this */
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
         box-shadow 0.4s ease,
         border-color 0.4s ease;
@@ -384,7 +388,8 @@ body {
 .card-content {
     position: relative;
     z-index: 2;
-    height: 100%;
+    flex: 1;
+    /* change height: 100% to flex: 1 */
     display: flex;
     flex-direction: column;
 }
@@ -420,7 +425,9 @@ body {
 .stats-row {
     display: flex;
     gap: 1rem;
-    margin-top: auto;
+    margin-top: 6rem;
+    /* replace margin-top: auto with a fixed value */
+
 }
 
 .stat-item {

@@ -2,54 +2,52 @@
 :root {
     --primary: #b3fe00;
     --primary-dim: #a8ef00;
+    --primary-container: #b3fe00;
+    --on-primary: #000000;
+    --on-primary-container: #1a1a1a;
     --secondary: #00e3fd;
+        --secondary-container: #006875;
     --background: #0e0e0e;
+        --surface: #1a1a1a;
+    --surface-high: #20201f;
     --surface-low: #131313;
     --surface-lowest: #000000;
     --on-surface: #ffffff;
     --on-surface-variant: #adaaaa;
-    --outline-variant: rgba(72, 72, 71, 0.3);
-    
+        --outline-variant: #484847;
+
     --font-headline: 'Space Grotesk', sans-serif;
     --font-body: 'Manrope', sans-serif;
+
+        --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
+    --radius-card: 2rem;
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* --- BASE & GRID --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
 
 body {
-    background-color: var(--background);
+background-color: var(--background);
     color: var(--on-surface);
     font-family: var(--font-body);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    line-height: 1.5;
+    overflow-x: hidden;
+    padding-top: 80px;
+    margin: 0;
+    width: 100%;
 }
-
-.cyber-grid {
-    position: fixed;
-    inset: 0;
-    background-image: 
-        linear-gradient(to right, rgba(179, 254, 0, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(179, 254, 0, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-}
-
-.glow-sphere {
-    position: fixed;
-    width: 24rem;
-    height: 24rem;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    opacity: 0.6;
-}
-
-.top-left { top: -6rem; left: -6rem; background: rgba(179, 254, 0, 0.1); }
-.bottom-right { bottom: -6rem; right: -6rem; background: rgba(0, 227, 253, 0.1); }
 
 /* --- LOGIN CARD --- */
 .login-container {
@@ -58,6 +56,7 @@ body {
     width: 100%;
     max-width: 440px;
     padding: 1.5rem;
+    margin: 3rem auto;
 }
 
 .glass-panel {
@@ -70,7 +69,9 @@ body {
     overflow: hidden;
 }
 
-.aura-glow { box-shadow: 0 0 50px rgba(179, 254, 0, 0.15); }
+.aura-glow {
+    box-shadow: 0 0 50px rgba(179, 254, 0, 0.15);
+}
 
 .accent-line {
     position: absolute;
@@ -87,8 +88,14 @@ body {
     margin-bottom: 2.5rem;
 }
 
-.logo-wrapper { margin-bottom: 1.5rem; }
-.main-logo { height: 4rem; width: auto; }
+.logo-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.main-logo {
+    height: 4rem;
+    width: auto;
+}
 
 .headline-md {
     font-family: var(--font-headline);
@@ -108,7 +115,11 @@ body {
 }
 
 /* --- FORM --- */
-.auth-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
 .field-label {
     display: block;
@@ -165,7 +176,9 @@ body {
     cursor: pointer;
 }
 
-.toggle-password:hover { color: var(--primary); }
+.toggle-password:hover {
+    color: var(--primary);
+}
 
 .forgot-link {
     display: block;
@@ -200,16 +213,8 @@ body {
     transform: translateY(-2px);
 }
 
-.btn-login-gradient:active { transform: scale(0.98); }
-
-/* --- FOOTER --- */
-.login-footer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(179, 254, 0, 0.1);
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--on-surface-variant);
+.btn-login-gradient:active {
+    transform: scale(0.98);
 }
 
 .link-highlight {
@@ -219,7 +224,9 @@ body {
     margin-left: 0.25rem;
 }
 
-.link-highlight:hover { text-decoration: underline; }
+.link-highlight:hover {
+    text-decoration: underline;
+}
 
 .meta-info {
     margin-top: 2rem;
@@ -232,20 +239,6 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.2em;
 }
-
-.dot { width: 3px; height: 3px; background: var(--on-surface); border-radius: 50%; }
-
-/* --- GEOMETRY --- */
-.floating-geometry {
-    position: fixed;
-    border: 1px solid rgba(179, 254, 0, 0.2);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.geo-1 { width: 6rem; height: 6rem; top: 25%; right: -3rem; transform: rotate(45deg); border-radius: 1rem; }
-.geo-2 { width: 4rem; height: 4rem; bottom: 25%; left: -2rem; border-radius: 50%; }
-
 
 .error-container {
     background: rgba(255, 82, 82, 0.1);
@@ -265,6 +258,13 @@ body {
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

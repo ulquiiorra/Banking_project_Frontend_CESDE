@@ -1,198 +1,110 @@
 <!doctype html>
 <html lang="es" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hapibank Dashboard | Cyber Nile</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-    <link rel="stylesheet" href="../../css/global-background.css" />
-  </head>
-  <body class="dashboard-theme">
-    <div class="cyber-grid"></div>
-    <div class="glow-sphere sphere-1"></div>
-    <div class="glow-sphere sphere-2"></div>
-    <div class="floating-geometry"></div>
 
-    <header class="app-bar">
-      <div class="header-container">
-        <div class="brand-group">
-          <div class="logo">
-            <img
-              src="../../img/logoD.png"
-              alt="Logo"
-            />
-            <span class="logo-text">Hapibank</span>
-          </div>
-          <nav class="desktop-nav">
-            <a href="../detalleProducto/detalleProducto.html" class="nav-link active">Resumen</a>
-            <a href="../transferencia/transferencia.html" class="nav-link">Transferir</a>
-            <a href="../contacto/contacto.html" class="nav-link">Contactanos</a>
-          </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hapibank Dashboard | El futuro de tus finanzas</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="../../css/global-background.css" />
+  <script src="./components/navigation/navigation.js" defer></script>
+  <script type="module" src="dashboard.js" defer></script>
+  <script src="../../components/footer/footer.js" defer></script>
+  <link rel="stylesheet" href="../../components/footer/footer.css" />
+  <script src="../../index.js" defer></script>
+  <link rel="stylesheet" href="../../index.css" />
+</head>
+
+<body class="dashboard-theme dark-theme">
+  <!-- Global Background Elements -->
+  <div class="cyber-grid"></div>
+  <div class="glow-sphere top-left"></div>
+  <div class="glow-sphere bottom-right"></div>
+  <div class="floating-geometry geo-1"></div>
+  <div class="floating-geometry geo-2"></div>
+
+  <header id="nav-placeholder">
+  </header>
+
+  <main class="dashboard-main">
+    <section class="welcome-hero">
+      <div class="welcome-text">
+        <span class="tag">Dashboard Overview</span>
+        <h1 class="headline-xl">
+          Hola,
+          <span class="gradient-text" id="user-display-name">drop</span>
+        </h1>
+      </div>
+      <div class="user-tier-card aura-glow">
+        <div class="tier-icon">
+          <span class="material-symbols-outlined filled">bolt</span>
         </div>
-        <div class="actions-group">
-         
-          <div class="profile-menu-wrapper">
-            <button
-              class="user-profile-circle"
-              id="profile-btn"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL59BxXEhOR9ZhvN1icVQ6Y82Gbztfm1RuBL4OxPXG12z9kCmCl0eJogvrw2vknOxV7DXx_PigOGTE6Y2lhTOHGLTokQICzT0QG1v0uUvGBPdIHR-LRNu_jr-TqiOMdKMF4Qv2DunhIvdsP76PNtphX17Rmy1gL3lnooGhqiMPMOef6J5Y2u7Qi-UvHNJ5fKaI4dF80GMNN2uaItD_cFKrqiYEdxamcAzeVgkoFw33GZQ3KgaXjfN4X6u9S0Ma9NKt6JbjwlBhetER"
-                alt="Avatar"
-              />
-            </button>
+        <div class="tier-info">
+          <p class="label-xs">Nivel de Usuario</p>
+          <p class="tier-name">Elite Cyber Nile</p>
+        </div>
+      </div>
+    </section>
 
-            <div class="profile-dropdown" id="profile-dropdown">
-              <div class="dropdown-header">
-                <div class="dropdown-avatar-wrapper">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL59BxXEhOR9ZhvN1icVQ6Y82Gbztfm1RuBL4OxPXG12z9kCmCl0eJogvrw2vknOxV7DXx_PigOGTE6Y2lhTOHGLTokQICzT0QG1v0uUvGBPdIHR-LRNu_jr-TqiOMdKMF4Qv2DunhIvdsP76PNtphX17Rmy1gL3lnooGhqiMPMOef6J5Y2u7Qi-UvHNJ5fKaI4dF80GMNN2uaItD_cFKrqiYEdxamcAzeVgkoFw33GZQ3KgaXjfN4X6u9S0Ma9NKt6JbjwlBhetER"
-                    alt="Avatar"
-                    class="dropdown-avatar"
-                  />
-                </div>
-                <div class="dropdown-user-info">
-                  <span class="dropdown-name" id="dropdown-user-name"
-                    >dropdow-item</span
-                  >
-                  <span class="dropdown-tier">ELITE CYBER NILE</span>
-                </div>
+    <section class="accounts-grid" id="accounts-grid-container">
+
+    </section>
+
+    <section class="details-layout">
+      <div class="obsidian-panel activity">
+        <div class="panel-header">
+          <h3>Actividad Reciente</h3>
+        </div>
+        <div class="transaction-list">
+          <div class="tx-item">
+            <div class="tx-info">
+              <div class="tx-icon-box">
+                <span class="material-symbols-outlined">shopping_cart</span>
               </div>
+              <div>
+                <p class="tx-title">Amazon Tech Store</p>
+                <p class="tx-date">Ayer, 14:20 • Tech Purchase</p>
+              </div>
+            </div>
+            <span class="tx-amount negative">-$1,240.00</span>
+          </div>
+          <div class="tx-item">
+            <div class="tx-info">
+              <div class="tx-icon-box">
+                <span class="material-symbols-outlined">payments</span>
+              </div>
+              <div>
+                <p class="tx-title">Depósito de Nómina</p>
+                <p class="tx-date">22 Oct, 09:00 • Salario</p>
+              </div>
+            </div>
+            <span class="tx-amount positive">+$4,500.00</span>
+          </div>
+        </div>
+      </div>
 
-              <div class="dropdown-divider"></div>
-
-              <a href="../editarPerfil/editarPerfil.html" class="dropdown-item">
-                <span class="material-symbols-outlined">settings</span>
-                Mi Perfil
-                <span class="material-symbols-outlined chevron"
-                  >chevron_right</span
-                >
-              </a>
-              <a href="../nuestrosProductos/nuestroProducto.html" class="dropdown-item">
-                <span class="material-symbols-outlined">grid_view</span>
-                Ver Productos
-                <span class="material-symbols-outlined chevron"
-                  >chevron_right</span
-                >
-              </a>
-
-              
-
-              <div class="dropdown-divider"></div>
-
-              <button class="dropdown-item logout-btn" id="logout-btn">
-                <span class="material-symbols-outlined">logout</span>
-                Cerrar Sesión
-              </button>
+      <div class="obsidian-panel savings">
+        <div class="vortex-chart">
+          <div class="vortex-ring">
+            <div class="vortex-inner">
+              <span class="pct">84%</span>
+              <span class="lbl">Objetivo</span>
             </div>
           </div>
         </div>
+        <h3>Meta: Neo-Tokyo Trip</h3>
+        <p>Faltan $1,200 para completar tu aventura.</p>
       </div>
-    </header>
+    </section>
+  </main>
 
-    <main class="dashboard-main">
-      <section class="welcome-hero">
-        <div class="welcome-text">
-          <span class="tag">Dashboard Overview</span>
-          <h1 class="headline-xl">
-            Hola,
-            <span class="gradient-text" id="user-display-name">drop</span>
-          </h1>
-        </div>
-        <div class="user-tier-card aura-glow">
-          <div class="tier-icon">
-            <span class="material-symbols-outlined filled">bolt</span>
-          </div>
-          <div class="tier-info">
-            <p class="label-xs">Nivel de Usuario</p>
-            <p class="tier-name">Elite Cyber Nile</p>
-          </div>
-        </div>
-      </section>
+  <div id="footer-placeholder"></div>
 
-      <section class="accounts-grid" id="accounts-grid-container">
-       
-      </section>
+</body>
 
-      <section class="details-layout">
-        <div class="obsidian-panel activity">
-          <div class="panel-header">
-            <h3>Actividad Reciente</h3>
-          </div>
-          <div class="transaction-list">
-            <div class="tx-item">
-              <div class="tx-info">
-                <div class="tx-icon-box">
-                  <span class="material-symbols-outlined">shopping_cart</span>
-                </div>
-                <div>
-                  <p class="tx-title">Amazon Tech Store</p>
-                  <p class="tx-date">Ayer, 14:20 • Tech Purchase</p>
-                </div>
-              </div>
-              <span class="tx-amount negative">-$1,240.00</span>
-            </div>
-            <div class="tx-item">
-              <div class="tx-info">
-                <div class="tx-icon-box">
-                  <span class="material-symbols-outlined">payments</span>
-                </div>
-                <div>
-                  <p class="tx-title">Depósito de Nómina</p>
-                  <p class="tx-date">22 Oct, 09:00 • Salario</p>
-                </div>
-              </div>
-              <span class="tx-amount positive">+$4,500.00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="obsidian-panel savings">
-          <div class="vortex-chart">
-            <div class="vortex-ring">
-              <div class="vortex-inner">
-                <span class="pct">84%</span>
-                <span class="lbl">Objetivo</span>
-              </div>
-            </div>
-          </div>
-          <h3>Meta: Neo-Tokyo Trip</h3>
-          <p>Faltan $1,200 para completar tu aventura.</p>
-        </div>
-      </section>
-    </main>
-
-    <nav class="mobile-nav">
-      <div class="m-nav-item active">
-        <span class="material-symbols-outlined filled"
-          >account_balance_wallet</span
-        >
-        <span>Vault</span>
-      </div>
-      <div class="m-nav-item">
-        <span class="material-symbols-outlined">query_stats</span>
-        <span>Wealth</span>
-      </div>
-      <div class="m-nav-item">
-        <span class="material-symbols-outlined">credit_card</span>
-        <span>Cards</span>
-      </div>
-      <div class="m-nav-item">
-        <span class="material-symbols-outlined">person</span>
-        <span>Profile</span>
-      </div>
-    </nav>
-
-    <script type="module" src="dashboard.js" defer></script>
-  </body>
 </html>
