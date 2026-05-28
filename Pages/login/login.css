@@ -19,6 +19,7 @@ main.login-container {
 .login-card {
     width: 100%;
     max-width: 440px;
+    margin: 2rem auto;
 }
 
 .glass-panel {
@@ -202,5 +203,11 @@ main.login-container {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (min-width: 768px) {
+    .login-container {
+        margin: 10rem;
     }
 }

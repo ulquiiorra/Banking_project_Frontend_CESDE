@@ -56,6 +56,12 @@ main {
     flex: 1;
 }
 
+.main-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
 /* --- BUTTONS --- */
 .btn-primary-small,
 .btn-primary-lg,
@@ -213,4 +219,12 @@ main {
     bottom: 25%;
     left: -2rem;
     border-radius: 50%;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-container);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
 }

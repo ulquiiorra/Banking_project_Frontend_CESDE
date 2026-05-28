@@ -4,27 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initScrollEffects();
     initIcons();
 });
-
-/**
- * Maneja los efectos de scroll y parallax suave
- */
-function initScrollEffects() {
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', () => {
-        // Efecto de transparencia en el nav
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = '0 0 30px rgba(179, 255, 0, 0.15)';
-            navbar.style.borderColor = 'rgba(179, 255, 0, 0.2)';
-        } else {
-            navbar.style.boxShadow = 'none';
-            navbar.style.borderColor = 'var(--outline-variant)';
-        }
-    });
-}
 
 /**
  * Configuración dinámica de Material Icons si es necesario
