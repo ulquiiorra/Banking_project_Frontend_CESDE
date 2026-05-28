@@ -23,89 +23,6 @@
     --transition: all 0.3s ease;
 }
 
-/* --- RESET & BASE --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--background);
-    background-image: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #0e0e0e 70%);
-    color: var(--on-surface);
-    font-family: var(--font-body);
-    line-height: 1.5;
-    min-height: 100vh;
-    padding-bottom: 0;
-    /* remove the 5rem */
-    display: flex;
-    flex-direction: column;
-}
-
-main.container {
-    flex: 1;
-    /* pushes footer to bottom */
-}
-
-/* Clase CSS para transformar un enlace (<a>) en el botón de la imagen */
-.enlace-estilo-boton {
-    /* 1. Comportamiento y Posicionamiento */
-    display: inline-flex;
-    /* Permite centrar contenido fácilmente */
-    justify-content: center;
-    /* Centra el texto horizontalmente */
-    align-items: center;
-    /* Centra el texto verticalmente */
-    text-decoration: none;
-    /* ¡Crucial! Elimina el subrayado por defecto */
-    box-sizing: border-box;
-    /* Asegura que padding y borde no alteren el tamaño */
-
-    /* 2. Colores y Apariencia Principal (Extraídos de la imagen) */
-    background-color: #bef100;
-    /* El color verde lima exacto */
-    color: #000000;
-    /* El color del texto, negro o muy oscuro */
-
-    /* 3. Forma y Dimensiones (Ajusta según tu necesidad, estos son proporcionales) */
-    width: auto;
-    /* Ajuste automático, o define un ancho como 200px */
-    padding: 10px 40px;
-    /* Padding vertical y horizontal para dar cuerpo */
-    border-radius: 50px;
-    /* Bordes completamente redondeados (píldora) */
-    border: none;
-    /* Sin borde visible, igual que en la imagen */
-
-    /* 4. Tipografía */
-    font-family: sans-serif;
-    /* Una fuente sans-serif limpia y geométrica */
-    font-size: 14px;
-    /* Ajusta el tamaño según tu diseño */
-    font-weight: bold;
-    /* Negrita */
-    text-transform: uppercase;
-    /* Todo en mayúsculas, como en la imagen */
-    letter-spacing: 0.5px;
-    /* Un ligero espacio entre letras */
-    cursor: pointer;
-    /* Cambia el cursor para indicar que es clicable */
-
-    /* 5. El Efecto de Resplandor (La "sombra de neón") */
-    /* Esta sombra debe ser del mismo color que el fondo para crear el 'glow' */
-    box-shadow: 0 0 20px 5px rgba(190, 241, 0, 0.6);
-
-    /* 6. Transición suave para interactividad */
-    transition: box-shadow 0.2s ease-in-out;
-}
-
-/* Efecto al pasar el ratón (opcional, para que siga pareciendo un botón interactivo) */
-.enlace-estilo-boton:hover {
-    /* Intensificamos un poco el resplandor */
-    box-shadow: 0 0 25px 8px rgba(190, 241, 0, 0.8);
-}
-
 .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -177,7 +94,7 @@ main.container {
 
 /* --- HERO --- */
 .hero {
-    margin: 8rem 0 4rem;
+    margin: 6rem 0 4rem;
     text-align: center;
 }
 
@@ -346,27 +263,6 @@ main.container {
     font-weight: 700;
     color: var(--secondary);
     font-family: var(--font-headline);
-}
-
-.btn-primary {
-    margin-top: 2rem;
-    width: 100%;
-    padding: 1rem;
-    border-radius: var(--radius-full);
-    background: var(--primary-container);
-    color: var(--on-primary-fixed);
-    border: none;
-    font-family: var(--font-headline);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-primary:hover {
-    box-shadow: 0 0 25px rgba(179, 255, 0, 0.5);
-    transform: scale(1.02);
 }
 
 /* --- BANNER --- */

@@ -1,62 +1,24 @@
-/* --- TOKENS --- */
-:root {
-    --primary: #b3fe00;
-    --primary-dim: #a8ef00;
-    --primary-container: #b3fe00;
-    --on-primary: #000000;
-    --on-primary-container: #1a1a1a;
-    --secondary: #00e3fd;
-        --secondary-container: #006875;
-    --background: #0e0e0e;
-        --surface: #1a1a1a;
-    --surface-high: #20201f;
-    --surface-low: #131313;
-    --surface-lowest: #000000;
-    --on-surface: #ffffff;
-    --on-surface-variant: #adaaaa;
-        --outline-variant: #484847;
-
-    --font-headline: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-
-        --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-full: 9999px;
-    --radius-card: 2rem;
-
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* --- BASE & GRID --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    overflow-x: hidden;
-}
-
-body {
-background-color: var(--background);
-    color: var(--on-surface);
-    font-family: var(--font-body);
-    line-height: 1.5;
-    overflow-x: hidden;
-    padding-top: 80px;
-    margin: 0;
-    width: 100%;
-}
-
 /* --- LOGIN CARD --- */
 .login-container {
     position: relative;
-    z-index: 10;
     width: 100%;
     max-width: 440px;
     padding: 1.5rem;
-    margin: 3rem auto;
+    margin: auto;
+}
+
+main.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
 }
 
 .glass-panel {
@@ -189,32 +151,6 @@ background-color: var(--background);
     color: var(--secondary);
     text-decoration: none;
     transition: color 0.3s;
-}
-
-/* --- BUTTON --- */
-.btn-login-gradient {
-    background: linear-gradient(90deg, var(--primary-dim), var(--primary));
-    color: var(--background);
-    border: none;
-    padding: 1.25rem;
-    border-radius: 99px;
-    font-family: var(--font-headline);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: 0.85rem;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(179, 254, 0, 0.2);
-    transition: all 0.3s;
-}
-
-.btn-login-gradient:hover {
-    box-shadow: 0 10px 40px rgba(179, 254, 0, 0.4);
-    transform: translateY(-2px);
-}
-
-.btn-login-gradient:active {
-    transform: scale(0.98);
 }
 
 .link-highlight {

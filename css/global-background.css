@@ -1,6 +1,52 @@
 /* Global Background Styles extracted from Login */
 
+/* --- TOKENS & VARIABLES --- */
+:root {
+    --primary: #e8ffbe;
+    --primary-container: #b3fe00;
+    --on-primary: #000000;
+    --on-primary-container: #1a1a1a;
+    --secondary: #00e3fd;
+    --secondary-container: #006875;
+    --background: #0e0e0e;
+    --surface: #1a1a1a;
+    --surface-high: #20201f;
+    --surface-low: #131313;
+    --on-surface: #ffffff;
+    --on-surface-variant: #adaaaa;
+    --outline-variant: #484847;
+
+    --font-headline: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
+    --radius-card: 2rem;
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
 body {
+    background-color: var(--background);
+    color: var(--on-surface);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+    padding-top: 80px;
+    margin: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -8,6 +54,102 @@ body {
 
 main {
     flex: 1;
+}
+
+/* --- BUTTONS --- */
+.btn-primary-small,
+.btn-primary-lg,
+.btn-primary-xl,
+.btn-outline-lg,
+.btn-outline-xl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: var(--font-body);
+}
+
+.btn-primary-lg {
+    background: linear-gradient(90deg, var(--primary-container), #a8ef00);
+    color: var(--on-primary);
+    padding: 1rem 2rem;
+    border-radius: var(--radius-full);
+    font-weight: 800;
+    gap: 0.5rem;
+    border: none;
+}
+
+.btn-primary-lg:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(179, 255, 0, 0.4);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.btn-primary-small {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    padding: 0.55rem 1.2rem;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary-small:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(179, 255, 0, 0.4);
+}
+
+.enlace-estilo-boton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    background-color: #bef100;
+    color: #000000;
+    padding: 10px 40px;
+    border-radius: 50px;
+    border: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.enlace-estilo-boton:hover {
+    box-shadow: 0 0 25px 8px rgba(190, 241, 0, 0.8);
+}
+
+.btn-primary {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: var(--radius-full);
+    background: var(--primary-container);
+    color: var(--on-primary);
+    border: none;
+    font-family: var(--font-headline);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 25px rgba(179, 255, 0, 0.5);
+    transform: scale(1.02);
 }
 
 /* The main grid background */
