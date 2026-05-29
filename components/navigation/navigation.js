@@ -1,4 +1,7 @@
-const BASE = '/Banking_project_Frontend_CESDE'; // ← change this to your repo name, e.g. '/mi-repo' or '' if custom domain
+// Detecta automáticamente si estás en producción (GitHub Pages) o en desarrollo local (Live Server)
+const BASE = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+    ? '' // En local con Live Server, la raíz ya es tu proyecto, por lo que BASE debe estar vacía
+    : '/Banking_project_Frontend_CESDE'; // En producción, añade la subcarpeta del repositorio
 
 const getUserFromStorage = () => {
     try {
