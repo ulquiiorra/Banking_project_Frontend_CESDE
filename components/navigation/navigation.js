@@ -1,3 +1,5 @@
+const BASE = '/Banking_project_Frontend_CESDE'; // ← change this to your repo name, e.g. '/mi-repo' or '' if custom domain
+
 const getUserFromStorage = () => {
     try {
         const data = localStorage.getItem('usuarioLogueado');
@@ -19,15 +21,15 @@ const renderNavbar = () => {
                     <span class="material-symbols-outlined chevron-icon">expand_more</span>
                 </button>
                 <div class="user-dropdown" id="user-dropdown">
-                    <a href="/Pages/dashboard/dashboard.html" class="dropdown-item">
+                    <a href="${BASE}/Pages/dashboard/dashboard.html" class="dropdown-item">
                         <span class="material-symbols-outlined">dashboard</span>
                         Dashboard
                     </a>
-                    <a href="/Pages/editarPerfil/editarPerfil.html" class="dropdown-item">
+                    <a href="${BASE}/Pages/editarPerfil/editarPerfil.html" class="dropdown-item">
                         <span class="material-symbols-outlined">manage_accounts</span>
                         Editar Perfil
                     </a>
-                    <a href="/Pages/simulador/simulador.html" class="dropdown-item">
+                    <a href="${BASE}/Pages/simulador/simulador.html" class="dropdown-item">
                         <span class="material-symbols-outlined">calculate</span>
                         Simulador
                     </a>
@@ -40,30 +42,30 @@ const renderNavbar = () => {
             </div>
           `
         : `
-            <a href="/Pages/login/login.html" class="btn-primary-small">Login</a>
-            <a href="/Pages/registro/registro.html" class="btn-primary-small">Open Account</a>
+            <a href="${BASE}/Pages/login/login.html" class="btn-primary-small">Login</a>
+            <a href="${BASE}/Pages/registro/registro.html" class="btn-primary-small">Open Account</a>
           `;
 
     const mobileMenu = user
         ? `
             <div class="nav-links">
-                <a href="/">Inicio</a>
-                <a href="/Pages/nuestrosProductos/nuestroProducto.html">Productos</a>
-                <a href="/Pages/nosotros/nosotros.html">Nosotros</a>
-                <a href="/Pages/contacto/contacto.html">Contactanos</a>
+                <a href="${BASE}/">Inicio</a>
+                <a href="${BASE}/Pages/nuestrosProductos/nuestroProducto.html">Productos</a>
+                <a href="${BASE}/Pages/nosotros/nosotros.html">Nosotros</a>
+                <a href="${BASE}/Pages/contacto/contacto.html">Contactanos</a>
             </div>
             <div class="mobile-user-section">
                 <div class="mobile-user-header">
                     <span class="material-symbols-outlined user-icon">account_circle</span>
                     <span class="user-name">${user.nombreCompleto}</span>
                 </div>
-                <a href="/Pages/dashboard/dashboard.html" class="mobile-user-link">
+                <a href="${BASE}/Pages/dashboard/dashboard.html" class="mobile-user-link">
                     <span class="material-symbols-outlined">dashboard</span> Dashboard
                 </a>
-                <a href="/Pages/editarPerfil/editarPerfil.html" class="mobile-user-link">
+                <a href="${BASE}/Pages/editarPerfil/editarPerfil.html" class="mobile-user-link">
                     <span class="material-symbols-outlined">manage_accounts</span> Editar Perfil
                 </a>
-                <a href="/Pages/simulador/simulador.html" class="mobile-user-link">
+                <a href="${BASE}/Pages/simulador/simulador.html" class="mobile-user-link">
                     <span class="material-symbols-outlined">calculate</span> Simulador
                 </a>
                 <button class="mobile-user-link mobile-logout" id="btn-logout-mobile">
@@ -73,14 +75,14 @@ const renderNavbar = () => {
           `
         : `
             <div class="nav-links">
-                <a href="/">Inicio</a>
-                <a href="/Pages/nuestrosProductos/nuestroProducto.html">Productos</a>
-                <a href="/Pages/nosotros/nosotros.html">Nosotros</a>
-                <a href="../../Pages/contacto/contacto.html">Contactanos</a>
+                <a href="${BASE}/">Inicio</a>
+                <a href="${BASE}/Pages/nuestrosProductos/nuestroProducto.html">Productos</a>
+                <a href="${BASE}/Pages/nosotros/nosotros.html">Nosotros</a>
+                <a href="${BASE}/Pages/contacto/contacto.html">Contactanos</a>
             </div>
             <div class="nav-actions">
-                <a href="/Pages/login/login.html" class="btn-primary-small">Login</a>
-                <a href="/Pages/registro/registro.html" class="btn-primary-small">Open Account</a>
+                <a href="${BASE}/Pages/login/login.html" class="btn-primary-small">Login</a>
+                <a href="${BASE}/Pages/registro/registro.html" class="btn-primary-small">Open Account</a>
             </div>
           `;
 
@@ -89,7 +91,7 @@ const renderNavbar = () => {
         <nav class="nav-container">
 
           <div class="logo">
-            <img src="/img/logoD.png" alt="logo_bank" id="logo_hapiBank">
+            <img src="${BASE}/img/logoD.png" alt="logo_bank" id="logo_hapiBank">
           </div>
 
           <div class="hamburger" id="hamburger-menu">
@@ -98,12 +100,10 @@ const renderNavbar = () => {
             <span class="bar"></span>
           </div>
 
-          <!-- Mobile only: collapses on hamburger -->
           <div class="nav-menu" id="nav-menu">
             ${mobileMenu}
           </div>
 
-          <!-- Desktop only: always visible on the right -->
           <div class="desktop-auth">
             ${desktopAuth}
           </div>
@@ -143,7 +143,7 @@ const initDropdown = () => {
 const initLogout = () => {
     const handleLogout = () => {
         localStorage.removeItem('usuarioLogueado');
-        window.location.href = '/';
+        window.location.href = `${BASE}/`;
     };
 
     const btnDesktop = document.getElementById('btn-logout-desktop');
