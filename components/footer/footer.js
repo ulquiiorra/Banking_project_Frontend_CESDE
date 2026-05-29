@@ -11,14 +11,6 @@ const renderFooter = () => {
                     <a href="#">Help Center</a>
                     <a href="#">Security</a>
                 </div>
-                <div class="footer-social">
-                    <div class="social-icon">
-                        <span class="material-symbols-outlined">language</span>
-                    </div>
-                    <div class="social-icon">
-                        <span class="material-symbols-outlined">public</span>
-                    </div>
-                </div>
             </div>
         </footer>
     `;

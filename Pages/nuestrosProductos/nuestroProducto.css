@@ -1,91 +1,13 @@
-/* --- TOKENS & VARIABLES --- */
-:root {
-    --primary: #e8ffbe;
-    --primary-container: #b3fe00;
-    --on-primary-fixed: #314a00;
-    --secondary: #00e3fd;
-    --tertiary: #acffa4;
-    --background: #0e0e0e;
-    --surface: #1a1a1a;
-    --surface-variant: #262626;
-    --on-surface: #ffffff;
-    --on-surface-variant: #adaaaa;
-    --outline-variant: rgba(72, 72, 71, 0.3);
-
-    --font-headline: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-
-    --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-3xl: 1.5rem;
-    --radius-full: 9999px;
-
-    --transition: all 0.3s ease;
-}
-
 .container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
 
-/* --- LAYOUT COMPONENTS --- */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(9, 9, 11, 0.7);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--outline-variant);
-}
-
-.navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 4.5rem;
-}
-
-.brand {
-    font-family: var(--font-headline);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-container);
-    font-style: italic;
-    letter-spacing: -1px;
-}
-
-.nav-links {
-    display: none;
-    gap: 2rem;
-}
-
 @media (min-width: 768px) {
     .nav-links {
         display: flex;
     }
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--on-surface-variant);
-    font-family: var(--font-headline);
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav-links a.active,
-.nav-links a:hover {
-    color: var(--secondary);
-}
-
-.btn-icon {
-    background: none;
-    border: none;
-    color: var(--on-surface-variant);
-    cursor: pointer;
-    transition: var(--transition);
 }
 
 .btn-icon:hover {
@@ -104,11 +26,6 @@
     font-weight: 700;
     letter-spacing: -2px;
     margin-bottom: 1rem;
-}
-
-.hero h1 span {
-    color: var(--primary-container);
-    text-shadow: 0 0 15px rgba(179, 255, 0, 0.4);
 }
 
 .hero p {
@@ -139,25 +56,6 @@
     }
 }
 
-.glass-card {
-    background: rgba(38, 38, 38, 0.4);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(179, 254, 0, 0.1);
-    border-radius: var(--radius-3xl);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-.glass-card:hover {
-    border: 1px solid rgba(179, 254, 0, 0.5);
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(179, 254, 0, 0.1);
-}
-
 .icon-box {
     width: 4rem;
     height: 4rem;
@@ -186,12 +84,6 @@
 .icon-box .material-symbols-outlined {
     font-size: 2.5rem;
     font-variation-settings: 'FILL' 1;
-}
-
-.glass-card h2 {
-    font-family: var(--font-headline);
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
 }
 
 .subtitle {

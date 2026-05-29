@@ -110,16 +110,16 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: var(--primary-container);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .user-tier-card {
-    background: var(--surface-highest);
+    background: var( --surface-high);
     padding: 1rem 1.5rem;
     border-radius: 1rem;
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid var(--primary-container);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -166,7 +166,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
+    color: var(--primary-container);
 }
 
 .balance-display {
@@ -178,7 +178,7 @@ body {
 
 .btn-card-action {
     width: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: linear-gradient(90deg, var(--primary-container), var(--secondary));
     border: none;
     padding: 1rem;
     border-radius: 99px;
@@ -242,7 +242,7 @@ body {
     height: 12rem;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
-    background: conic-gradient(var(--primary) 300deg, var(--surface-highest) 0deg);
+    background: conic-gradient(var(--primary-container) 300deg, var(--surface-highest) 0deg);
     display: flex;
     align-items: center;
     justify-content: center;

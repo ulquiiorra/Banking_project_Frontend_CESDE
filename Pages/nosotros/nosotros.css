@@ -1,38 +1,3 @@
-/* --- RESET & VARIABLES --- */
-:root {
-    --primary: #b3fe00;
-    --on-primary: #466700;
-    --primary-container: #b3fe00;
-    --on-primary-container: #405e00;
-    --surface: #0e0e0e;
-    --on-surface: #ffffff;
-    --surface-container-low: #131313;
-    --surface-container-high: #20201f;
-    --surface-container-highest: #262626;
-    --on-surface-variant: #adaaaa;
-    --outline-variant: #484847;
-    --radius-default: 0.25rem;
-    --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-full: 9999px;
-    --font-headline: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--surface);
-    color: var(--on-surface);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
 /* --- UTILITIES --- */
 .font-headline { font-family: var(--font-headline); }
 .text-primary { color: var(--primary-container); }
@@ -141,7 +106,7 @@ h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 2re
 
 .main-bento {
     grid-column: span 1;
-    background: var(--surface-container-high);
+    background: var(--surface-high);
 }
 
 .secondary-bento {
@@ -203,7 +168,6 @@ h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 2re
     background: var(--surface-container-low);
     padding: 3rem;
     border-radius: 2rem;
-    margin-top: 6rem;
     text-align: center;
 }
 

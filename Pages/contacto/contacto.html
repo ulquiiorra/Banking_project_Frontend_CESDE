@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Contáctanos | Hapibank</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="contacto.css">
+    <script src="contacto.js" defer></script>
     <link rel="stylesheet" href="../../css/global-background.css">
+    <link rel="stylesheet" href="../../components/navigation/navigation.css">
+    <script src="../../components/navigation/navigation.js" defer></script>
+    <link rel="stylesheet" href="../../components/footer/footer.css">
+    <script src="../../components/footer/footer.js" defer></script>
 </head>
+
 <body class="dark-theme">
     <!-- Global Background Elements -->
     <div class="cyber-grid"></div>
@@ -17,22 +27,15 @@
     <div class="floating-geometry geo-1"></div>
     <div class="floating-geometry geo-2"></div>
 
-    <header class="main-header">
-        <div class="header-content">
-            <div class="header-left">
-                <a class="icon-btn" aria-label="Volver" href="../../index.html">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                </a>
-                <span class="brand-logo">Hapibank</span>
-            </div>
-        </div>
+    <header id="nav-placeholder">
     </header>
 
     <main class="contact-container">
         <section class="hero-text">
-            <h1 class="glow-title">Contáctanos</h1>
+            <h1 class="headline-lg">Contáctanos</h1>
             <p class="hero-subtitle">
-                Conectando el futuro de tus finanzas. Nuestro equipo de soporte está listo para asistirte en el flujo digital.
+                Conectando el futuro de tus finanzas. Nuestro equipo de soporte está listo para asistirte en el flujo
+                digital.
             </p>
         </section>
 
@@ -77,7 +80,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="btn-primary enlace-estilo-boton">
                     <span class="btn-text">Enviar Mensaje</span>
                     <span class="material-symbols-outlined">send</span>
                 </button>
@@ -111,26 +114,9 @@
             </div>
         </section>
     </main>
+    
+    <div id="footer-placeholder"></div>
 
-    <nav class="mobile-nav">
-        <a href="#" class="nav-item">
-            <span class="material-symbols-outlined">account_balance_wallet</span>
-            <span>Vault</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="material-symbols-outlined">swap_horiz</span>
-            <span>Flow</span>
-        </a>
-        <a href="#" class="nav-item active">
-            <span class="material-symbols-outlined">support_agent</span>
-            <span>Support</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="material-symbols-outlined">face</span>
-            <span>Identity</span>
-        </a>
-    </nav>
-
-    <script src="contacto.js" defer></script>
 </body>
+
 </html>

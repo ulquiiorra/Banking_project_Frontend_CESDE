@@ -37,13 +37,6 @@
 
 .step-header { margin-bottom: 3rem; }
 
-.headline-lg {
-    font-family: var(--font-headline);
-    font-size: 2.5rem;
-    color: var(--primary-container);
-    margin-bottom: 0.5rem;
-}
-
 .step-label { color: var(--on-surface-variant); font-weight: 500; }
 
 .form-grid {

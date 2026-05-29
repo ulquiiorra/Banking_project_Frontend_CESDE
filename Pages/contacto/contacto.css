@@ -1,39 +1,3 @@
-/* --- RESET & TOKENS --- */
-:root {
-    --primary: #e8ffbe;
-    --primary-dim: #a8ef00;
-    --primary-container: #b3fe00;
-    --on-primary-fixed: #314a00;
-    --background: #0e0e0e;
-    --surface: #0e0e0e;
-    --surface-low: #131313;
-    --surface-variant: #262626;
-    --on-surface: #ffffff;
-    --on-surface-variant: #adaaaa;
-    --outline-variant: rgba(72, 72, 71, 0.3);
-    --secondary-container: rgba(0, 104, 117, 0.2);
-    --secondary: #00e3fd;
-    
-    --font-headline: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-    --shadow-primary: 0 0 40px -5px rgba(179, 255, 0, 0.4);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--background);
-    background-image: radial-gradient(circle at 50% 0%, rgba(179, 255, 0, 0.05) 0%, transparent 50%);
-    color: var(--on-surface);
-    font-family: var(--font-body);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
 /* --- HEADER --- */
 .main-header {
     position: fixed;
@@ -43,31 +7,6 @@ body {
     z-index: 100;
     background: linear-gradient(to bottom, #0a0a0a, transparent);
     backdrop-filter: blur(20px);
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.5rem;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.brand-logo {
-    font-family: var(--font-headline);
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: var(--primary-container);
-    font-style: italic;
-    letter-spacing: -1px;
 }
 
 .icon-btn {
@@ -95,7 +34,7 @@ body {
 .contact-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 8rem 1.5rem 6rem;
+    padding: 4rem 1.5rem;
 }
 
 .hero-text {
@@ -216,7 +155,7 @@ body {
 
 /* --- BUTTON --- */
 .submit-btn {
-    background: linear-gradient(90deg, var(--primary-dim), var(--primary-container));
+    background: --primary-container;
     border: none;
     padding: 1.25rem;
     border-radius: var(--radius-full);
