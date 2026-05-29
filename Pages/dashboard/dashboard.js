@@ -201,7 +201,7 @@ function initChartAnimation() {
   const animate = () => {
     if (currentDeg < targetDeg) {
       currentDeg += 2;
-      ring.style.background = `conic-gradient(var(--primary-container) ${currentDeg}deg, var(--surface-highest) 0deg)`;
+      ring.style.background = `conic-gradient(var(--primary-container) ${currentDeg}deg, var(--surface-high) 0deg)`;
       requestAnimationFrame(animate);
     }
   };

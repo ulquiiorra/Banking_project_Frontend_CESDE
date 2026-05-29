@@ -3,7 +3,7 @@
  * Especialista: Senior Frontend Developer
  */
 
-import { obtenerClientes, guardarClientes } from '../../DB/db_clientes';
+import { obtenerClientes, guardarClientes } from '../../DB/db_clientes.js';
 
 let clientes = [];
 let clienteActual = null;
@@ -13,22 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarDatosUsuario();
     initTabNavigation();
     initFormInteractions();
-    initScrollEffects();
+
 });
 
 function cargarDatosUsuario() {
+    // Leemos la sesión activa
+    const sesion = localStorage.getItem('usuarioLogueado');
+    if (!sesion) return;
+    const usuarioSesion = JSON.parse(sesion);
+
+    // Cargamos todos los clientes desde la BD y buscamos el que coincide con la sesión
     clientes = obtenerClientes();
-    
-    // Simulación: obtenemos el id del usuario logueado. Ajusta esto a tu lógica de login.
-    const idUsuarioLogueado = localStorage.getItem('usuario_logueado') || 1; 
-    clienteActual = clientes.find(c => c.id == idUsuarioLogueado);
+    clienteActual = clientes.find(c => c.id == usuarioSesion.id);
 
     if (clienteActual) {
-        document.getElementById('nombreCompleto').value = clienteActual.nombreCompleto;
-        document.getElementById('numeroDocumento').value = clienteActual.numeroDocumento;
+        document.getElementById('nombreCompleto').value    = clienteActual.nombreCompleto;
+        document.getElementById('numeroDocumento').value   = clienteActual.numeroDocumento;
         document.getElementById('correoElectronico').value = clienteActual.correoElectronico;
-        document.getElementById('celular').value = clienteActual.celular;
-        
+        document.getElementById('celular').value           = clienteActual.celular;
+
         document.querySelector('.user-name').textContent = clienteActual.nombreCompleto.toUpperCase();
     }
 }
@@ -114,6 +117,10 @@ function guardarDatosPersonales() {
     clienteActual.correoElectronico = document.getElementById('correoElectronico').value;
     clienteActual.celular = document.getElementById('celular').value;
 
+    guardarClientes(clientes);
+    // Sincronizamos la sesión activa con los nuevos datos
+    localStorage.setItem('usuarioLogueado', JSON.stringify(clienteActual.deserializarParaJSON()));
+
     guardarYAnimarBoton();
     document.querySelector('.user-name').textContent = clienteActual.nombreCompleto.toUpperCase();
 }
@@ -135,8 +142,10 @@ function guardarSeguridad() {
         return;
     }
 
-    // 3. Guardar nueva contraseña y limpiar campos
+    // 3. Guardar nueva contraseña, sincronizar sesión y limpiar campos
     clienteActual.contrasena = passNuevaInput;
+    guardarClientes(clientes);
+    localStorage.setItem('usuarioLogueado', JSON.stringify(clienteActual.deserializarParaJSON()));
     document.getElementById('passActual').value = '';
     document.getElementById('passNueva').value = '';
     document.getElementById('passConfirmar').value = '';
@@ -145,8 +154,6 @@ function guardarSeguridad() {
 }
 
 function guardarYAnimarBoton() {
-    guardarClientes(clientes);
-
     const btn = document.getElementById('btnSave');
     const btnText = document.getElementById('btnSaveText');
     const btnIcon = document.getElementById('btnSaveIcon');
@@ -174,18 +181,4 @@ function guardarYAnimarBoton() {
             btn.style.pointerEvents = 'auto';
         }, 2000);
     }, 800);
-}
-
-function initScrollEffects() {
-    const appBar = document.querySelector('.app-bar');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            appBar.style.background = 'rgba(14, 14, 14, 0.95)';
-            appBar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-        } else {
-            appBar.style.background = 'rgba(14, 14, 14, 0.8)';
-            appBar.style.boxShadow = 'none';
-        }
-    });
 }

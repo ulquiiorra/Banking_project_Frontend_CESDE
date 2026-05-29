@@ -29,10 +29,12 @@
 /* --- FORM LAYOUT --- */
 .form-container {
     max-width: 768px;
-    margin: 0 auto;
-    padding: 6rem 1.5rem 4rem;
+    margin: 4rem auto;
+    padding: 2rem 1.5rem 4rem;
     position: relative;
     z-index: 1;
+    border-radius: 1rem;
+    background-color: var(--on-primary-container);
 }
 
 .step-header { margin-bottom: 3rem; }

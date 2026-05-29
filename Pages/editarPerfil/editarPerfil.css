@@ -1,41 +1,3 @@
-
-/* --- TOKENS & VARIABLES --- */
-:root {
-    --primary: #e8ffbe;
-    --primary-container: #b3fe00;
-    --on-primary-container: #405e00;
-    --primary-fixed: #b3fe00;
-    --secondary: #00e3fd;
-    --background: #0e0e0e;
-    --surface: #1a1a1a;
-    --surface-low: #131313;
-    --surface-variant: #262626;
-    --surface-highest: #262626;
-    --on-surface: #ffffff;
-    --on-surface-variant: #adaaaa;
-    --outline-variant: rgba(255, 255, 255, 0.05);
-    
-    --font-headline: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-    
-    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* --- RESET & BASE --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    color: var(--on-surface);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
-    overflow-x: hidden;
-}
-
 .selection-theme::selection {
     background: var(--primary-container);
     color: var(--on-primary-container);
@@ -94,7 +56,6 @@ body {
 }
 
 .icon-btn:hover { background: var(--surface-variant); }
-.icon-btn .material-symbols-outlined { color: var(--primary-fixed); }
 
 /* Profile Header */
 .profile-container {
@@ -126,7 +87,7 @@ body {
 
 .avatar-wrapper .material-symbols-outlined {
     font-size: 2.5rem;
-    color: var(--primary-fixed);
+    color: var(--primary-container);
     font-variation-settings: 'FILL' 1;
 }
 
@@ -166,7 +127,7 @@ body {
 }
 
 .tab-item.active {
-    color: var(--primary-fixed);
+    color: var(--primary-container);
     border-bottom: 2px solid var(--primary-fixed);
 }
 
@@ -287,24 +248,6 @@ body {
     z-index: 40;
 }
 
-.btn-save {
-    width: 100%;
-    max-width: 42rem;
-    height: 3.5rem;
-    background: var(--primary-container);
-    border: none;
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-family: var(--font-headline);
-    font-weight: 800;
-    color: var(--on-primary-container);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
 .btn-save:active { transform: scale(0.95); }
 
 .aura-glow {
@@ -349,7 +292,7 @@ body {
 }
 
 .nav-btn.active {
-    color: var(--primary-fixed);
+    color: var(--primary-container);
     filter: drop-shadow(0 0 8px rgba(179, 254, 0, 0.6));
 }
 

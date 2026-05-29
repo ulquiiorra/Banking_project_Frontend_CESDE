@@ -109,6 +109,7 @@ main {
     background: var(--primary-container);
     color: var(--on-primary-container);
     padding: 0.55rem 1.2rem;
+    margin: 0.5rem;
     border-radius: var(--radius-full);
     font-weight: 700;
     border: none;

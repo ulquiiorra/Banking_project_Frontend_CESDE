@@ -6,6 +6,10 @@
     backdrop-filter: blur(20px);
 }
 
+.footer-brand{
+    color: var(--primary-container);
+}
+
 .footer-content {
     display: flex;
     flex-direction: column;
