@@ -22,17 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
                (tipoURL === 'tarjeta_credito' && tipoDB === 'credito');
     });
 
-    renderBottomNav(usuarioLogueado.cuentas, tipoCuentaBuscada);
-
     if (cuentaReal) {
         updateAccountState(cuentaReal);
         renderMovimientos(cuentaReal.movimientos);
-        actualizarEnlacesAcciones(cuentaReal);
+        actualizarEnlacesAcciones(cuentaReal); // NUEVO: Actualiza los botones de la vista
     } else {
         console.error(`❌ No se encontró la cuenta: ${tipoCuentaBuscada} en el portafolio.`);
         document.getElementById('account-type-label').textContent = "Cuenta no encontrada";
         document.getElementById('account-balance').textContent = "$0.00";
     }
+
+    actualizarNavActivo(); 
 });
 
 /**
@@ -171,47 +171,6 @@ function renderMovimientos(movimientos) {
 }
 
 /**
- * Renders the bottom toolbar with one tab per account the user owns
- */
-function renderBottomNav(cuentas, tipoCuentaActiva) {
-    const nav = document.getElementById('bottom-nav');
-    if (!nav || !cuentas) return;
-
-    const iconMap = {
-        'ahorros':        { icon: 'savings',      label: 'Ahorros' },
-        'corriente':      { icon: 'account_balance', label: 'Corriente' },
-        'credito':        { icon: 'credit_card',  label: 'Crédito' },
-        'tarjeta_credito':{ icon: 'credit_card',  label: 'Crédito' },
-    };
-
-    const stateMap = {
-        'ahorros':         'ahorros',
-        'corriente':       'CORRIENTE',
-        'credito':         'TARJETA_CREDITO',
-        'tarjeta_credito': 'TARJETA_CREDITO',
-    };
-
-    nav.innerHTML = cuentas.map(cuenta => {
-        const tipo = (cuenta.tipo || cuenta.tipoProducto || 'ahorros').toLowerCase();
-        const { icon, label } = iconMap[tipo] || { icon: 'account_balance_wallet', label: tipo };
-        const state = stateMap[tipo] || tipo;
-        const numero = String(cuenta.numeroCuenta || cuenta.numero || '').slice(-4);
-
-        // Mark active tab: compare normalized types
-        const activeTipo = tipoCuentaActiva.toLowerCase().replace('tarjeta_', '');
-        const thisTipo   = tipo.replace('tarjeta_', '');
-        const isActive   = activeTipo === thisTipo || tipoCuentaActiva.toLowerCase() === tipo;
-
-        return `
-            <a href="detalleProducto.html?state=${state}" class="nav-item ${isActive ? 'active' : ''}">
-                <span class="material-symbols-outlined">${icon}</span>
-                <span class="nav-label">${label}</span>
-                <span class="nav-number">···${numero}</span>
-            </a>`;
-    }).join('');
-}
-
-/**
  * Traduce el tipo técnico de la DB a un nombre bonito para el usuario
  */
 function getVisualName(value) {
@@ -225,4 +184,23 @@ function getVisualName(value) {
     };
     
     return names[value.toLowerCase()] || value;
+}
+
+function actualizarNavActivo() {
+    const params = new URLSearchParams(window.location.search);
+    const state = (params.get('state') || 'ahorros').toLowerCase();
+
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.querySelector('a');
+        if (!link) return;
+
+        const href = link.getAttribute('href').toLowerCase();
+        const esActivo = href.includes(state) || 
+                         (state === 'tarjeta_credito' && href.includes('tarjeta_credito')) ||
+                         (state === 'ahorros' && href.includes('ahorros')) ||
+                         (state === 'corriente' && href.includes('corriente'));
+
+        item.classList.toggle('active', esActivo);
+        item.style.opacity = esActivo ? '1' : '0.6';
+    });
 }
