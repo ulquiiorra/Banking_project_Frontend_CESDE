@@ -12,7 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="transferencia.css">
+    <script type="module" src="transferencia.js" defer></script>
     <link rel="stylesheet" href="/css/global-background.css">
+    <link rel="stylesheet" href="../../components/navigation/navigation.css">
+    <script src="../../components/navigation/navigation.js" defer></script>
+    <link rel="stylesheet" href="../../components/footer/footer.css">
+    <script src="../../components/footer/footer.js" defer></script>
 </head>
 
 <body class="dark-theme">
@@ -23,20 +28,7 @@
     <div class="floating-geometry geo-1"></div>
     <div class="floating-geometry geo-2"></div>
 
-    <div class="noise-overlay"></div>
-    <header class="main-header">
-        <nav class="nav-container">
-            <div class="nav-left">
-                <a class="icon-btn back-btn" href="../detalleProducto/detalleProducto.html">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                </a> >
-
-                <h1 class="brand-title">Transfers</h1>
-            </div>
-            <button class="icon-btn">
-                <span class="material-symbols-outlined">help_outline</span>
-            </button>
-        </nav>
+    <header id="nav-placeholder">
     </header>
 
     <main class="content-wrapper">
@@ -94,26 +86,7 @@
             </button>
         </div>
     </main>
-
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item">
-            <span class="material-symbols-outlined">grid_view</span>
-            <span class="nav-label">Dashboard</span>
-        </a>
-        <a href="#" class="nav-item active">
-            <span class="material-symbols-outlined">swap_horiz</span>
-            <span class="nav-label">Transfers</span>
-        </a>
-        <a href="../simulador/simulador.html" class="nav-item">
-            <span class="material-symbols-outlined">credit_card</span>
-            <span class="nav-label">Cards</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="material-symbols-outlined">settings</span>
-            <span class="nav-label">Settings</span>
-        </a>
-    </nav>
-
+    <div id='footer-placeholder'></div>
     <script type="module" src="transferencia.js" defer></script>
 </body>
 
