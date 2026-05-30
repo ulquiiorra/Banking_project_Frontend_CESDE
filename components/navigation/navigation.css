@@ -259,21 +259,50 @@
 .user-dropdown {
     display: none;
     position: absolute;
-    top: calc(100% + 0.75rem);
+    /* 1. Pushed down slightly to clear the header's bottom border */
+    top: calc(100% + 1.25rem);
     right: 0;
-    min-width: 200px;
+    min-width: 220px;
     background: rgba(20, 20, 20, 0.95);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(179, 255, 0, 0.15);
+    border: 1px solid rgba(179, 255, 0, 0.2);
     border-radius: var(--radius-xl);
     padding: 0.5rem;
     z-index: 9999;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(179, 255, 0, 0.05);
+}
+
+/* 2. Add a visual anchor (the little triangle pointing to the button) */
+.user-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    right: 28px; /* Aligns visually under the chevron */
+    width: 12px;
+    height: 12px;
+    background: rgba(20, 20, 20, 0.95);
+    border-left: 1px solid rgba(179, 255, 0, 0.2);
+    border-top: 1px solid rgba(179, 255, 0, 0.2);
+    transform: rotate(45deg);
+    z-index: -1;
 }
 
 .user-dropdown.dropdown-open {
     display: flex;
     flex-direction: column;
+    /* 3. Add a smooth fade-in and slide-down animation */
+    animation: slideDownFade 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideDownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .dropdown-item {
@@ -293,16 +322,37 @@
     width: 100%;
     text-align: left;
     transition: var(--transition-smooth);
+    position: relative; /* Required for the hover effect below */
+}
+
+/* 4. Sleek hover effect with a kinetic shift */
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 3px;
+    background: var(--primary-container);
+    border-radius: 0 4px 4px 0;
+    transform: scaleY(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.dropdown-item:hover::before {
+    transform: scaleY(1);
 }
 
 .dropdown-item:hover {
     background: rgba(179, 255, 0, 0.08);
     color: var(--on-surface);
+    padding-left: 1.3rem; /* Shifts the text slightly to the right */
 }
 
 .dropdown-item .material-symbols-outlined {
     font-size: 1.2rem;
     color: var(--on-surface-variant);
+    transition: color 0.3s ease;
 }
 
 .dropdown-item:hover .material-symbols-outlined {
@@ -319,12 +369,18 @@
     color: #ff6b6b;
 }
 
+/* Keep the logout item red, override the primary color hover */
+.dropdown-logout::before {
+    background: #ff6b6b;
+}
+
 .dropdown-logout:hover {
     background: rgba(255, 107, 107, 0.08);
     color: #ff6b6b;
 }
 
-.dropdown-logout .material-symbols-outlined {
+.dropdown-logout .material-symbols-outlined,
+.dropdown-logout:hover .material-symbols-outlined {
     color: #ff6b6b;
 }
 

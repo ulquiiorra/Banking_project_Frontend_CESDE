@@ -30,11 +30,30 @@
 
 /* Profile Header */
 .profile-container {
-    padding: 6rem 1.5rem;
-    max-width: 42rem;
-    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    width: 90%;
+    max-width: 45rem;
+    margin: 4rem auto;
+    background-color: var(--on-primary-container);
+    border-radius: 15px;
+    box-sizing: border-box;
 }
 
+@media (max-width: 480px) {
+    .profile-container {
+        width: 80%;
+        padding: 1.5rem 1rem;
+        margin: 2rem auto;
+    }
+
+    .profile-form {
+        max-width: 100%;
+    }
+
+    .input-wrapper input {
+        font-size: 0.9rem;
+    }
+}
 .profile-header {
     text-align: center;
     position: relative;
@@ -100,6 +119,16 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#sectionPersonal,
+#sectionSecurity {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .input-group label {
@@ -148,9 +177,10 @@
 }
 
 .input-group.disabled input {
-    opacity: 0.5;
     cursor: not-allowed;
-    background: var(--surface-variant);
+    background: var( --outline-variant);
+    border: none;
+    border-radius: 0.75rem;
 }
 
 .helper-text {
