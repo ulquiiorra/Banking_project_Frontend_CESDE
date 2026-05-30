@@ -1,23 +1,3 @@
-:root {
-    --bg-color: #0e0e0e;
-    --primary: #b3fe00;
-    --surface-low: #131313;
-    --surface-highest: #262626;
-    --on-surface: #ffffff;
-    --on-surface-variant: #adaaaa;
-    --font-head: 'Space Grotesk', sans-serif;
-    --font-body: 'Manrope', sans-serif;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    background-color: var(--bg-color);
-    background-image: radial-gradient(circle at 50% -20%, rgba(179, 254, 0, 0.08) 0%, transparent 50%);
-    color: var(--on-surface);
-    font-family: var(--font-body);
-}
-
 /* Header */
 .main-header {
     position: fixed; top: 0; width: 100%; z-index: 100;
@@ -37,17 +17,21 @@ body {
 .header-left { display: flex; align-items: center; gap: 1rem; }
 .back-btn-circle {
     width: 40px; height: 40px; border-radius: 50%; border: none;
-    background: var(--surface-highest); color: var(--primary);
+    background: var(--surface-high); color: var(--primary-container);
     display: flex; align-items: center;  cursor: pointer;
   
 }
 
-.header-title { font-family: var(--font-head); font-size: 1rem; color: var(--primary); }
+.header-title { font-family: var(--font-head); font-size: 1rem; color: var(--primary-container); }
 
 /* Main Content */
 .content-wrapper {
-    max-width: 600px; margin: 0 auto;
-    padding: 100px 1.5rem 140px;
+    max-width: 60rem;
+    padding: 5rem 1.5rem 1.5rem;
+    margin: 5rem auto;
+    background-color: var(--on-primary-container);
+    border-radius: 15px;
+    box-sizing: border-box;
 }
 
 /* Hero Visual */
@@ -57,17 +41,17 @@ body {
     display: flex; align-items: center; overflow: hidden; margin-bottom: 2.5rem;
 }
 
-.hero-title { font-family: var(--font-head); font-size: 2rem; color: var(--primary); }
+.hero-title { font-family: var(--font-head); font-size: 2rem; color: var(--primary-container); }
 .tagline { font-family: var(--font-head); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--on-surface-variant); }
 
 .hero-icon-bg {
     position: absolute; right: 20px; opacity: 0.15;
 }
-.hero-icon-bg span { font-size: 100px; color: var(--primary); font-variation-settings: 'FILL' 1; }
+.hero-icon-bg span { font-size: 100px; color: var(--primary-container); font-variation-settings: 'FILL' 1; }
 
 .hero-glow {
     position: absolute; top: -50%; right: -20%; width: 200px; height: 200px;
-    background: var(--primary); filter: blur(80px); opacity: 0.1;
+    background: var(--primary-container); filter: blur(80px); opacity: 0.1;
 }
 
 /* Form Styling */
@@ -94,14 +78,14 @@ body {
 
 .amount-symbol {
     position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%);
-    font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; color: var(--primary);
+    font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; color: var(--primary-container);
 }
 
 .field-icon { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); color: #444; }
 
 /* Installments (Slider) */
 .section-header { display: flex; justify-content: space-between; align-items: flex-end; }
-.count-number { font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+.count-number { font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; color: var(--primary-container); }
 .count-label { color: #666; font-weight: 600; margin-left: 4px; }
 
 .range-container { margin: 2rem 0; }
@@ -109,11 +93,11 @@ body {
 /* Custom Slider Pure CSS */
 .custom-slider {
     -webkit-appearance: none; width: 100%; height: 6px;
-    background: var(--surface-highest); border-radius: 3px; outline: none;
+    background: var(--surface-high); border-radius: 3px; outline: none;
 }
 .custom-slider::-webkit-slider-thumb {
     -webkit-appearance: none; width: 22px; height: 22px;
-    background: var(--primary); border-radius: 50%; cursor: pointer;
+    background: var(--primary-container); border-radius: 50%; cursor: pointer;
     box-shadow: 0 0 15px rgba(179, 254, 0, 0.4);
 }
 
@@ -124,15 +108,15 @@ body {
 
 .quick-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
 .chip {
-    background: var(--surface-highest); border: 1px solid transparent;
+    background: var(--surface-high); border: 1px solid transparent;
     padding: 0.75rem; border-radius: 0.75rem; color: var(--on-surface-variant);
     font-weight: 700; cursor: pointer; transition: 0.3s;
 }
-.chip.active { background: rgba(179, 254, 0, 0.1); border-color: var(--primary); color: var(--primary); }
+.chip.active { background: rgba(179, 254, 0, 0.1); border-color: var(--primary-container); color: var(--primary-container); }
 
 /* Summary Card */
 .summary-card {
-    background: var(--surface-highest); padding: 2rem; border-radius: 2rem;
+    background: var(--surface-high); padding: 2rem; border-radius: 2rem;
     margin-top: 2rem; border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative; overflow: hidden;
 }
@@ -143,12 +127,12 @@ body {
 .row-value { font-family: var(--font-head); font-weight: 700; }
 
 .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 1.5rem 0; }
-.result-value { font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+.result-value { font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; color: var(--primary-container); }
 .result-period { color: #444; font-size: 0.9rem; font-weight: 600; margin-left: 5px; }
 
 /* Confirm Button */
 .btn-confirm {
-    width: 100%; background: var(--primary); color: #000;
+    width: 100%; background: var(--primary-container); color: #000;
     padding: 1.25rem; border: none; border-radius: 1.25rem;
     font-family: var(--font-head); font-weight: 900; font-size: 1.1rem;
     display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -167,7 +151,7 @@ body {
 }
 
 .nav-item { display: flex; flex-direction: column; align-items: center; color: #555; gap: 4px; }
-.nav-item.active { color: var(--primary); }
+.nav-item.active { color: var(--primary-container); }
 .nav-label { font-size: 9px; font-weight: 700; text-transform: uppercase; }
 
 
