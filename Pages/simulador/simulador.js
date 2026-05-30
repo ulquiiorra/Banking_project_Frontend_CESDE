@@ -15,7 +15,7 @@ const simulator = {
         this.cargarDatosUsuario();
         this.cacheDOM();
         this.bindEvents();
-        this.updateUI();
+        this.updateUI(0, 0, this.getTasaPorCuotas(this.installments));
     },
 
     cargarDatosUsuario() {
@@ -117,39 +117,45 @@ const simulator = {
         });
     },
 
+    getTasaPorCuotas(n) {
+        if (n <= 2) return 0;
+        if (n <= 6) return 0.019;
+        return 0.023;
+    },
+
     calculate() {
         const capital = this.amount;
         const n = this.installments;
-        const tasa = this.interestRate;
+        const tasa = this.getTasaPorCuotas(n);
         
         let cuotaMensual = 0;
         let totalPagar = 0;
 
         if (capital > 0) {
-            // Regla de Negocio: A 1 cuota no se cobran intereses
-            if (n === 1) {
-                cuotaMensual = capital;
+            if (tasa === 0) {
+                // ≤ 2 cuotas: sin interés
+                cuotaMensual = capital / n;
                 totalPagar = capital;
             } else {
-                // Ecuación de Amortización (Igual a la de tu clase TarjetaCredito)
+                // Ecuación de Amortización
                 const dividendo = capital * tasa;
                 const divisor = 1 - Math.pow(1 + tasa, -n);
                 
                 cuotaMensual = dividendo / divisor;
-                totalPagar = cuotaMensual * n; // El total que terminarás pagando al final de los meses
+                totalPagar = cuotaMensual * n;
             }
         }
 
-        this.updateUI(totalPagar, cuotaMensual);
+        this.updateUI(totalPagar, cuotaMensual, tasa);
     },
 
-    updateUI(total = 0, monthly = 0) {
+    updateUI(total = 0, monthly = 0, tasa = 0) {
         // Actualizar contador de cuotas
         this.countDisplay.textContent = this.installments;
         
-        // Actualizar Tasa de Interés en pantalla (Ej: 0.022 -> 2.2%)
+        // Actualizar Tasa de Interés en pantalla según regla de negocio
         if (this.rateDisplay) {
-            this.rateDisplay.textContent = `${(this.interestRate * 100).toFixed(1)}%`;
+            this.rateDisplay.textContent = `${(tasa * 100).toFixed(1)}%`;
         }
         
         // Formatear Dinero
